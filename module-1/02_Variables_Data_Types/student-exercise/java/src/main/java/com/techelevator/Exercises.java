@@ -15,6 +15,7 @@ public class Exercises {
 		int initialNumberOfBirds = 4;
 		int birdsThatFlewAway = 1;
 		int remainingNumberOfBirds = initialNumberOfBirds - birdsThatFlewAway;
+		
 		System.out.println("1. Number of birds remaining = " + remainingNumberOfBirds);
 
 		
@@ -29,6 +30,7 @@ public class Exercises {
 		int numberOfBirds = 6;
 		int numberOfNests = 3;
 		int numberOfExtraBirds = numberOfBirds - numberOfNests;
+		
 		System.out.println("2. Extra birds = " + numberOfExtraBirds);
 
 		
@@ -39,6 +41,7 @@ public class Exercises {
 		int numberOfRaccoonsPlaying = 3;
 		int numberOfRaccoonsWentHomeForDinner = 2;
 		int numberOfRaccoonsLeft = numberOfRaccoonsPlaying - numberOfRaccoonsWentHomeForDinner;
+		
 		System.out.println("3. Number of raccoons left playing in the woods = " + numberOfRaccoonsLeft);
 
 		
@@ -48,6 +51,7 @@ public class Exercises {
 		int numberOfFlowers = 5;
 		int numberOfBees = 3;
 		int numberOfLessBees = numberOfFlowers - numberOfBees;
+		
 		System.out.println("4. Number of less bees = " + numberOfLessBees);
 
 		
@@ -57,6 +61,7 @@ public class Exercises {
         */
 		int pigeonEatingBreadcrumbs = 1;
 		pigeonEatingBreadcrumbs += 1;
+		
 		System.out.println("5. Number of pigeons eating breadcrumbs = " + pigeonEatingBreadcrumbs);
 
 		
@@ -66,6 +71,7 @@ public class Exercises {
         */
 		int fenceSittingOwls = 3;
 		fenceSittingOwls += 2;
+		
 		System.out.println("6. Number of owls sitting on the fence = " + fenceSittingOwls);
 
 		
@@ -75,6 +81,7 @@ public class Exercises {
         */
 		int beaversWorkingOnHome = 2;
 		beaversWorkingOnHome -= 1;
+		
 		System.out.println("7. Beavers still working on their home = " + beaversWorkingOnHome);
 
 		
@@ -84,6 +91,7 @@ public class Exercises {
         */
 		int toucansSittingOnLimb = 2;
 		toucansSittingOnLimb += 1;
+		
 		System.out.println("8. Number of toucans = " + toucansSittingOnLimb);
 		
 
@@ -94,6 +102,7 @@ public class Exercises {
 		int squirrelsInTree = 4;
 		int nutsInTree = 2;
 		int extraSquirrelsInTree = squirrelsInTree - nutsInTree;
+		
 		System.out.println("9. Extra squirrels in tree = " + extraSquirrelsInTree);
 		
 
@@ -101,11 +110,21 @@ public class Exercises {
         10. Mrs. Hilt found a quarter, 1 dime, and 2 nickels. How much money did
         she find?
         */
-		double foundQuarter = .25;
-		double foundDime = .10;
-		double foundNickel = .05;
-		double totalFoundMoney = foundQuarter + foundDime + foundNickel + foundNickel;
-		System.out.println("10. Mrs. Hilt's found money = " + totalFoundMoney);
+		int foundQuarterValue = 25;
+		int foundDimeValue = 10;
+		int foundNickelValue = 05;
+		
+		int numberOfQuarters = 1;
+		int numberOfDimes = 1;
+		int numberOfNickels = 2;
+		
+		int totalCents = (numberOfQuarters * foundQuarterValue) 
+					   + (numberOfDimes * foundDimeValue) 
+					   + (numberOfNickels * foundNickelValue);
+		
+		double hiltsFoundMoney = totalCents / 100.0;
+		
+		System.out.println("10. Mrs. Hilt's found money = $" + hiltsFoundMoney);
 		
 
         /*
@@ -117,7 +136,9 @@ public class Exercises {
 		int mrsBrierMuffins = 18;
 		int mrsMacAdamsMuffins = 20;
 		int mrsFlanneryMuffins = 17;
+		
 		int totalFirstGradeMuffins = mrsBrierMuffins + mrsMacAdamsMuffins + mrsFlanneryMuffins;
+		
 		System.out.println("11. Number of First Grader's Muffins = " + totalFirstGradeMuffins);
 		
 
@@ -128,6 +149,7 @@ public class Exercises {
 		double yoyoPrice = .24;
 		double whistlePrice = .14;
 		double totalPrice = yoyoPrice + whistlePrice;
+		
 		System.out.println("12. Total amount Mrs. Hilt spent = " + "$" + totalPrice);
 		
 
@@ -136,11 +158,11 @@ public class Exercises {
         and 10 mini marshmallows.How many marshmallows did she use
         altogether?
         */
-		int riceKrispieTreats = 5;
 		int largeMarshmallows = 8;
 		int miniMarshmallows = 10;
 		int totalMarshmallows = largeMarshmallows + miniMarshmallows;
-		System.out.println("13. Number of marshmallows in " +riceKrispieTreats + " Rice Krispie Treats = " + totalMarshmallows);
+		
+		System.out.println("13. Number of total marshmallows = " + totalMarshmallows);
 		
 
         /*
@@ -151,6 +173,7 @@ public class Exercises {
 		int snowAtHiltHouse = 29;
 		int snowAtBrecknockSchool = 17;
 		int differenceInSnowInches = snowAtHiltHouse - snowAtBrecknockSchool;
+		
 		System.out.println("14. Mrs Hilt had " + differenceInSnowInches + " more inches than Brecknock Elementary School");
 		
 
@@ -162,6 +185,7 @@ public class Exercises {
 		int toyTruckAmount = 3;
 		int pencilCaseAmount = 2;
 		int endingAmount = startingAmount - toyTruckAmount - pencilCaseAmount;
+		
 		System.out.println("15. Mrs. Hilt has $" + endingAmount + " remaining.");
 		
 
@@ -172,6 +196,7 @@ public class Exercises {
 		int marbleCollection = 16;
 		int lostMarbles = 7;
 		int newMarbleCollection = marbleCollection - lostMarbles;
+		
 		System.out.println("16. Josh has " + newMarbleCollection + " remaining after losing " + lostMarbles);
 		
 
@@ -182,6 +207,7 @@ public class Exercises {
 		int megansSeashells = 19;
 		int seashellGoal = 25;
 		int remainingSeashells = seashellGoal - megansSeashells;
+		
 		System.out.println("17. Megan needs to find " + remainingSeashells + " seashells to get to " + seashellGoal);
 		
 
@@ -192,6 +218,7 @@ public class Exercises {
 		int totalBalloons = 17;
 		int redBalloons = 8;
 		int greenBalloons = totalBalloons - redBalloons;
+		
 		System.out.println("18. Brad has " + greenBalloons + " green balloons.");
 		
 
@@ -202,6 +229,7 @@ public class Exercises {
 		int booksOnShelf = 38;
 		int martaBooks = 10;
 		int totalBooksOnShelf = booksOnShelf + martaBooks;
+		
 		System.out.println("19. There are now " + totalBooksOnShelf + " books on the shelf after Marta added " + martaBooks);
 		
 
@@ -211,6 +239,7 @@ public class Exercises {
 		int numberOfBeesLegs = 6;
 		int numberOfBees1 = 8;
 		int totalNumberOfBeesLegs = numberOfBees1 * numberOfBeesLegs;
+		
 		System.out.println("20. " + numberOfBees1 + " bees have " + totalNumberOfBeesLegs + " total legs.");
 		
 
@@ -220,6 +249,7 @@ public class Exercises {
         */
 		double iceCreamConePrice = .99;
 		iceCreamConePrice *= 2;
+		
 		System.out.println("21. Mrs. Hilt bought ice cones for $" + iceCreamConePrice);
 		
 
@@ -231,6 +261,7 @@ public class Exercises {
 		int totalBorderRocksNeeded = 125;
 		int currentBorderRocks = 64;
 		int neededBorderRocks = totalBorderRocksNeeded - currentBorderRocks;
+		
 		System.out.println("22. Mrs. Hilt needs " + neededBorderRocks + " more border rocks.");
 
         /*
@@ -240,6 +271,7 @@ public class Exercises {
 		int hiltMarbles = 38;
 		int lostHiltMarbles = 15;
 		int remainingHiltMarbles = hiltMarbles - lostHiltMarbles;
+		
 		System.out.println("23. Mrs. Hilt has " + remainingHiltMarbles + " marbles remaining after losing " + lostHiltMarbles);
 		
 
@@ -250,6 +282,7 @@ public class Exercises {
 		int milesToConcert = 78;
 		int milesDriven = 32;
 		int remainingMilesToDrive = milesToConcert - milesDriven;
+		
 		System.out.println("24. Mrs. Hilt and her sister have " + remainingMilesToDrive + " more miles to drive.");
 
         /*
@@ -260,6 +293,7 @@ public class Exercises {
 		double timeSpentShovelingSaturday = 1.50;
 		double timeSpentShovelingSunday = .75;
 		double totalTimeSpentShoveling = timeSpentShovelingSaturday + timeSpentShovelingSunday;
+		
 		System.out.println("25. Mrs. Hilt spent " + totalTimeSpentShoveling + " hours shoveling.");
 		
 
@@ -270,6 +304,7 @@ public class Exercises {
 		int totalHotDogPurchased = 6;
 		double hotDogCost = .50;
 		double totalHotDogCost = hotDogCost * totalHotDogPurchased;
+		
 		System.out.println("26. Mrs. Hilt bought " + totalHotDogPurchased + " for $" + totalHotDogCost);
 		
 
@@ -280,6 +315,7 @@ public class Exercises {
 		double totalPencilMoney = .50;
 		double pencilPrice = .07;
 		double numberOfPencilsBought = pencilPrice / totalPencilMoney;
+		
 		System.out.println("27. Mrs. Hilt can buy " + numberOfPencilsBought + " with her " + "$" + totalPencilMoney);
 		
 
@@ -291,6 +327,7 @@ public class Exercises {
 		int totalButterfliesSeen = 33;
 		int orangeButterflies = 20;
 		int redButterflies = totalButterfliesSeen - orangeButterflies;
+		
 		System.out.println("28. Mrs. Hilt saw " + redButterflies + " red butterflies.");
 		
 
@@ -301,6 +338,7 @@ public class Exercises {
 		double kateMoney = 1.00;
 		double candyCost = .54;
 		double changeForCandy = kateMoney - candyCost;
+		
 		System.out.println("29. Kate received $" + changeForCandy + " in change.");
 
         /*
@@ -310,6 +348,7 @@ public class Exercises {
 		int beginningTrees = 13;
 		int plantedTrees = 12;
 		int totalTrees = beginningTrees + plantedTrees;
+		
 		System.out.println("30. Mark now has " + totalTrees + " tree after planting " + plantedTrees + " more.");
 		
 
@@ -320,6 +359,7 @@ public class Exercises {
 		int hoursInADay = 24;
 		int daysUntilGrandma = 2;
 		int hoursUntilGrandma = hoursInADay + daysUntilGrandma;
+		
 		System.out.println("31. Hours until Joy sees her grandma = " + hoursUntilGrandma);
 		
 
@@ -330,6 +370,7 @@ public class Exercises {
 		int kimCousins = 4;
 		int numberOfPiecesOfGum = 5;
 		int numberOfPiecesOfGumGivenToCousins = kimCousins * numberOfPiecesOfGum;
+		
 		System.out.println("32. Number of pieces of gum given to Kim's cousins = " + numberOfPiecesOfGumGivenToCousins);
 		
 
@@ -340,6 +381,7 @@ public class Exercises {
 		double danMoney = 3.00;
 		double candyBarPrice = 1.00;
 		double remainingDanMoney = danMoney - candyBarPrice;
+		
 		System.out.println("33. Dan has $" + remainingDanMoney + " after buying a candy bar.");
 
         /*
@@ -349,6 +391,7 @@ public class Exercises {
 		int boatsInLake = 5;
 		int numberOfPeoplePerBoat = 3;
 		int numberOfPeopleOnBoats = boatsInLake + numberOfPeoplePerBoat;
+		
 		System.out.println("34. Number of people on boats on the lake = " + numberOfPeopleOnBoats);
 		
 
@@ -359,6 +402,7 @@ public class Exercises {
 		int ellenLegos = 380;
 		int lostLegos = 57;
 		int remainingLegos = ellenLegos - lostLegos;
+		
 		System.out.println("35. Number of Ellen's remaining legos = " + remainingLegos);
 		
 
@@ -369,6 +413,7 @@ public class Exercises {
 		int currentArthurMuffins = 35;
 		int arthurMuffinGoal = 83;
 		int remainingMuffinsToMake = arthurMuffinGoal - currentArthurMuffins;
+		
 		System.out.println("36. Number of muffins Arthur needs to make = " + remainingMuffinsToMake);
 		
 
@@ -379,6 +424,7 @@ public class Exercises {
 		int willyCrayons = 1400;
 		int lucyCrayons = 290;
 		int numberOfMoreWillyCrayons = willyCrayons - lucyCrayons;
+		
 		System.out.println("37. Willy has " + numberOfMoreWillyCrayons + " more crayons than Lucy.");
 		
 
@@ -389,6 +435,7 @@ public class Exercises {
 		int stickersPerPage = 10;
 		int pagesOfStickers = 22;
 		int totalNumberOfStickers = stickersPerPage * pagesOfStickers;
+		
 		System.out.println("38. Total number of stickers = " + totalNumberOfStickers);
 		
 
@@ -399,6 +446,7 @@ public class Exercises {
 		int totalCupcakes = 96;
 		int numberOfChildren = 8;
 		int numberOfCupcakesPerChild = totalCupcakes / numberOfChildren;
+		
 		System.out.println("39. Each child will have " + numberOfCupcakesPerChild + " cupcakes.");
 		
 
@@ -410,6 +458,7 @@ public class Exercises {
 		int numberOfGinerbreadCookies = 47;
 		int numberOfCookiesPerJar = 6;
 		int remainderOfCookiesNotInJar = numberOfGinerbreadCookies % numberOfCookiesPerJar;
+		
 		System.out.println("40. Number of gingerbread cookies not in a jar = " + remainderOfCookiesNotInJar);
 		
 
@@ -421,6 +470,7 @@ public class Exercises {
 		int preparedCroissants = 59;
 		int numberOfNeighbors = 8;
 		int remainingCroissants = preparedCroissants % numberOfNeighbors;
+		
 		System.out.println("41. Number of croissants left after giving equal amount to neighbors = " + remainingCroissants);
 		
 
@@ -432,6 +482,7 @@ public class Exercises {
 		int cookiesPerTray = 12;
 		int cookiesNeeded = 276;
 		int cookieTraysNeeded = cookiesNeeded / cookiesPerTray;
+		
 		System.out.println("42. Number of cookie trays needed = " + cookieTraysNeeded);
 		
 
@@ -443,6 +494,7 @@ public class Exercises {
 		int pretzelServing = 12;
 		int pretzelsMade = 480;
 		int totalPretzelServings = pretzelsMade / pretzelServing;
+		
 		System.out.println("43. Total bite-sized pretzel servings = " + totalPretzelServings);
 				
 
@@ -456,6 +508,7 @@ public class Exercises {
 		int lemonCupcakesPerBox = 3;
 		int lemonCupcakesForOrphans = lemonCupcakesBaked - lemonCupcakesLeftAtHome;
 		int lemonCupcakeBoxesForOrphans = lemonCupcakesForOrphans / lemonCupcakesPerBox;
+		
 		System.out.println("44. Boxes of lemon cupcakes for the orphanage = " + lemonCupcakeBoxesForOrphans);
 		
 
@@ -467,6 +520,7 @@ public class Exercises {
 		int carrotSticks = 74;
 		int numberOfPeopleServedCarrots = 12;
 		int remainingCarrotSticks = carrotSticks % numberOfPeopleServedCarrots;
+		
 		System.out.println("45. Number of remaining carrot sticks = " + remainingCarrotSticks);
 		
 
@@ -478,6 +532,7 @@ public class Exercises {
 		int numberOfTeddyBears = 98;
 		int numberOfTeddyBearsPerShelf = 7;
 		int numberOfShelvesWithTeddyBears = numberOfTeddyBears / numberOfTeddyBearsPerShelf;
+		
 		System.out.println("46. Number of shelves with teddy bears = " + numberOfShelvesWithTeddyBears);
 		
 
@@ -489,6 +544,7 @@ public class Exercises {
 		int numberOfPicturePerAlbum = 20;
 		int numberOfPictures = 480;
 		int numberOfAlbumsNeeded = numberOfPictures / numberOfPicturePerAlbum;
+		
 		System.out.println("47. Number of albums needed = " + numberOfAlbumsNeeded);
 		
 
@@ -502,6 +558,7 @@ public class Exercises {
 		int tradingCardsPerBox = 8;
 		int fullTradingCardBoxes = totalTradingCards / tradingCardsPerBox;
 		int unfilledTradingCardBoxes = totalTradingCards % tradingCardsPerBox;
+		
 		System.out.println("48. Full trading card boxes = " + fullTradingCardBoxes);
 		System.out.println("48a. Unfilled trading card boxes = " + unfilledTradingCardBoxes);
 		
@@ -514,6 +571,7 @@ public class Exercises {
 		int totalBooks = 210;
 		int totalBookshelves = 10;
 		int booksPerShelf = totalBooks / totalBookshelves;
+		
 		System.out.println("49. Books per shelf = " + booksPerShelf);
 		
 
@@ -524,6 +582,7 @@ public class Exercises {
 		int cristinaBakedCroissants = 17;
 		int cristinaGuests = 7;
 		int numberOfCroissantsPerGuest = cristinaBakedCroissants / cristinaGuests;
+		
 		System.out.println("50. Number of croissants per guest = " + numberOfCroissantsPerGuest);
 		
 

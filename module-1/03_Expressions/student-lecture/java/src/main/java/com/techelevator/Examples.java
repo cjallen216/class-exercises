@@ -17,20 +17,28 @@ public class Examples {
 		*/
 		result = (2 == 2);
 		System.out.println("2 == 2 : " + result);
+		
 		result = (2 == 3);
 		System.out.println("2 == 3 : " + result);
+		
 		result = ('a' == 'a');
 		System.out.println("'a' == 'a' : " + result);
+		
 		result = ('a' == 'b');
 		System.out.println("'a' == 'b' : " + result);
+		
 		result = (2 != 2);
 		System.out.println("2 != 2 : " + result);
+		
 		result = (2 != 3);
 		System.out.println("2 != 3 : " + result);
+		
 		result = ('a' != 'a');
 		System.out.println("'a' != 'a' : " + result);
+		
 		result = ('a' != 'b');
 		System.out.println("'a' != 'b' : " + result);
+		
 		System.out.println();
 
 		/*
@@ -63,17 +71,23 @@ public class Examples {
 		 */
 		result = true && true;
 		System.out.println("true && true : " + result);
+		
 		result = true && false;
 		System.out.println("true && false : " + result);
+		
 		result = false && false;
 		System.out.println("false && false : " + result);
+		
 
 		result = true || true;
 		System.out.println("true || true : " + result);
+		
 		result = true || false;
 		System.out.println("true || false : " + result);
+		
 		result = false || false;
 		System.out.println("false || false : " + result);
+		
 
 		result = !true;
 		System.out.println("!true : " + result);

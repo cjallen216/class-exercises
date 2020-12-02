@@ -6,7 +6,7 @@ public class Lecture {
     it so that it returns something other than a 1.
     */
     public int returnNotOne() {
-        return 1;
+        return 42;
     }
 
     /*
@@ -14,21 +14,21 @@ public class Lecture {
     it so that it returns something other than a 0.5.
     */
     public double returnNotHalf() {
-        return 0.5;
+        return 41;
     }
 
     /*
     3. This method needs to return a String. Fix it to return a valid String.
     */
     public String returnName() {
-        return null;
+        return "Name";
     }
 
     /*
     4. This method currently returns an int. Change it so that it returns a double.
     */
     public int returnDoubleOfTwo() {
-        return 2;
+        return 2 * 2;
     }
 
     /*
@@ -45,7 +45,7 @@ public class Lecture {
     */
     public boolean returnTrueFromIf() {
         if (true) {
-            return false;
+            return true;
         }
 
         return false;
@@ -69,11 +69,11 @@ public class Lecture {
     */
     public boolean returnTrueWhenGreaterThanFive(int number) {
         if (number > 5) {
-
+        		return true;
         } else {
-
+        		return false;
         }
-        return false;
+        
     }
 
     /*
@@ -92,13 +92,13 @@ public class Lecture {
     */
     public int returnNumberAfterAddThreeAndAddFive(int number, boolean addThree, boolean addFive) {
         if (addThree) {
-            number = number + 1;
+            number = number + 3;
         }
 
         // We can't use an else here. They could both be true, so we have to check each one.
 
         if (addFive) {
-            number += 1;
+            number += 5;
         }
 
         return number;
