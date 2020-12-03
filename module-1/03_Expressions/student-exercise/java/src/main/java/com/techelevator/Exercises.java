@@ -68,10 +68,11 @@ public class Exercises {
 	 diff21(-10) → 31
 	 */
 	public int diff21(int n)
-	{ if (n > 21)
-	{
+	{ 
+		if (n > 21)
+		{
 		return (n - 21) * 2;
-	}
+		}
 		return (21 - n);
 	}
 
@@ -83,12 +84,13 @@ public class Exercises {
 	 parrotTrouble(true, 7) → false
 	 parrotTrouble(false, 6) → false
 	 */
-	public boolean parrotTrouble(boolean talking, int hour) {
-		if ( 7 <= hour || hour <= 20)
+	public boolean parrotTrouble(boolean talking, int hour)
+	{
+		if (7 >= hour ^ hour >= 20)
 		{
-			return false;
+			return true;
 		}
-		return true;
+		return false;
 	}
 
 	/*
@@ -97,8 +99,14 @@ public class Exercises {
 	 makes10(9, 9) → false
 	 makes10(1, 9) → true
 	 */
-	public boolean makes10(int a, int b) {
+	public boolean makes10(int a, int b)
+	{
+		if (a + b == 10 || b == 10 || a == 10)
+		{
+			return true;
+		}
 		return false;
+		
 	}
 
 	/*
@@ -108,7 +116,12 @@ public class Exercises {
 	 posNeg(-1, 1, false) → true
 	 posNeg(-4, -5, true) → true
 	 */
-	public boolean posNeg(int a, int b, boolean negative) {
+	public boolean posNeg(int a, int b, boolean negative)
+	{
+		if ((a > 0 && b < 0) || (a > 0 && b > 0))
+		{
+			return true;
+		}
 		return false;
 	}
 
@@ -129,7 +142,12 @@ public class Exercises {
 	 icyHot(-1, 120) → true
 	 icyHot(2, 120) → false
 	 */
-	public boolean icyHot(int temp1, int temp2) {
+	public boolean icyHot(int temp1, int temp2)
+	{
+		if ((temp1 < 0 && temp2 > 100) || (temp1 > 100 && temp2 < 0))
+		{
+			return true;
+		}
 		return false;
 	}
 
@@ -139,7 +157,12 @@ public class Exercises {
 	 in1020(21, 12) → true
 	 in1020(8, 99) → false
 	 */
-	public boolean in1020(int a, int b) {
+	public boolean in1020(int a, int b)
+	{
+		if (a >=10 || a <=20 ^ b >= 10 || b <= 20)
+		{
+			return true;
+		}
 		return false;
 	}
 
@@ -150,7 +173,12 @@ public class Exercises {
 	 hasTeen(20, 19, 10) → true
 	 hasTeen(20, 10, 13) → true
 	 */
-	public boolean hasTeen(int a, int b, int c) {
+	public boolean hasTeen(int a, int b, int c)
+	{
+		if ((a >=13 && a <=19) || (b >=13 && b <=19) || (c >=13 && c <=19))
+		{
+			return true;
+		}
 		return false;
 	}
 
