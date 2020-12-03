@@ -86,11 +86,11 @@ public class Exercises {
 	 */
 	public boolean parrotTrouble(boolean talking, int hour)
 	{
-		if (7 >= hour ^ hour >= 20)
+		if (hour >= 7 || hour <= 20 && talking)
 		{
-			return true;
+			return false;
 		}
-		return false;
+		return true;
 	}
 
 	/*
@@ -118,11 +118,11 @@ public class Exercises {
 	 */
 	public boolean posNeg(int a, int b, boolean negative)
 	{
-		if ((a > 0 && b < 0) || (a > 0 && b > 0))
+		if (a < 0 || b < 0)
 		{
-			return true;
+			return false;
 		}
-		return false;
+		return true;
 	}
 
 	/*
@@ -189,18 +189,35 @@ public class Exercises {
 	 loneTeen(21, 19) → true
 	 loneTeen(13, 13) → false
 	 */
-	public boolean loneTeen(int a, int b) {
-		return false;
+	public boolean loneTeen(int a, int b)
+	{
+		if ((a >=13 && a <=19) ^ (b >=13 && b <=19))
+		{
+			return true;
+		}
+			return false;
 	}
-
 	/*
 	 13. Given three int values, a b c, return the largest.
 	 intMax(1, 2, 3) → 3
 	 intMax(1, 3, 2) → 3
 	 intMax(3, 2, 1) → 3
 	 */
-	public int intMax(int a, int b, int c) {
-		return 0;
+	public int intMax(int a, int b, int c)
+	{
+		if (a > b && a > c)
+		{
+			return a;
+		}
+		else if (b > a && b > c)
+		{
+			return b;
+		}
+		else if (c > a && c > b)
+		{
+			return c;
+		}
+		return 10;
 	}
 
 	/*
@@ -210,7 +227,12 @@ public class Exercises {
 	 in3050(30, 41) → false
 	 in3050(40, 50) → true
 	 */
-	public boolean in3050(int a, int b) {
+	public boolean in3050(int a, int b)
+	{
+		if ((a >= 30 && a <= 40 && b >= 30 && b <= 40) || (a >= 40 && a <= 50 && b >= 40 && b <= 50))
+		{
+			return true;
+		}
 		return false;
 	}
 
@@ -221,8 +243,13 @@ public class Exercises {
 	 max1020(19, 11) → 19
 	 max1020(11, 9) → 11
 	 */
-	public int max1020(int a, int b) {
-		return 0;
+	public int max1020(int a, int b)
+	{
+		if (a > b)
+		{
+			return a;
+		}
+		return b;
 	}
 
 	/*
@@ -296,8 +323,13 @@ public class Exercises {
 	 sortaSum(9, 4) → 20
 	 sortaSum(10, 11) → 21
 	 */
-	public int sortaSum(int a, int b) {
-		return 0;
+	public int sortaSum(int a, int b)
+	{
+		if ((a + b <= 19) && (a + b >=10))
+		{
+			return a + b;
+		}
+		return 20;
 	}
 
 	/*
@@ -309,8 +341,21 @@ public class Exercises {
 	 alarmClock(5, false) → "7:00"
 	 alarmClock(0, false) → "10:00"
 	 */
-	public String alarmClock(int day, boolean vacation) {
-		return "";
+	public String alarmClock(int day, boolean onVacation)
+	{
+		if ((day == 0 || day == 6) && (onVacation = true))
+		{
+			return "off";
+		}
+		else if ((day != 0 || day != 6) && (onVacation = false))
+		{
+			return "7:00";
+		}
+		else 
+		{
+			return "10:00"; 
+		}
+	
 	}
 
 	/*
