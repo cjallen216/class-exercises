@@ -8,9 +8,15 @@ public class Exercises {
 	 firstLast6([1, 2, 6]) → true
 	 firstLast6([6, 1, 2, 3]) → true
 	 firstLast6([13, 6, 1, 2, 3]) → false
+	 
+	 is 6 first or 6 last
 	 */
-	public boolean firstLast6(int[] nums) {
-		return false;
+	public boolean firstLast6(int[] nums)
+	{
+		boolean isSixFirst = nums[0] == 6;
+		boolean isSixLast = nums[nums.length - 1] == 6;
+		
+		return isSixFirst || isSixLast;
 	}
 
 	/*
@@ -33,13 +39,20 @@ public class Exercises {
 	}
 
 	/*
-	 4. Given 2 arrays of ints, a and b, return true if they have the same first element or they have 
-	 the same last element. Both arrays will be length 1 or more.
+	 4. Given 2 arrays of ints, a and b, return true if they have the same first
+	 element or they have the same last element. Both arrays will be length 1 or more.
 	 commonEnd([1, 2, 3], [7, 3]) → true
 	 commonEnd([1, 2, 3], [7, 3, 2]) → false
 	 commonEnd([1, 2, 3], [1, 3]) → true
+	 
 	 */
-	public boolean commonEnd(int[] a, int[] b) {
+	public boolean commonEnd(int[] a, int[] b)
+	{
+		boolean isFirstElementSame;
+		boolean isLastElementSame;
+		
+		boolean isFirstOrLastSame = isFirstElementSame || isLastElementSame;
+		
 		return false;
 	}
 

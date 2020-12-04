@@ -71,26 +71,31 @@ public class Exercises {
 	{ 
 		if (n > 21)
 		{
-		return (n - 21) * 2;
+			return (n - 21) * 2;
 		}
 		return (21 - n);
 	}
 
 	/*
-	 5. We have a loud talking parrot. The "hour" parameter is the current hour time in the range 0..23.
-	 We are in trouble if the parrot is talking and the hour is before 7 or after 20. Return true if
+	 5. We have a loud talking parrot. The "hour" parameter is the current hour time in
+	  the range 0..23.
+	 We are in trouble if the parrot is talking and the hour is before 7 or after 20. 
+	 Return true if
 	 we are in trouble.
 	 parrotTrouble(true, 6) → true
 	 parrotTrouble(true, 7) → false
 	 parrotTrouble(false, 6) → false
+	 
+	 1 is it before 7?
+	 2 is it after 20?
 	 */
 	public boolean parrotTrouble(boolean talking, int hour)
 	{
-		if (hour >= 7 || hour <= 20 && talking)
+		if ((hour < 7 || hour > 20) && talking)
 		{
-			return false;
+			return true;
 		}
-		return true;
+		return false;
 	}
 
 	/*
@@ -115,25 +120,40 @@ public class Exercises {
 	 posNeg(1, -1, false) → true
 	 posNeg(-1, 1, false) → true
 	 posNeg(-4, -5, true) → true
+	 
+	 default one positive, one negative
+	 exception: if bothMustBeNegative them both a & b have to be negative
 	 */
-	public boolean posNeg(int a, int b, boolean negative)
+	public boolean posNeg(int a, int b, boolean bothMustBeNegative)
 	{
-		if (a < 0 || b < 0)
+		boolean isANegative = a < 0;
+		boolean isBNegative = b < 0;
+		boolean isOnlyOneNegative = isANegative ^ isBNegative;
+		boolean areBothNegative = isANegative && isBNegative;
+		
+		if (bothMustBeNegative)
 		{
-			return false;
+			return areBothNegative;
 		}
-		return true;
+		
+		return isOnlyOneNegative;
 	}
 
 	/*
-	 8. Return true if the given non-negative number is a multiple of 3 or a multiple of 5.
+	 8. Return true if the given non-negative number is a multiple of 3 or
+	 a multiple of 5.
 	 (Hint: Think "mod".)
 	 or35(3) → true
 	 or35(10) → true
 	 or35(8) → false
 	 */
-	public boolean or35(int n) {
-		return false;
+	public boolean or35(int n)
+	{
+		boolean isItMultipleOfThree = n % 3 == 0;
+		boolean isItMultipeOfFive = n % 5 == 0;
+		boolean resultEquals = isItMultipeOfFive || isItMultipleOfThree;
+		
+		return resultEquals;
 	}
 
 	/*
@@ -205,19 +225,18 @@ public class Exercises {
 	 */
 	public int intMax(int a, int b, int c)
 	{
-		if (a > b && a > c)
+		if (a >= b && a >= c)
 		{
 			return a;
 		}
-		else if (b > a && b > c)
+		else if (b >= a && b >= c)
 		{
 			return b;
 		}
-		else if (c > a && c > b)
+		else
 		{
 			return c;
 		}
-		return 10;
 	}
 
 	/*
@@ -237,19 +256,40 @@ public class Exercises {
 	}
 
 	/*
-	 15. Given 2 int values, return the larger value that is in the range 10..20 inclusive,
+	 15. Given 2 int values, return the larger value that is in the range 10..20
+	 inclusive,
 	 or return 0 if neither is in that range.
 	 max1020(11, 19) → 19
 	 max1020(19, 11) → 19
 	 max1020(11, 9) → 11
+
 	 */
 	public int max1020(int a, int b)
 	{
-		if (a > b)
+		boolean isAInRange = a >= 10 &&  a <= 20;
+		boolean isBInRange = b >= 10 &&  b <= 20;
+		boolean areBothInRange = isAInRange && isBInRange;
+				
+		if (areBothInRange) 
+		{
+			if (a > b)
+			{
+				return a;
+			}
+			else
+			{
+				return b;
+			}
+		}
+		else if (isAInRange)
 		{
 			return a;
 		}
-		return b;
+		else if (isBInRange)
+		{
+			return b;
+		}
+		return 0;
 	}
 
 	/*
@@ -261,23 +301,46 @@ public class Exercises {
 	 cigarParty(50, false) → true
 	 cigarParty(70, true) → true
 	 */
-	public boolean cigarParty(int cigars, boolean isWeekend) {
+	public boolean cigarParty(int cigars, boolean isWeekend)
+	{
+		if (cigars >=40 && cigars <=60)
+		{
+			return true;
+		}
+		else if (cigars >=40 && isWeekend)
+		{
+			return true;
+		}
 		return false;
 	}
 
 	/*
-	 17. You and your date are trying to get a table at a restaurant. The parameter "you" is the stylishness
-	 of your clothes, in the range 0..10, and "date" is the stylishness of your date's clothes. The result
-	 returned will be 0 if you did not get the table, 1 if you might get the table, and 2 if you did get
-	 the table. If you or your date is very stylish (8 or more), then the result is 2 (yes). With the
-	 exception that if either of you has style of 2 or less, then the result is 0 (no). Otherwise the
-	 result is 1 (maybe).
+	 17. You and your date are trying to get a table at a restaurant.
+	 The parameter "you" is the stylishness of your clothes, in the range 0..10,
+	 and "date" is the stylishness of your date's clothes.
+	 The result returned will be
+	 0 if you did not get the table,
+	 1 if you might get the table, 
+	 and 2 if you did get the table.
+	 If you or your date is very stylish (8 or more), then the result is 2 (yes).
+	 With the exception that if either of you has style of 2 or less, then the result is 0 (no).
+	 Otherwise the result is 1 (maybe).
+	 
 	 dateFashion(5, 10) → 2
 	 dateFashion(5, 2) → 0
 	 dateFashion(5, 5) → 1
 	 */
-	public int dateFashion(int you, int date) {
-		return 0;
+	public int dateFashion(int you, int date)
+	{
+		if (you <= 2 || date <= 2)
+		{
+			return 0;
+		}
+		if (you >= 8 || date >= 8)
+		{
+			return 2;
+		}
+		return 1;
 	}
 
 	/*
@@ -311,9 +374,31 @@ public class Exercises {
      yourCakeAndEatItToo(10.00, false) → "standard"
      yourCakeAndEatItToo(10.00, true) → "special"
      yourCakeAndEatItToo(11.00, false) → "special"
+     
+     1. is it your birthday? - add $5
+     2. if mealAmount <= 10 - return standard
+     3. if mealAmount <= 15 - return special
+     4. if mealAmount <= 20 - return ginormous
+     
+     
      */
-    public String yourCakeAndEatItToo(double mealAmount, boolean isBirthday) {
-        return "";
+    public String yourCakeAndEatItToo(double mealAmount, boolean isBirthday)
+    {
+    	if (isBirthday)
+    	{
+    		mealAmount += 5.00;
+    	}
+    	
+    	if (mealAmount <= 10.00)
+    	{
+    		return "standard";
+    	}
+    	else if (mealAmount <= 15.00)
+    	{
+    		return "special";
+    	}
+    	
+        return "ginormous";
     }
 
 	/*
@@ -365,7 +450,17 @@ public class Exercises {
 	 in1To10(11, false) → false
 	 in1To10(11, true) → true
 	 */
-	public boolean in1To10(int n, boolean outsideMode) {
+	public boolean in1To10(int n, boolean outsideMode)
+	{
+		if ((n >=1 && n <= 10) && (outsideMode = false))
+		{
+			return true;
+		}
+		else if (outsideMode = true)
+		{
+			
+		}
+		
 		return false;
 	}
 

@@ -67,7 +67,7 @@ public class Lecture {
             result *= multiplier;
         }
 
-        return result == 1; // <-- Change the number to match result and make this be true
+        return result == 50; // <-- Change the number to match result and make this be true
     }
 
     /*
