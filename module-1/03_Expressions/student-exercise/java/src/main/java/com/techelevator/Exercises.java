@@ -344,14 +344,27 @@ public class Exercises {
 	}
 
 	/*
-	 18. The squirrels in Palo Alto spend most of the day playing. In particular, they play if the temperature
-	 is between 60 and 90 (inclusive). Unless it is summer, then the upper limit is 100 instead of 90. Given
-	 an int temperature and a boolean isSummer, return true if the squirrels play and false otherwise.
+	 18. The squirrels in Palo Alto spend most of the day playing.
+	 In particular, they play if the temperature is between 60 and 90 (inclusive).
+	 Unless it is summer, then the upper limit is 100 instead of 90.
+	 Given an int temperature and a boolean isSummer, return true if the squirrels play
+	  and false otherwise.
+	  
 	 squirrelPlay(70, false) → true
 	 squirrelPlay(95, false) → false
 	 squirrelPlay(95, true) → true
 	 */
-	public boolean squirrelPlay(int temp, boolean isSummer) {
+	public boolean squirrelPlay(int temp, boolean isSummer)
+	{
+		if (temp >= 60 && temp <= 90 && !isSummer)
+		{
+			return true;
+		}
+		else if (temp <= 100 && isSummer)
+		{
+			return true;
+		}
+		
 		return false;
 	}
 
@@ -412,53 +425,64 @@ public class Exercises {
 	{
 		if ((a + b <= 19) && (a + b >=10))
 		{
-			return a + b;
+			return 20;
 		}
-		return 20;
+		return a + b;
 	}
 
 	/*
 	 21. Given a day of the week encoded as 0=Sun, 1=Mon, 2=Tue, ...6=Sat, and a boolean indicating if we are
-	 on vacation, return a string of the form "7:00" indicating when the alarm clock should ring. Weekdays,
-	 the alarm should be "7:00" and on the weekend it should be "10:00". Unless we are on vacation -- then
-	 on weekdays it should be "10:00" and weekends it should be "off".
+	 on vacation, return a string of the form "7:00" indicating when the alarm clock should ring.
+	 
+	 Weekdays, the alarm should be "7:00" and on the
+	 weekend it should be "10:00".
+	 
+	 Unless we are on vacation -- then on 
+	 weekdays it should be "10:00" and 
+	 weekends it should be "off".
+	 
 	 alarmClock(1, false) → "7:00"
 	 alarmClock(5, false) → "7:00"
 	 alarmClock(0, false) → "10:00"
+	 
+	 
 	 */
 	public String alarmClock(int day, boolean onVacation)
 	{
-		if ((day == 0 || day == 6) && (onVacation = true))
+		boolean isWeekend = day == 0 || day == 6;
+		
+		if (isWeekend && onVacation)
 		{
 			return "off";
 		}
-		else if ((day != 0 || day != 6) && (onVacation = false))
+		if (isWeekend || onVacation)
 		{
-			return "7:00";
+			return "10:00";
 		}
 		else 
 		{
-			return "10:00"; 
+			return "7:00"; 
 		}
 	
 	}
 
 	/*
-	 22. Given a number n, return true if n is in the range 1..10, inclusive. Unless "outsideMode" is true,
-	 in which case return true if the number is less or equal to 1, or greater or equal to 10.
+	 22. Given a number n, return true if n is in the range 1..10, inclusive.
+	 Unless "outsideMode" is true, in which case return true if the number is less or equal to 1,
+	 or greater or equal to 10.
 	 in1To10(5, false) → true
 	 in1To10(11, false) → false
 	 in1To10(11, true) → true
 	 */
 	public boolean in1To10(int n, boolean outsideMode)
 	{
-		if ((n >=1 && n <= 10) && (outsideMode = false))
+		if ((n >= 1 && n <= 10) && !outsideMode)
 		{
 			return true;
 		}
-		else if (outsideMode = true)
+		if ((n <= 1 || n >= 10) && outsideMode)
 		{
-			
+			return true;
 		}
 		
 		return false;
@@ -472,8 +496,13 @@ public class Exercises {
 	 specialEleven(23) → true
 	 specialEleven(24) → false
 	 */
-	public boolean specialEleven(int n) {
-		return false;
+	public boolean specialEleven(int n)
+	{
+		boolean isItMultipleOf11 = n % 11 == 0;
+		boolean isIt1MultipeOf11 = n % 11 == 1;
+		boolean itIsSpecial = isIt1MultipeOf11 || isItMultipleOf11;
+		
+		return itIsSpecial;
 	}
 
 	/*
@@ -483,8 +512,13 @@ public class Exercises {
 	 more20(21) → true
 	 more20(22) → true
 	 */
-	public boolean more20(int n) {
-		return false;
+	public boolean more20(int n)
+	{
+		boolean isItMultipleOf20 = n % 20 == 1;
+		boolean isItMultipeOf20 = n % 20 == 2;
+		boolean resultEquals = isItMultipeOf20 || isItMultipleOf20;
+		
+		return resultEquals;
 	}
 
 	/*
@@ -494,8 +528,13 @@ public class Exercises {
 	 old35(10) → true
 	 old35(15) → false
 	 */
-	public boolean old35(int n) {
-		return false;
+	public boolean old35(int n)
+	{
+		boolean isItMultipleOfThree = n % 3 == 0;
+		boolean isItMultipeOfFive = n % 5 == 0;
+		boolean resultEquals = isItMultipeOfFive ^ isItMultipleOfThree;
+		
+		return resultEquals;
 	}
 
 	/*
@@ -506,53 +545,107 @@ public class Exercises {
 	 less20(19) → true
 	 less20(20) → false
 	 */
-	public boolean less20(int n) {
-		return false;
+	public boolean less20(int n)
+	{
+		boolean isItMultipleOf20 = n % 20 == 0;
+		boolean isIt1MultipleOf20 = n % 20 > 1;
+		boolean isIt2MultipleOf20 = n % 20 > 2;
+		boolean isNearMultipleof20 = isIt1MultipleOf20 || isIt2MultipleOf20;
+						
+		return isNearMultipleof20;
 	}
 
 	/*
-	 27. Given a non-negative number "num", return true if num is within 2 of a multiple of 10. Note: (a % b)
-	 is the remainder of dividing a by b, so (7 % 5) is 2.
+	 27. Given a non-negative number "num", return true if num is within 2 of a multiple of 10.
+	 Note: (a % b) 	 is the remainder of dividing a by b, so (7 % 5) is 2.
 	 nearTen(12) → true
 	 nearTen(17) → false
 	 nearTen(19) → true
 	 */
-	public boolean nearTen(int num) {
-		return false;
+	public boolean nearTen(int num)
+	{
+		boolean is2FromMultipleOf10 = num % 10 <= 2;
+		boolean is2LessFromMultipleOf10 = num % 10 >= 8;
+		boolean isNearMultipleOf10 = is2FromMultipleOf10 || is2LessFromMultipleOf10;
+		
+		return isNearMultipleOf10;
 	}
 
 	/*
-	 28. Given 2 ints, a and b, return their sum. However, "teen" values in the range 13..19 inclusive, are
-	 extra lucky. So if either value is a teen, just return 19.
+	 28.
+	 Given 2 ints, a and b, return their sum.
+	 However, "teen" values in the range 13..19 inclusive, are extra lucky.
+	 So if either value is a teen, just return 19.
 	 teenSum(3, 4) → 7
 	 teenSum(10, 13) → 19
 	 teenSum(13, 2) → 19
 	 */
-	public int teenSum(int a, int b) {
-		return 0;
+	public int teenSum(int a, int b)
+	{
+		boolean isATeen = (a >=13 && a <=19);
+		boolean isBTeen = (b >=13 && b <=19);
+		boolean isOneATeen = isATeen || isBTeen;
+		
+		if (!isOneATeen)
+		{
+			return a + b;
+		}
+		return 19;
 	}
 
 	/*
-	 29. Your cell phone rings. Return true if you should answer it. Normally you answer, except in the morning
-	 you only answer if it is your mom calling. In all cases, if you are asleep, you do not answer.
+	 29.
+	 Your cell phone rings.
+	 Return true if you should answer it.
+	 Normally you answer, except in the morning you only answer if it is your mom calling.
+	 In all cases, if you are asleep, you do not answer.
 	 answerCell(false, false, false) → true
 	 answerCell(false, false, true) → false
 	 answerCell(true, false, false) → false
 	 */
-	public boolean answerCell(boolean isMorning, boolean isMom, boolean isAsleep) {
-		return false;
+	public boolean answerCell(boolean isMorning, boolean isMom, boolean isAsleep)
+	{
+		if (isAsleep)
+		{
+			return false;
+		}
+		if (isMorning && isMom)
+		{
+			return true;
+		}
+		if  (isMorning)
+		{
+			return false;
+		}
+		return true;
 	}
 
 	/*
-	 30. We are having a party with amounts of tea and candy. Return the int outcome of the party encoded as
-	 0=bad, 1=good, or 2=great. A party is good (1) if both tea and candy are at least 5. However, if
-	 either tea or candy is at least double the amount of the other one, the party is great (2). However,
-	 in all cases, if either tea or candy is less than 5, the party is always bad (0).
+	 30.
+	 We are having a party with amounts of tea and candy.
+	 Return the int outcome of the party encoded as 0=bad, 1=good, or 2=great.
+	 A party is good (1) if both tea and candy are at least 5.
+	 However, if either tea or candy is at least double the amount of the other one, the party is great (2).
+	 However, in all cases, if either tea or candy is less than 5, the party is always bad (0).
+	 
 	 teaParty(6, 8) → 1
 	 teaParty(3, 8) → 0
 	 teaParty(20, 6) → 2
 	 */
-	public int teaParty(int tea, int candy) {
+	public int teaParty(int tea, int candy)
+	{
+		if (tea < 5 || candy < 5)
+		{
+			return 0;
+		}
+		if (tea >= (candy * 2) || candy >= (tea * 2))
+		{
+			return 2; 
+		}
+		if (tea >= 5 && candy >= 5)
+		{
+			return 1;
+		}
 		return 0;
 	}
 
@@ -562,56 +655,117 @@ public class Exercises {
 	 twoAsOne(3, 1, 2) → true
 	 twoAsOne(3, 2, 2) → false
 	 */
-	public boolean twoAsOne(int a, int b, int c) {
+	public boolean twoAsOne(int a, int b, int c)
+	{
+		if (a + b == c || a + c == b || b + c == a)
+		{
+			return true;
+		}
 		return false;
 	}
 
 	/*
-	 32. Given three ints, a b c, return true if b is greater than a, and c is greater than b. However, with
-	 the exception that if "bOk" is true, b does not need to be greater than a.
+	 32. Given three ints, a b c, return true if b is greater than a, and c is greater than b.
+	 However, with the exception that if "bOk" is true, b does not need to be greater than a.
+	 
 	 inOrder(1, 2, 4, false) → true
 	 inOrder(1, 2, 1, false) → false
 	 inOrder(1, 1, 2, true) → true
 	 */
-	public boolean inOrder(int a, int b, int c, boolean bOk) {
+	public boolean inOrder(int a, int b, int c, boolean bOk)
+	{
+		if (bOk && b < c)
+		{
+			return true; 
+		}
+		if (a < b && b < c)
+		{
+			return true;
+		}
 		return false;
 	}
 
 	/*
-	 33. Given three ints, a b c, return true if they are in strict increasing order, such as 2 5 11,
-	 or 5 6 7, but not 6 5 7 or 5 5 7. However, with the exception that if "equalOk" is true, equality
+	 33. Given three ints, a b c, return true if they are in strict increasing order,
+	 such as 2 5 11, or 5 6 7, but not 6 5 7 or 5 5 7.
+	 However, with the exception that if "equalOk" is true, equality
 	 is allowed, such as 5 5 7 or 5 5 5.
 	 inOrderEqual(2, 5, 11, false) → true
 	 inOrderEqual(5, 7, 6, false) → false
 	 inOrderEqual(5, 5, 7, true) → true
 	 */
-	public boolean inOrderEqual(int a, int b, int c, boolean equalOk) {
+	public boolean inOrderEqual(int a, int b, int c, boolean equalOk)
+	{
+		if (a <= b && b <= c && a <= c)
+		{
+			return true;
+		}
 		return false;
 	}
 
 	/*
-	 34. Given 3 int values, a b c, return their sum. However, if one of the values is the same as another
-	 of the values, it does not count towards the sum.
+	 34. Given 3 int values, a b c, return their sum.
+	 However, if one of the values is the same as another of the values,
+	    it does not count towards the sum.
+	    
 	 loneSum(1, 2, 3) → 6
 	 loneSum(3, 2, 3) → 2
 	 loneSum(3, 3, 3) → 0
 	 */
-	public int loneSum(int a, int b, int c) {
-		return 0;
+	public int loneSum(int a, int b, int c)
+	{
+		if (a != b && b != c && a != c)
+		{
+			return (a + b + c);
+		}
+		if (a == b && b == c && a == c)
+		{
+			return 0;
+		}
+		else if (a == b)
+		{
+			return c;
+		}
+		else if (a == c)
+		{
+			return b;
+		}
+		return a;
 	}
 
 	/*
-	 35. Given 3 int values, a b c, return their sum. However, if one of the values is 13 then it does not
-	 count towards the sum and values to its immediate right do not count. So for example, if b is 13, then both
-	 b and c do not count.
+	 35.
+	 Given 3 int values, a b c, return their sum.
+	 However, if one of the values is 13 then it does not count towards the sum and values to its immediate right do not count.
+	 So for example, if b is 13, then both b and c do not count.
+
 	 luckySum(1, 2, 3) → 6
 	 luckySum(1, 2, 13) → 3
 	 luckySum(1, 13, 3) → 1
 	 luckySum(13, 1, 3) → 3
 	 luckySum(13, 13, 3) → 0
+	 
+	 
 	 */
-	public int luckySum(int a, int b, int c) {
-		return 0;
+	public int luckySum(int a, int b, int c)
+	{
+		if (a !=13 && b != 13 && c !=13)
+		{
+			return (a + b + c);
+		}
+		if (a == 13 && b == 13)
+		{
+			return 0;
+		}
+		if (a == 13)
+		{
+			return c;
+		}
+		if (b == 13)
+		{
+			return a; 
+		}
+		return a + b;
 	}
 
 }

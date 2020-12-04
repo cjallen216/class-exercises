@@ -48,10 +48,7 @@ public class Exercises {
 	 */
 	public boolean commonEnd(int[] a, int[] b)
 	{
-		boolean isFirstElementSame;
-		boolean isLastElementSame;
-		
-		boolean isFirstOrLastSame = isFirstElementSame || isLastElementSame;
+
 		
 		return false;
 	}
