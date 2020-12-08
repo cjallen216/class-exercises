@@ -4,6 +4,8 @@ public class Playground
 {
 	public static void main(String[] args)
 	{
+		
+		// use a "while" loop
 		//Scanner scanner = new Scanner(System.in);
 		
 		int[] fibonacciSeq = new int [] {0};
@@ -33,3 +35,4 @@ public class Playground
 		}
 	}
 }
+

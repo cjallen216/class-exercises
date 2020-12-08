@@ -6,23 +6,41 @@ public class Fibonacci {
 
 	public static void main(String[] args)
 	{
-		//Scanner scanner = new Scanner(System.in);
-		
-		//int[] fibonacciSeq = new int [] {0};
-		
-		int previousNumber = 0; 
-		int nextNumber = 1;
-		int finalNumber = 0;
-		
-		for (int i = 0; i < 10; i++)
-		{
-			System.out.println(previousNumber);
-			//int addToArray = fibonacciSeq[fibonacciSeq.length -1];
-			finalNumber = previousNumber + nextNumber;
-			previousNumber = nextNumber;
-			nextNumber = finalNumber;
-			
-		}
+		// helper objects
+				Scanner scanner = new Scanner(System.in);
+				
+				// variables
+				String input;
+				int maxValue;
+				String fibonacciSeqString = "";
+				
+				// get user input
+				System.out.print("Please enter the Fibonacci number: ");
+				input = scanner.nextLine();
+				maxValue = Integer.parseInt(input);
+						
+				// perform the calculations
+				fibonacciSeqString = calculateFibSeq(maxValue);
+				
+				// display output
+				System.out.println();
+				System.out.println(fibonacciSeqString);
 	}
-
+	public static String calculateFibSeq(int maxValue)
+	{
+		String sequence = "0 ";
+		int first = 0;
+		int second = 1;
+		
+		while (second <= maxValue)
+		{
+			sequence += second + ", ";
+			
+			int temp = first + second;
+			first = second;
+			second = temp;
+		}
+		
+		return sequence;
+	}
 }
