@@ -391,16 +391,20 @@ public class Exercises {
 	 stringBits("Hello") → "Hlo"
 	 stringBits("Hi") → "H"
 	 stringBits("Heeololeo") → "Hello"
+	 
+	 return 0 2 4 6 8 
 	 */
 	public String stringBits(String str)
 	{
-		int i = 0;
-		while (i > str.length())
+		int length = str.length();
+		String everyOtherLetter = "";
+		
+		for (int i = 0; i < length; i = i + 2)
 		{
-			i++;
-			return str.substring(i + 1);
+			everyOtherLetter += str.charAt(i);
 		}
-		return null;
+		
+		return everyOtherLetter;
 	}
 
 	/*
@@ -408,13 +412,20 @@ public class Exercises {
 	 stringSplosion("Code") → "CCoCodCode"
 	 stringSplosion("abc") → "aababc"
 	 stringSplosion("ab") → "aab"
+	 
+	 CODE - ccocodcode
 	 */
 	public String stringSplosion(String str)
 	{
+		String addLetterString  = "";
 		
-		
-		return null;
+		for (int i = 0; i <= str.length(); i++)
+		{
+			addLetterString += str.substring(0,i);
+		}
+		return addLetterString;
 	}
+		
 
 	/*
 	 Given a string, return the count of the number of times that a
@@ -422,13 +433,34 @@ public class Exercises {
 	 also as the last 2 chars of the string, so "hixxxhi" yields 1
 	 (we won't count the end substring).
 	 
+	 1. determine the last 2 characters
+	 2. find out how many times they appear in the proceeding code
+	 
 	 last2("hixxhi") → 1
 	 last2("xaxxaxaxx") → 1
 	 last2("axxxaaxx") → 2
 	 */
 	public int last2(String str)
 	{
-		return 0;
+		if (str.length() < 2)
+			{
+			return 0;
+			}
+
+		String lastTwo = str.substring(str.length()-2);
+
+		int count = 0;
+
+		for (int i = 0; i < str.length()-2; i++)
+		{
+		    String sub = str.substring(i, i+2);
+
+			if (sub.equals(lastTwo))
+			{
+		      count++;
+		    }
+		}
+		return count;
 	}
 
 	/*
@@ -465,8 +497,22 @@ public class Exercises {
 	 */
 	public String altPairs(String str)
 	{
-		return null;
+		String pairCharacterString = "";
+
+		for (int i = 0; i < str.length(); i += 4)
+		{
+			int end = i + 2;
+		    if (end > str.length())
+		    	{
+		    		end = str.length();
+		    	}
+
+		    pairCharacterString = pairCharacterString + str.substring(i, end);
+
+		}
+		return pairCharacterString;
 	}
+
 
 	/*
 	 Suppose the string "yak" is unlucky. Given a string, return a version
