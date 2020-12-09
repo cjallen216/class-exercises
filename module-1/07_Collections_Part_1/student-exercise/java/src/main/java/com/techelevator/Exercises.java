@@ -15,8 +15,16 @@ public class Exercises {
 	 array2List( {"Red", "Orange", "Yellow"} )  ->  ["Red", "Orange", "Yellow"]
 	 array2List( {"Left", "Right", "Forward", "Back"} )  ->  ["Left", "Right", "Forward", "Back"]
 	 */
-	public List<String> array2List(String[] stringArray) {
-		return null;
+	public List<String> array2List(String[] stringArray)
+	{
+		List<String> myList = new ArrayList<String>();
+		
+		// loop throught the stringArray
+		// add each item to myList
+		
+		
+		
+		return myList;
 	}
 
 	/*
@@ -25,7 +33,11 @@ public class Exercises {
 	 list2Array( ["Red", "Orange", "Yellow"] )  ->  {"Red", "Orange", "Yellow"}
 	 list2Array( ["Left", "Right", "Forward", "Back"] )  ->  {"Left", "Right", "Forward", "Back"}
 	 */
-	public String[] list2Array(List<String> stringList) {
+	public String[] list2Array(List<String> stringList)
+	{
+		//String[] namesArray = names.toArray(new String[names.size()]);
+		
+		
 		return null;
 	}
 
@@ -36,7 +48,9 @@ public class Exercises {
 	 no4LetterWords( {"Red", "White", "Blue"} )  ->  ["Red", "White"]
 	 no4LetterWords( {"Jack", "Jill", "Jane", "John", "Jim"} )  ->  ["Jim"]
 	 */
-	public List<String> no4LetterWords(String[] stringArray) {
+	public List<String> no4LetterWords(String[] stringArray)
+	{
+		
 		return null;
 	}
 
@@ -94,7 +108,8 @@ public class Exercises {
 	 HINT: To convert an integer x to a string you can call x.toString() in your code (e.g. if x = 1 then x.ToString()
 	 equals "1")
 	 */
-	public List<String> fizzBuzzList(Integer[] integerArray) {
+	public List<String> fizzBuzzList(Integer[] integerArray)
+	{
 		return null;
 	}
 
@@ -104,8 +119,14 @@ public class Exercises {
 	 Return the new list. If the lists are of unequal lengths, simply attach the remaining elements of the longer
 	 list to the new list before returning it.
 	 interleaveLists( [1, 2, 3], [4, 5, 6] )  ->  [1, 4, 2, 5, 3, 6]
+	 
+	 HINT: loop through both at the same time
+	 
+	 HINT: figure our which list is bigger first
+	 if element - add, if not don't add
 	 */
-	public List<Integer> interleaveLists(List<Integer> listOne, List<Integer> listTwo) {
+	public List<Integer> interleaveLists(List<Integer> listOne, List<Integer> listTwo)
+	{
 		return null;
 	}
 

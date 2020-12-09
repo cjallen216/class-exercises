@@ -386,8 +386,8 @@ public class Exercises {
 	}
 
 	/*
-	 Given a string, return a new string made of every other char starting with the first, so
-	 "Hello" yields "Hlo".
+	 Given a string, return a new string made of every other char starting
+	 with the first, so "Hello" yields "Hlo".
 	 stringBits("Hello") → "Hlo"
 	 stringBits("Hi") → "H"
 	 stringBits("Heeololeo") → "Hello"
@@ -440,7 +440,19 @@ public class Exercises {
 	 */
 	public String stringX(String str)
 	{
-		return null;
+		boolean xFirst = str.startsWith("x");
+		boolean xLast = str.startsWith("x");
+		String noMoreXString = str.replace("x", "");
+		
+		if (xFirst)
+		{
+			noMoreXString = "x" + noMoreXString;
+		}
+		if (xLast && str.length() > 1)
+		{
+			noMoreXString = noMoreXString + "x";
+		}
+		return noMoreXString;
 	}
 
 	/*
