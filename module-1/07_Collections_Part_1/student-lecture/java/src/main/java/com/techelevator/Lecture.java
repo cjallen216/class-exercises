@@ -182,7 +182,7 @@ public class Lecture {
 			String name = names.get(i);
 			System.out.println(name);
 		}
-		// foreach loop -> for each String in the "names" list
+		// for-each loop -> for each String in the "names" list
 		for (String name: names)
 		{
 			System.out.println(name);
