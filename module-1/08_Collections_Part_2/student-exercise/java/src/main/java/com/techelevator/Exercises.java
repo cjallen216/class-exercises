@@ -32,9 +32,33 @@ public class Exercises {
 	 * animalGroupName("rhino") -> "Crash"
 	 * animalGroupName("elephants") -> "unknown"
 	 *
+	 *
+	 *1 create a map
 	 */
-	public String animalGroupName(String animalName) {
-		return null;
+	public String animalGroupName(String animalName)
+	{
+		// create your animalMap
+		Map<String, String> animalMap = new HashMap<String, String>();
+		animalMap.put("Rhino","Crash");
+		animalMap.put("Giraffe","Tower");
+		animalMap.put("Elephant","Herd");
+		animalMap.put("Lion","Pride");
+		animalMap.put("Crow","Murder");
+		animalMap.put("Pigeon","Kit");
+		animalMap.put("Flamingo","Pat");
+		animalMap.put("Deer","Herd");
+		animalMap.put("Dog","Pack");
+		animalMap.put("Crocodile","Float");		
+		
+		// search the animalMap for animalName
+		String groupName = animalMap.get(animalName.toLowerCase());
+		
+		if (!animalMap.containsKey(animalName))
+		{
+			return "unknown";
+		}
+				
+		return groupName;
 	}
 
 	/*
@@ -59,7 +83,10 @@ public class Exercises {
 	 * isItOnSale("dungeon9999") → 0.00
 	 *
 	 */
-	public double isItOnSale(String itemNumber) {
+	public double isItOnSale(String itemNumber)
+	{
+		// create Map and Key
+		// use toLowerCase
 		return -1.0;
 	}
 
@@ -73,7 +100,9 @@ public class Exercises {
 	 * robPeterToPayPaul({"Peter": 2000, "Paul": 30000}) → {"Peter": 2000, "Paul": 30000}
 	 *
 	 */
-	public Map<String, Integer> robPeterToPayPaul(Map<String, Integer> peterPaul) {
+	public Map<String, Integer> robPeterToPayPaul(Map<String, Integer> peterPaul)
+	{
+		//create a new Map
 		return null;
 	}
 
