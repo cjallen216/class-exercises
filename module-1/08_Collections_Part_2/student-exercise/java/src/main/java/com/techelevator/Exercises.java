@@ -74,7 +74,8 @@ public class Exercises {
 	}
 
 	/*
-	 * Given an String item number (a.k.a. SKU), return the discount percentage if the item is on sale.
+	 * Given an String item number (a.k.a. SKU), return the discount
+	 * percentage if the item is on sale.
 	 * If the item is not on sale, return 0.00.
 	 *
 	 * If the item number is empty or null, return 0.00.
@@ -86,7 +87,8 @@ public class Exercises {
 	 * "BEDROOM3434" -> 0.60
 	 * "BATH0073" -> 0.15
 	 *
-	 * The item number should be case insensitive so "kitchen4001", "Kitchen4001", and "KITCHEN4001"
+	 * The item number should be case insensitive so "kitchen4001",
+	 * "Kitchen4001", and "KITCHEN4001"
 	 * should all return 0.20.
 	 *
 	 * isItOnSale("kitchen4001") → 0.20
@@ -106,20 +108,26 @@ public class Exercises {
 		isItOnSale.put("BEDROOM3434", 0.60);
 		isItOnSale.put("BATH0073", 0.15);
 		
-		String itemOnSaleString = itemNumber.toLowerCase();
-		
-		if (isItOnSale.containsKey(itemNumber.toLowerCase()))
+		if (itemNumber == null || itemNumber == "")
 		{
-			return isItOnSale.get(itemOnSaleString);
+			return 0.00;
+		}
+		
+		String itemOnSaleString = itemNumber.toUpperCase();
+		Double saleValue = isItOnSale.get(itemOnSaleString);
+		
+		if (isItOnSale.containsKey(itemOnSaleString))
+		{
+			return saleValue;
 		}
 				
 		return 0.00;
 	}
 
 	/*
-	 * Modify and return the given Map as follows: if "Peter" has more than 0 money, transfer
-	 * half of it to "Paul",
-	 * but only if Paul has less than $10s.
+	 * Modify and return the given Map as follows: if "Peter" has more
+	 * than 0 money, transfer
+	 * half of it to "Paul", but only if Paul has less than $10s.
 	 *
 	 * Note, monetary amounts are specified in cents:
 	 * penny=1, nickel=5, ... $1=100, ... $10=1000, ...
@@ -128,31 +136,33 @@ public class Exercises {
 	 * robPeterToPayPaul({"Peter": 2000, "Paul": 99}) → {"Peter": 1000, "Paul": 1099}
 	 * robPeterToPayPaul({"Peter": 2000, "Paul": 30000}) → {"Peter": 2000, "Paul": 30000}
 	 *
+	 *1. does Paul need money?
+	 *2. does Peter have money?
+	 *2. go get 1/2 of Peter's money
+	 *3. update both wallets
+	 *
 	 */
 	public Map<String, Integer> robPeterToPayPaul(Map<String, Integer> peterPaul)
 	{
+		// 1. does Paul need money?
+		// 2. Yes, get half of Peter's money
+		// 3. update both wallets
+		
 		int petersMoney = peterPaul.get("Peter");
 		int paulsMoney = peterPaul.get("Paul");
 		
-		if (petersMoney > 0 && paulsMoney < 1000){
-			if (petersMoney % 2 != 0)
-			{
-				petersMoney = petersMoney / 2;
-				paulsMoney = paulsMoney + petersMoney;
-				petersMoney++;
-			}
-			else if (petersMoney > 0 && paulsMoney < 1000)
-			{
-				petersMoney = petersMoney / 2;
-				paulsMoney = paulsMoney + petersMoney;
-			}
-			else
-			{ 
-				return peterPaul;
-			}			
-		}		
-		peterPaul.put("Peter", petersMoney);
-		peterPaul.put("Paul", paulsMoney);
+		boolean paulNeedsMoney = paulsMoney < 1000;
+		
+		if(paulNeedsMoney)
+		{
+			int halfPeter = petersMoney / 2;
+			paulsMoney += halfPeter;
+			petersMoney -= halfPeter;
+			
+			peterPaul.put("Peter", petersMoney);
+			peterPaul.put("Paul", paulsMoney);
+			
+		}
 		
 		return peterPaul;
 	}
@@ -186,7 +196,8 @@ public class Exercises {
 			
 			return peterPaul;
 		}
-		else {
+		else
+		{
 			return peterPaul;
 		}
 		
