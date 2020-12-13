@@ -30,16 +30,24 @@ public class Elevator
 	}
 	public void goUp(int desiredFloor)
 	{
-		if (!doorOpen && currentFloor > numberOfFloors)
+		if (!doorOpen && desiredFloor > currentFloor && numberOfFloors >= desiredFloor)
 		{
-			desiredFloor = currentFloor + numberOfFloors;
+			desiredFloor = desiredFloor - currentFloor;
+		}
+		else if (doorOpen)
+		{
+			currentFloor = desiredFloor;
 		}
 	}
 	public void goDown(int desiredFloor)
 	{
-		if (!doorOpen && currentFloor > 1)
+		if (!doorOpen && currentFloor < desiredFloor && desiredFloor > 0)
 		{
-			desiredFloor = currentFloor - numberOfFloors;
+			currentFloor -= desiredFloor;
+		}
+		else
+		{
+			currentFloor = desiredFloor;
 		}
 	}
 	

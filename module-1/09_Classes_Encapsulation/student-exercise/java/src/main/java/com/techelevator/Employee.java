@@ -45,7 +45,8 @@ public class Employee
 	}
 	public void raiseSalary (double percent)
 	{
-		annualSalary = annualSalary + percent;
+		double raiseTotal = annualSalary * percent/100; 
+		annualSalary += raiseTotal;
 	}
 	
 	public Employee (int inputEmployeeId, String inputFirstName, String inputLastName, double inputSalary)
