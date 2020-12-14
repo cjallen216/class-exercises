@@ -4,13 +4,19 @@ public class BankAccount
 {
 	private String accountHolderName;
 	private String accountNumber;
-	private int balance;
+	private int balance = 0;
+	
+	public BankAccount (String accountHolderName, String accountNumber)
+	{
+		this.accountHolderName = accountHolderName;
+		this.accountNumber = accountNumber;
+	}
 	
 	public BankAccount (String accountHolderName, String accountNumber, int balance)
 	{
 		this.accountHolderName = accountHolderName;
 		this.accountNumber = accountNumber;
-		this.balance = 0;
+		this.balance = balance;
 	}
 	
 	public String getAccountHolderName()
@@ -30,11 +36,15 @@ public class BankAccount
 	
 	public int deposit (int amountToDeposit)
 	{
-		return amountToDeposit;
+		int newBalance = balance + amountToDeposit;
+		balance = newBalance;
+		return balance;
 	}
 	
 	public int withdraw (int amountToWithdraw)
 	{
-		return amountToWithdraw;
+		int newBalance = balance - amountToWithdraw;
+		balance = newBalance;
+		return balance;
 	}
 }
