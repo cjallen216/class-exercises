@@ -21,34 +21,40 @@ public class Elevator
 	
 	public void openDoor()
 	{
-		doorOpen = !doorOpen;
+		doorOpen = true;
 	}
 	
 	public void closeDoor()
 	{
-		doorOpen = !doorOpen;
+		doorOpen = false;
 	}
 	public void goUp(int desiredFloor)
 	{
-		if (!doorOpen && desiredFloor > currentFloor && numberOfFloors >= desiredFloor)
+		if (doorOpen == false)
 		{
-			desiredFloor = desiredFloor - currentFloor;
+			if (desiredFloor <= numberOfFloors)
+			{
+				if (desiredFloor > currentFloor)
+				{
+				currentFloor = desiredFloor;
+				}
+			}
 		}
-		else if (doorOpen)
-		{
-			currentFloor = desiredFloor;
-		}
+		
 	}
 	public void goDown(int desiredFloor)
 	{
-		if (!doorOpen && currentFloor < desiredFloor && desiredFloor > 0)
+		if (doorOpen == false)
 		{
-			currentFloor -= desiredFloor;
+			if (desiredFloor >=1 )
+			{
+				if (desiredFloor < currentFloor)
+				{
+				currentFloor = desiredFloor;
+				}
+			}
 		}
-		else
-		{
-			currentFloor = desiredFloor;
-		}
+		
 	}
 	
 	public Elevator (int numberOfLevels)

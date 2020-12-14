@@ -28,36 +28,41 @@ public class Airplane
 	{
 		return bookedCoachSeats;
 	}
-	public int availableFirstClassSeats()
-	{
-		return totalFirstClassSeats - bookedFirstClassSeats; 
-	}
-	public int availableCoachSeats()
-	{
-		return totalCoachSeats - bookedCoachSeats;
-	}
+	
 	public int getAvailableFirstClassSeats()
 	{
-		return availableFirstClassSeats();
+		return totalFirstClassSeats - bookedFirstClassSeats;
 	}
 	public int getAvailableCoachSeats()
 	{
-		return availableCoachSeats();
+		return totalCoachSeats - bookedCoachSeats;
 	}
 	
 	public boolean reserveSeats(boolean forFirstClass, int totalNumberOfSeats)
 	{
-		if (forFirstClass && totalNumberOfSeats > availableFirstClassSeats())
+		if (forFirstClass == true)
 		{
-			bookedFirstClassSeats += totalNumberOfSeats;
-			return true;
+			if (totalFirstClassSeats - bookedFirstClassSeats >= totalNumberOfSeats)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
-		else if (!forFirstClass && totalNumberOfSeats > availableCoachSeats())
+		else
 		{
-			bookedCoachSeats += totalNumberOfSeats;
-			return true;
+			if (totalCoachSeats - bookedCoachSeats >= totalNumberOfSeats)
+			{
+				bookedCoachSeats += totalNumberOfSeats;
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
-		return false;
 	}
 	
 	public Airplane (String inputPlaneNumber, int inputTotalFirstClassSeats, int inputTotalCoachSeats)
