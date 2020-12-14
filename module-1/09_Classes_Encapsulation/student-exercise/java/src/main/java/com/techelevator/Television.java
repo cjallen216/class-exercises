@@ -47,7 +47,7 @@ public class Television
 	{
 		if (isOn && currentChannel < 18)
 		{
-			currentChannel = currentChannel + 1;
+			currentChannel++;
 		}
 		else
 		{

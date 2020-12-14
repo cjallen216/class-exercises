@@ -61,11 +61,6 @@ public class Card
 	{
 		return suit;
 	}	
-
-	public char getSymbol()
-	{
-		return symbols.get(suit);
-	}
 	
 	public int getValue()
 	{
@@ -84,6 +79,11 @@ public class Card
 	public String getFaceValue()
 	{
 		return valueMap.get(value);
+	}
+	
+	public char getSymbol()
+	{
+		return symbols.get(suit);
 	}
 	
 	public String getColorName()

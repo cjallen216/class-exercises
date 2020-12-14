@@ -16,7 +16,8 @@ public class Deck
         cards = new ArrayList<Card>();
         for (String suit: suits) 
         {
-            for (int value: values) {
+            for (int value: values)
+            {
                 cards.add(new Card(suit, value));
             }
         }
@@ -24,7 +25,8 @@ public class Deck
 
     public void showAllCards()
     {
-        for (Card card : cards) {
+        for (Card card : cards)
+        {
             card.flip();
             System.out.println(card.getCardFace());
             card.flip();

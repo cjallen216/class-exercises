@@ -8,27 +8,7 @@ public class Airplane
 	private int totalCoachSeats;
 	private int bookedCoachSeats;
 	
-	public String getPlaneNumber()
-	{
-		return planeNumber;
-	}
-	public int getTotalFirstClassSeats()
-	{
-		return totalFirstClassSeats;
-	}
-	public int getBookedFirstClassSeats()
-	{
-		return bookedFirstClassSeats;
-	}
-	public int getTotalCoachSeats()
-	{
-		return totalCoachSeats;
-	}
-	public int getBookedCoachSeats()
-	{
-		return bookedCoachSeats;
-	}
-	
+
 	public int getAvailableFirstClassSeats()
 	{
 		return totalFirstClassSeats - bookedFirstClassSeats;
@@ -44,6 +24,7 @@ public class Airplane
 		{
 			if (totalFirstClassSeats - bookedFirstClassSeats >= totalNumberOfSeats)
 			{
+				bookedFirstClassSeats += totalNumberOfSeats;
 				return true;
 			}
 			else
@@ -64,6 +45,32 @@ public class Airplane
 			}
 		}
 	}
+	
+	public String getPlaneNumber()
+	{
+		return planeNumber;
+	}
+	
+	public int getTotalFirstClassSeats()
+	{
+		return totalFirstClassSeats;
+	}
+	
+	public int getBookedFirstClassSeats()
+	{
+		return bookedFirstClassSeats;
+	}
+	
+	public int getTotalCoachSeats()
+	{
+		return totalCoachSeats;
+	}
+	
+	public int getBookedCoachSeats()
+	{
+		return bookedCoachSeats;
+	}
+	
 	
 	public Airplane (String inputPlaneNumber, int inputTotalFirstClassSeats, int inputTotalCoachSeats)
 	{
