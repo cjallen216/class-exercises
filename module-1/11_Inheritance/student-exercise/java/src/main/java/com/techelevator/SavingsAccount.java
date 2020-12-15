@@ -13,19 +13,20 @@ public class SavingsAccount extends BankAccount
 	}
 	
 	@Override
-	public int withdraw (int amountToWithDraw)
+	public int withdraw (int amountToWithdraw)
 	{
-		if (getBalance() < 15000)
+		int serviceCharge = 2;
+		int noChargeMin = 150;
+		
+		if (getBalance() >= amountToWithdraw)
 		{
-			int newBalance = getBalance() - amountToWithDraw - 200;
-			newBalance = getBalance();
-			return getBalance();
-		}
-		if (getBalance() < amountToWithDraw)
-		{
-			return getBalance();
+			super.withdraw(amountToWithdraw);
 		}
 		
+		if (getBalance() < noChargeMin && getBalance() >= amountToWithdraw)
+		{
+			super.withdraw(serviceCharge);
+		}
 		return getBalance();
 	}
 }

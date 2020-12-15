@@ -13,20 +13,23 @@ public class CheckingAccount extends BankAccount
 	}
 	
 	@Override
-	public int withdraw (int amountToWithDraw)
+	public int withdraw (int amountToWithdraw)
 	{
-		if (getBalance() < 10000)
+		int overDraftFee = 10;
+		int minWithoutCharge = 0;
+		int minWithCharge = -100;
+		
+		//do I have enough money?
+		if (getBalance() - amountToWithdraw > minWithCharge)
 		{
-			int newBalance = getBalance() - amountToWithDraw - 1000;
-			newBalance = getBalance();
-			return getBalance();
-		}
-		else
-		{
-			int newBalance = getBalance() - amountToWithDraw;
-			newBalance = getBalance();
-			return getBalance();
+			super.withdraw(amountToWithdraw);
 		}
 		
+		
+		if (getBalance() > minWithCharge && getBalance() < minWithoutCharge)
+		{
+			super.withdraw(overDraftFee);
+		}
+		return getBalance();
 	}
 }
