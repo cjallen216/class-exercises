@@ -29,8 +29,8 @@ public class Calculator
 
     public int clear()
     {
-        answer = 0;
-        return answer
+        int answer = 0;
+        return answer;
     }
     
 }

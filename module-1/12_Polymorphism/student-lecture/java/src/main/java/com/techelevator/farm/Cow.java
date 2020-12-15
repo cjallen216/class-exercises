@@ -28,7 +28,7 @@ public class Cow extends FarmAnimal
 		}
 		else 
 		{
-			return super.getName();
+			return super.getSound();
 		}
 	}
 
