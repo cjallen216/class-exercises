@@ -4,6 +4,8 @@ public abstract class Wall
 {
 	private String name;
 	private String color;
+	private int length;
+	private int width;
 	
 	public Wall (String name, String color)
 	{
@@ -21,8 +23,5 @@ public abstract class Wall
 		return color;
 	}
 	
-//	public abstract int getArea()
-//	{
-//		
-//	}
+	public abstract int getArea();
 }
