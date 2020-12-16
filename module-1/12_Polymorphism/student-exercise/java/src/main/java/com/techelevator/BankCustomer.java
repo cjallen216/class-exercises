@@ -40,18 +40,22 @@ public class BankCustomer implements Accountable
 		this.phoneNumber = phoneNumber;
 	}
 	
-	public void addAccount(Accountable newAccount)
+	
+	
+	public void addAccount(Accountable accounts)
 	{
 		List<Accountable> addAccount = new ArrayList<Accountable>();		
 	}
 	
 	public boolean isVip()
 	{
-//		if (getBalance() >= 25000)
+//		int minVipLevel = 25000;
+//		
+//		if (getBalance() >= minVipLevel)
 //		{
 //			return true;
 //		}
-//		else if (getBalance() < 25000)
+//		else if (getBalance() < minVipLevel)
 //		{
 //			return false;
 //		}

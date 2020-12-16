@@ -4,7 +4,7 @@ public class CreditCardAccount implements Accountable
 {
 	private String accountHolder;
 	private String accountNumber;
-	private int debt;
+	private int debt = 0;
 	
 	public CreditCardAccount (String accountHolder, String accountNumber)
 	{
