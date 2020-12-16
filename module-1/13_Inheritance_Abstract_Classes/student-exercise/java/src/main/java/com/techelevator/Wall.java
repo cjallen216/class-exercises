@@ -1,6 +1,6 @@
 package com.techelevator;
 
-public class Wall
+public abstract class Wall
 {
 	private String name;
 	private String color;
@@ -21,8 +21,8 @@ public class Wall
 		return color;
 	}
 	
-//	public int getArea()
+//	public abstract int getArea()
 //	{
-//		return name;
+//		
 //	}
 }

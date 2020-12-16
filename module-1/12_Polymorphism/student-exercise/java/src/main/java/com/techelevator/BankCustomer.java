@@ -3,15 +3,21 @@ package com.techelevator;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BankCustomer implements Accountable
+public class BankCustomer
 {
 	private String name;
 	private String address;
 	private String phoneNumber;
+	private List<Accountable> accounts = new ArrayList<Accountable>();
 	
-	public int getBalance()
+	private int getNetWorth()
 	{
-		return getBalance();
+		int netWorth = 0;
+		for (Accountable accountable : accounts)
+		{
+			netWorth += accountable.getBalance();
+		}
+		return netWorth;
 	}
 	
 	public String getName()
@@ -40,26 +46,25 @@ public class BankCustomer implements Accountable
 		this.phoneNumber = phoneNumber;
 	}
 	
-	
-	
-	public void addAccount(Accountable accounts)
+	public Accountable[] getAccounts()
 	{
-		List<Accountable> addAccount = new ArrayList<Accountable>();		
+		return accounts.toArray(new Accountable[accounts.size()]);
+	}
+	
+	public void addAccount(Accountable account)
+	{
+		accounts.add(account);
 	}
 	
 	public boolean isVip()
 	{
-//		int minVipLevel = 25000;
-//		
-//		if (getBalance() >= minVipLevel)
-//		{
-//			return true;
-//		}
-//		else if (getBalance() < minVipLevel)
-//		{
-//			return false;
-//		}
-		return true;
+		int minVipLevel = 25000;
+		
+		if (getNetWorth() >= minVipLevel)
+		{
+			return true;
+		}
+		return false;
 	}
 	
 	

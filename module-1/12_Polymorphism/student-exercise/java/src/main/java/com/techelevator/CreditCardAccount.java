@@ -14,7 +14,7 @@ public class CreditCardAccount implements Accountable
 	
 	public int getBalance()
 	{
-		return getBalance();
+		return -debt;
 	}
 	
 	public String getAccountHolder()
@@ -33,10 +33,12 @@ public class CreditCardAccount implements Accountable
 	
 	public int pay(int amountToPay)
 	{
+		debt -= amountToPay;
 		return amountToPay;
 	}
 	public int charge(int amountToCharge)
 	{
+		debt += amountToCharge;
 		return amountToCharge;
 	}
 	
