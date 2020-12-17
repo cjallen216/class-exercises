@@ -18,22 +18,32 @@ import org.junit.runners.MethodSorters;
  * for the production class "Foo" would be "FooTest"
  */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class LectureTest {
+public class LectureTest
+{
+	
+	@Test
+	public void someTest()
+	{
+		System.out.println("I've added a new unit test");
+	}
 
 	/* If a method is annotated with @Before, it will be executed immediately prior to every test.
 	 * It is intended to be used when there is a repetitive setup (i.e. "Arrange") task that is
 	 * performed by several tests */
 	@Before
-	public void setup() {
-		System.out.println("setup");
+	public void setup()
+	{
+		System.out.println();
+		System.out.println("setup - this code runs before EACH test @Before");
 	}
 
 	/* If a method is annotated with @After, it will be executed immediately after every test.
 	 * It is intended to be used when there is a repetitive cleanup task that is performed by
 	 * several tests (e.g. deleting temp files, rolling back database transactions, etc) */
 	@After
-	public void teardown() {
-		System.out.println("teardown");
+	public void teardown()
+	{
+		System.out.println("teardown - this code runs AFTER EACH test @After");
 	}
 
 	/* Each test is implemented as a method with the @Test annotation. When the JUnit
@@ -58,7 +68,8 @@ public class LectureTest {
 	 *     - take no arguments
 	 */
 	@Test
-	public void length_returns_the_number_of_characters_in_a_String() {
+	public void length_returns_the_number_of_characters_in_a_String()
+	{
 		System.out.println("length_returns_the_number_of_characters_in_a_String"); // FOR DEMONSTRATION PURPOSES ONLY, don't do this in your own tests
 
 		/* The assertEquals method validates that two values are equal and
