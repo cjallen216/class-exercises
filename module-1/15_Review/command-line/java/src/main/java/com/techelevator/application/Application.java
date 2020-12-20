@@ -9,9 +9,11 @@ import com.techelevator.ui.UserOutput;
 
 public class Application
 {
-    UserInput input = new UserInput();
-    UserOutput output = new UserOutput();
-
+	// helper private variables - dependency classes for the UI
+    UserInput input = new UserInput(); // any time I need to prompt for user input
+    UserOutput output = new UserOutput(); // any time need to display something to user
+    
+    //private variables
     List<Chore> chores;
     
     public Application()
@@ -53,12 +55,26 @@ public class Application
 
     private void addChore()
     {
-
+    	// get chore name
+    	String choreName = input.getChoreName();
+    	
+    	// get the persons name
+    	String personName = input.getPersonName();
+    	
+    	//create the chore
+    	Chore chore = new Chore(choreName, personName);
+    	
+    	// add the chore to the List
+    	chores.add(chore);
     }
 
     private void showChores()
     {
-
+    	for (Chore chore : chores)
+		{
+			output.displayMessage(chore.toString());
+		}
+    	
     }
     
 }

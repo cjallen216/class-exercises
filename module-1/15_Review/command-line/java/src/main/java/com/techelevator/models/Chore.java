@@ -24,7 +24,7 @@ public class Chore
     @Override
     public String toString()
     {
-        return name + "[" + person + "]";
+        return name + " [" + person + "]";
     }
     
 }

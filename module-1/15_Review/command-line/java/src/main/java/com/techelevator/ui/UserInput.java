@@ -26,14 +26,14 @@ public class UserInput
     public String getChoreName()
     {
         System.out.println();
-        System.out.println("Enter the name of the chore: ");
+        System.out.print("Enter the name of the chore: ");
         return scanner.nextLine();
     }
 
     public String getPersonName()
     {
         System.out.println();
-        System.out.println("Enter the name of the person: ");
+        System.out.print("Enter the name of the person: ");
         return scanner.nextLine();
     }
     
