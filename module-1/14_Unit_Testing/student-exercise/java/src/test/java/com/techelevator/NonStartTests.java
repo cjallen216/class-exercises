@@ -1,15 +1,23 @@
 package com.techelevator;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 public class NonStartTests
 {
+	private NonStart nonStart;
+	
+	@Before
+	public void setup()
+	{
+		nonStart = new NonStart();
+	}
+	
 	@Test
 	public void removeFirstLetterFromHelloAndThere()
 	{
 		// arrange
-		NonStart nonStart = new NonStart();
 		String a = "Hello";
 		String b = "There";
 		
@@ -26,7 +34,6 @@ public class NonStartTests
 	public void removeFirstLetterFromJavaAndCode()
 	{
 		// arrange
-		NonStart nonStart = new NonStart();
 		String a = "java";
 		String b = "code";
 		
@@ -43,7 +50,6 @@ public class NonStartTests
 	public void removeFirstLetterFromRandomLettersToMakeANewPhrase()
 	{
 		// arrange
-		NonStart nonStart = new NonStart();
 		String a = "shotl";
 		String b = "java";
 		

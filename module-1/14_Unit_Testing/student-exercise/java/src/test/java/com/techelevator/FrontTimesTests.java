@@ -1,15 +1,23 @@
 package com.techelevator;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 public class FrontTimesTests
 {
+	private FrontTimes frontOfWord;
+	
+	@Before
+	public void setup()
+	{
+		frontOfWord = new FrontTimes();
+	}
+	
 	@Test
 	public void theBeginningOfChocolateIsSoNice_weSayItTwice()
 	{
 		// arrange
-		FrontTimes frontOfWord = new FrontTimes();
 		String characters = "Chocolate";
 		int frontTimes = 2;
 		
@@ -26,7 +34,6 @@ public class FrontTimesTests
 	public void theBeginningOfChocolateIsSoNice_whyJustSayItTwice_whenYouCanSayIt3Times()
 	{
 		// arrange
-		FrontTimes frontOfWord = new FrontTimes();
 		String characters = "Chocolate";
 		int frontTimes = 3;
 		
@@ -43,7 +50,6 @@ public class FrontTimesTests
 	public void theBeginningOfTheAlphabet_repeated3Times()
 	{
 		// arrange
-		FrontTimes frontOfWord = new FrontTimes();
 		String characters = "Abc";
 		int frontTimes = 3;
 		

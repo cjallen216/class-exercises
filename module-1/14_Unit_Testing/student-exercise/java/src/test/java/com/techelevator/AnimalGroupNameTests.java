@@ -1,18 +1,24 @@
 package com.techelevator;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 public class AnimalGroupNameTests
 {
+	private AnimalGroupName groupName;
+	
+	@Before
+	public void setup()
+	{
+		groupName = new AnimalGroupName();
+	}
+	
 	@Test
 	public void giraffeeGroup_shouldBeATower()
 	{
 		// arrange
-		AnimalGroupName groupName = new AnimalGroupName();
 		String animalName = "giraffe";
-		String animalGroupName = "Tower";
-		
 		String expected = "Tower";
 		
 		// act
@@ -23,13 +29,10 @@ public class AnimalGroupNameTests
 	}
 	
 	@Test
-	public void noAnimal_thenGroupName_shouldBeUnknown()
+	public void noAnimal_groupNameShouldBeUnknown_withNoAnimalInput()
 	{
 		// arrange
-		AnimalGroupName groupName = new AnimalGroupName();
 		String animalName = "";
-		String animalGroupName = "unknown";
-		
 		String expected = "unknown";
 		
 		// act
@@ -40,13 +43,10 @@ public class AnimalGroupNameTests
 	}
 	
 	@Test
-	public void animalNotInOurList_thenGroupName_isUnknown()
+	public void animalNotInOurList_groupNameIsUnknown_whenAnimalInputIsNotOnOurList()
 	{
 		// arrange
-		AnimalGroupName groupName = new AnimalGroupName();
 		String animalName = "walrus";
-		String animalGroupName = "unknown";
-		
 		String expected = "unknown";
 		
 		// act
@@ -60,10 +60,7 @@ public class AnimalGroupNameTests
 	public void rhinoGroup_shouldBeCrash()
 	{
 		// arrange
-		AnimalGroupName groupName = new AnimalGroupName();
 		String animalName = "Rhino";
-		String animalGroupName = "Crash";
-		
 		String expected = "Crash";
 		
 		// act
@@ -77,10 +74,7 @@ public class AnimalGroupNameTests
 	public void rhinoGroup_shouldBeCrash_evenWhenAllLettersAreLowercase()
 	{
 		// arrange
-		AnimalGroupName groupName = new AnimalGroupName();
 		String animalName = "rhino";
-		String animalGroupName = "Crash";
-		
 		String expected = "Crash";
 		
 		// act
@@ -91,13 +85,10 @@ public class AnimalGroupNameTests
 	}
 	
 	@Test
-	public void elephantGroup_isASingularName_inOurList()
+	public void elephantNonPluralGroup_isUnknown_whenAPluralNameIsGiven()
 	{
 		// arrange
-		AnimalGroupName groupName = new AnimalGroupName();
 		String animalName = "elephants";
-		String animalGroupName = "unknown";
-		
 		String expected = "unknown";
 		
 		// act

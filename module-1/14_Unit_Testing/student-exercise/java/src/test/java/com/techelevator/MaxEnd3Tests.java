@@ -1,15 +1,25 @@
 package com.techelevator;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 public class MaxEnd3Tests
 {
+	private MaxEnd3 maxEnd3;
+	
+	@Before
+	public void setup()
+	{
+		maxEnd3 = new MaxEnd3();
+	}
+	
+	
 	@Test
 	public void threeIsTheHigestNumber_andItIsTheLastNumber_soWeRepeatIt3Times()
 	{
 		// arrange
-		MaxEnd3 maxEnd3 = new MaxEnd3();
+		//MaxEnd3 maxEnd3 = new MaxEnd3();
 		int[] nums = {1, 2, 3};
 		
 		int[] expected = {3, 3, 3};
@@ -25,7 +35,7 @@ public class MaxEnd3Tests
 	public void elevenIsTheHigestNumber_andItIsFirst_soWeRepeatIt3Times()
 	{
 		// arrange
-		MaxEnd3 maxEnd3 = new MaxEnd3();
+		//MaxEnd3 maxEnd3 = new MaxEnd3();
 		int[] nums = {11, 5, 9};
 		
 		int[] expected = {11, 11, 11};
@@ -41,7 +51,7 @@ public class MaxEnd3Tests
 	public void elevenIsTheHigestNumber_butItIsNotTheFirstOrLast_soWeRepeatThree3Times()
 	{
 		// arrange
-		MaxEnd3 maxEnd3 = new MaxEnd3();
+		//MaxEnd3 maxEnd3 = new MaxEnd3();
 		int[] nums = {2, 11, 3};
 		
 		int[] expected = {3, 3, 3};
