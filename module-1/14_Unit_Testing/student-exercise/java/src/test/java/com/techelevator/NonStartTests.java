@@ -15,7 +15,7 @@ public class NonStartTests
 	}
 	
 	@Test
-	public void removeFirstLetterFromHelloAndThere()
+	public void removeFirstLetters_fromHelloAndThere()
 	{
 		// arrange
 		String a = "Hello";
@@ -31,7 +31,7 @@ public class NonStartTests
 	}
 	
 	@Test
-	public void removeFirstLetterFromJavaAndCode()
+	public void removeFirstLetters_fromJavaAndCode()
 	{
 		// arrange
 		String a = "java";
@@ -43,11 +43,11 @@ public class NonStartTests
 		String actual = nonStart.getPartialString(a, b);
 		
 		// assert
-		Assert.assertEquals("Because java code should be avaode", expected, actual);
+		Assert.assertEquals("Because 'java' and 'code' should be 'avaode'", expected, actual);
 	}
 	
 	@Test
-	public void removeFirstLetterFromRandomLettersToMakeANewPhrase()
+	public void removeFirstLetter_fromRandomLetters_toMakeANewPhrase()
 	{
 		// arrange
 		String a = "shotl";
@@ -59,6 +59,6 @@ public class NonStartTests
 		String actual = nonStart.getPartialString(a, b);
 		
 		// assert
-		Assert.assertEquals("Because shotl java code should be hotlava", expected, actual);
+		Assert.assertEquals("Because 'shotl' and 'java' should be combined to make 'hotlava'", expected, actual);
 	}
 }

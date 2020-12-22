@@ -15,7 +15,7 @@ public class StringBitsTests
 	}
 	
 	@Test
-	public void isEveryOtherLetterBeingRemoved()
+	public void isEveryOtherLetterBeingRemoved_fromHello()
 	{
 		// arrange
 		String str = "Hello";
@@ -30,7 +30,7 @@ public class StringBitsTests
 	}
 	
 	@Test
-	public void twoLetterWord_secondLetterShouldBeRemoved()
+	public void isEveryOtherLetterBeingRemoved_firstLetterShouldRemain_whenA2LetterWordIsInput()
 	{
 		// arrange
 		String str = "Hi";
@@ -45,7 +45,7 @@ public class StringBitsTests
 	}
 	
 	@Test
-	public void randomlLetters_shouldMakeANewWord_whenEveryOtherLetterIsRemoved()
+	public void isEveryOtherLetterBeingRemoved_randomlLettersShouldMakeANewWord_whenEveryOtherLetterIsRemoved()
 	{
 		// arrange
 		String str = "Heeololeo";
@@ -56,6 +56,6 @@ public class StringBitsTests
 		String actual = stringBits.getBits(str);
 		
 		// assert
-		Assert.assertEquals("Because 'i' should be removed" , expected, actual);
+		Assert.assertEquals("Because 'Heeololeo' should result in 'Hello' when extra letters are removed" , expected, actual);
 	}
 }

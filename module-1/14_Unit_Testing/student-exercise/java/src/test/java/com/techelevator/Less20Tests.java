@@ -20,7 +20,7 @@ public class Less20Tests
 	}
 	
 	@Test
-	public void number18Is2LessThanAMultipleOf20()
+	public void oneOr2LessMultipleOf20_isTrue_when18IsInput()
 	{
 		// arrange
 		boolean expected = true;
@@ -33,7 +33,7 @@ public class Less20Tests
 	}
 	
 	@Test
-	public void number19Is1LessThanAMultipleOf20()
+	public void oneOr2LessMultipleOf20_isTrue_when19IsInput()
 	{
 		// arrange		
 		boolean expected = true;
@@ -46,7 +46,7 @@ public class Less20Tests
 	}
 	
 	@Test
-	public void number20IsAMultipleOf20_not1Or2Less()
+	public void oneOr2LessMultipleOf20_isFalse_when20IsInput()
 	{
 		// arrange
 		boolean expected = false;
@@ -59,7 +59,7 @@ public class Less20Tests
 	}
 	
 	@Test
-	public void number21IsNotAMultipleOf20_not1Or2Less()
+	public void oneOr2LessMultipleOf20_isFalse_when21IsInput()
 	{
 		// arrange
 		boolean expected = false;
@@ -72,7 +72,7 @@ public class Less20Tests
 	}
 	
 	@Test
-	public void number79IsNotAMultipleOf20_butItIs1Less()
+	public void oneOr2LessMultipleOf20_isTrue_when79IsInput()
 	{
 		// arrange
 		boolean expected = true;

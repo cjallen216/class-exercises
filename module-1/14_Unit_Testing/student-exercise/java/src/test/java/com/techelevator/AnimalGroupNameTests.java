@@ -15,7 +15,7 @@ public class AnimalGroupNameTests
 	}
 	
 	@Test
-	public void giraffeeGroup_shouldBeATower()
+	public void animalGroupName_shouldBeTower_whenGiraffeInput()
 	{
 		// arrange
 		String animalName = "giraffe";
@@ -29,7 +29,7 @@ public class AnimalGroupNameTests
 	}
 	
 	@Test
-	public void noAnimal_groupNameShouldBeUnknown_withNoAnimalInput()
+	public void animalGroupName_shouldBeUnknown_withNoAnimalInput()
 	{
 		// arrange
 		String animalName = "";
@@ -43,7 +43,7 @@ public class AnimalGroupNameTests
 	}
 	
 	@Test
-	public void animalNotInOurList_groupNameIsUnknown_whenAnimalInputIsNotOnOurList()
+	public void animalGroupName_isUnknown_whenAnimalInputIsNotOnTheList()
 	{
 		// arrange
 		String animalName = "walrus";
@@ -57,7 +57,7 @@ public class AnimalGroupNameTests
 	}
 	
 	@Test
-	public void rhinoGroup_shouldBeCrash()
+	public void animalGroupName_shouldBeCrash_whenRhinoIsEntered()
 	{
 		// arrange
 		String animalName = "Rhino";
@@ -71,7 +71,7 @@ public class AnimalGroupNameTests
 	}
 	
 	@Test
-	public void rhinoGroup_shouldBeCrash_evenWhenAllLettersAreLowercase()
+	public void animalGroupName_shouldBeCrash_evenWhenAllLettersAreLowercase()
 	{
 		// arrange
 		String animalName = "rhino";
@@ -85,7 +85,7 @@ public class AnimalGroupNameTests
 	}
 	
 	@Test
-	public void elephantNonPluralGroup_isUnknown_whenAPluralNameIsGiven()
+	public void animalGroupName_isUnknown_whenAPluralNameIsGiven()
 	{
 		// arrange
 		String animalName = "elephants";

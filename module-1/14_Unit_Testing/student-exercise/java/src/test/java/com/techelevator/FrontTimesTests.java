@@ -15,7 +15,7 @@ public class FrontTimesTests
 	}
 	
 	@Test
-	public void theBeginningOfChocolateIsSoNice_weSayItTwice()
+	public void repeatFirst3Characters_theBeginningOfChocolateIsSoNice_weSayItTwice()
 	{
 		// arrange
 		String characters = "Chocolate";
@@ -31,7 +31,7 @@ public class FrontTimesTests
 	}
 	
 	@Test
-	public void theBeginningOfChocolateIsSoNice_whyJustSayItTwice_whenYouCanSayIt3Times()
+	public void repeatFirst3Characters_theBeginningOfChocolateIsSoNice_whyJustSayItTwice_whenYouCanSayIt3Times()
 	{
 		// arrange
 		String characters = "Chocolate";
@@ -47,7 +47,7 @@ public class FrontTimesTests
 	}
 	
 	@Test
-	public void theBeginningOfTheAlphabet_repeated3Times()
+	public void repeatFirst3Characters_theBeginningOfTheAlphabet_repeated3Times()
 	{
 		// arrange
 		String characters = "Abc";

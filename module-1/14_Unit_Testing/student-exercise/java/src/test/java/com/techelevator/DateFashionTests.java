@@ -28,7 +28,7 @@ public class DateFashionTests
 	}
 	
 	@Test
-	public void yourDateHasAStyleOf10YouAreA5_youWillGetATable()
+	public void dateStyle_youWillGetATable_becuaseYourDateHasAStyleOf10AndYouAreA5()
 	{
 		//arrange
 		int you = FASHION_LEVEL_FIVE;
@@ -44,7 +44,7 @@ public class DateFashionTests
 	}
 	
 	@Test
-	public void yourDateIsA2_andYouHaveAStyleOf5_youWontGetATable()
+	public void dateStyle_youWillNonGetATable_becauseYouAndYourDateAreBelowAn8()
 	{
 		//arrange
 		int you = FASHION_LEVEL_FIVE;
@@ -60,11 +60,11 @@ public class DateFashionTests
 	}
 	
 	@Test
-	public void youBothAre5_youMightGetATable()
+	public void dateStyle_youMightGetATable_becauseYouAreYourDateAreBoth6()
 	{
 		//arrange
-		int you = FASHION_LEVEL_FIVE;
-		int date = FASHION_LEVEL_FIVE;
+		int you = FASHION_LEVEL_SIX;
+		int date = FASHION_LEVEL_SIX;
 		
 		int expected = MIGHT_GET_A_TABLE;
 		
@@ -76,7 +76,7 @@ public class DateFashionTests
 	}
 	
 	@Test
-	public void yourDateHasAStyleOf9ButYouAreAt1_youWillGetNotGetATable()
+	public void dateStyle_youWillGetNotGetATable_becauseYourDateHasAStyleOf9ButYouAreAt1()
 	{
 		//arrange
 		int you = FASHION_LEVEL_ONE;
@@ -92,7 +92,7 @@ public class DateFashionTests
 	}
 	
 	@Test
-	public void yourDateHasAStyleOf3ButYouAreAt7_youMightGetATable()
+	public void dateStyle_youMightGetATable_yourDateHasAStyleOf3ButYouAreAt7()
 	{
 		//arrange
 		int you = FASHION_LEVEL_SEVEN;
@@ -108,7 +108,7 @@ public class DateFashionTests
 	}
 	
 	@Test
-	public void yourDateHasAStyleOf8ButYouAreAt4_youWillGetATable()
+	public void dateStyle_youWillGetATable_becauseYourDateHasAStyleOf8AndYouAreAt4()
 	{
 		//arrange
 		int you = FASHION_LEVEL_FOUR;

@@ -18,7 +18,7 @@ public class Lucky13Tests
 	
 	
 	@Test
-	public void thereAreNo1sOr3s_youAreLucky()
+	public void count1sAnd3s_youAreLucky_becauseThereAreNo1sOr3s()
 	{
 		// arrange
 		int[] nums = {0, 2, 4};
@@ -33,7 +33,7 @@ public class Lucky13Tests
 	}
 	
 	@Test
-	public void thereIsA1AndA3_youAreNotSoLucky()
+	public void count1sAnd3s_youAreNotLucky_becauseThereAreBoth1And3()
 	{
 		// arrange
 		int[] nums = {1, 2, 3};
@@ -48,7 +48,7 @@ public class Lucky13Tests
 	}
 	
 	@Test
-	public void thereIsA1ButNo3_youAreStillNotLucky()
+	public void count1sAnd3s_youAreNotLucky_becauseThereIsA1ButNo3()
 	{
 		// arrange
 		int[] nums = {1, 2, 4};
@@ -63,7 +63,7 @@ public class Lucky13Tests
 	}
 	
 	@Test
-	public void thereIsA3ButNo1_youAreStillNotLucky()
+	public void count1sAnd3s_youAreStillNotLucky_becauseThereIsA3ButNo1()
 	{
 		// arrange
 		int[] nums = {3, 7, 2, 5, 8};
