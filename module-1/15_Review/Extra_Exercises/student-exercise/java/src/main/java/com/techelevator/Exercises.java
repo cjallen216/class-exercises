@@ -8,17 +8,47 @@ public class Exercises {
 	 arrayCount9([1, 9, 9]) → 2
 	 arrayCount9([1, 9, 9, 3, 9]) → 3
 	 */
-	public int arrayCount9(int[] nums) {
-		return 0;
+	public int arrayCount9(int[] nums)
+	{
+		int count = 0;
+		
+		for (int i: nums)
+		{
+			if (i == 9)
+			{
+				count++;
+			}
+		}
+		
+		return count;
 	}
 
 	/*
-	 2. Given an array of ints, return true if one of the first 4 elements in the array is a 9. The array length may be less than 4.
+	 2. Given an array of ints, return true if one of the first 4 elements in the array is a 9.
+	 The array length may be less than 4.
 	 arrayFront9([1, 2, 9, 3, 4]) → true
 	 arrayFront9([1, 2, 3, 4, 9]) → false
 	 arrayFront9([1, 2, 3, 4, 5]) → false
 	 */
-	public boolean arrayFront9(int[] nums) {
+	public boolean arrayFront9(int[] nums)
+	{
+		for (int i = 0; i < nums.length; i++)
+		{
+			if (nums.length <= 4)
+			{
+				if (nums[i] == 9)
+				{
+					return true;
+				}
+			}
+			if (nums.length > 4)
+			{
+				if (nums[0] == 9 || nums[1] == 9 || nums[2] == 9 || nums[3] == 9)
+				{
+					return true;
+				}
+			}
+		}
 		return false;
 	}
 
@@ -28,7 +58,21 @@ public class Exercises {
 	 array123([1, 1, 2, 4, 1]) → false
 	 array123([1, 1, 2, 1, 2, 3]) → true
 	 */
-	public boolean array123(int[] nums) {
+	public boolean array123(int[] nums)
+	{
+		if (nums.length < 3)
+		{
+			return false;
+		}
+		
+		for (int i = 0; i < nums.length - 1; i++)
+		{
+			if (nums[i] == 1 && nums[i + 1] == 2 && nums[i + 2] == 3)
+			{
+				return true;
+			}
+		}
+		
 		return false;
 	}
 
@@ -39,7 +83,25 @@ public class Exercises {
 	 noTriples([1, 1, 2, 2, 2, 1]) → false
 	 noTriples([1, 1, 1, 2, 2, 2, 1]) → false
 	 */
-	public boolean noTriples(int[] nums) {
+	public boolean noTriples(int[] nums)
+	{
+		int count = 0;
+		if (nums.length < 3)
+		{
+			return true;
+		}
+		for (int i = 0; i < nums.length - 2; i++)
+		{
+			if (nums[i] == nums[i + 1] && nums[i + 1] == nums[i + 2])
+			{
+				count++;
+			}
+		}
+		if (count == 0)
+		{
+			return true;
+		}
+		
 		return false;
 	}
 
@@ -50,8 +112,10 @@ public class Exercises {
 	 makeEnds([1, 2, 3, 4]) → [1, 4]
 	 makeEnds([7, 4, 6, 2]) → [7, 2]
 	 */
-	public int[] makeEnds(int[] nums) {
-		return new int[] {};
+	public int[] makeEnds(int[] nums)
+	{
+		int[] firstLast = {nums[0], nums[nums.length-1]};
+		return firstLast;
 	}
 
 	/*
@@ -60,7 +124,15 @@ public class Exercises {
 	 has23([4, 3]) → true
 	 has23([4, 5]) → false
 	 */
-	public boolean has23(int[] nums) {
+	public boolean has23(int[] nums)
+	{
+		for (int i: nums)
+		
+		if (i == 2 || i == 3)
+		{
+			return true;
+		}
+		
 		return false;
 	}
 
@@ -70,8 +142,16 @@ public class Exercises {
 	 no23([4, 2]) → false
 	 no23([3, 5]) → false
 	 */
-	public boolean no23(int[] nums) {
-		return false;
+	public boolean no23(int[] nums)
+	{
+		for (int i: nums)
+			
+			if (i == 2 || i == 3)
+			{
+				return false;
+			}
+			
+			return true;
 	}
 
 	/*
@@ -82,8 +162,14 @@ public class Exercises {
 	 makeLast([1, 2]) → [0, 0, 0, 2]
 	 makeLast([3]) → [0, 3]
 	 */
-	public int[] makeLast(int[] nums) {
-		return new int[] {};
+	public int[] makeLast(int[] nums)
+	{
+		int twoTimesLong = nums.length*2;
+		int[] twoTimesArray = new int[twoTimesLong];
+		
+		twoTimesArray[twoTimesLong-1] = nums[nums.length-1];
+		
+		return twoTimesArray;
 	}
 
 	/*
@@ -92,7 +178,16 @@ public class Exercises {
 	 double23([3, 3]) → true
 	 double23([2, 3]) → false
 	 */
-	public boolean double23(int[] nums) {
+	public boolean double23(int[] nums)
+	{
+		if (nums.length == 2)
+		{
+			if ((nums[0] == 2 && nums[1] == 2) || (nums[0] == 3 && nums[1] == 3))
+			{
+				return true;
+			}
+		}
+		
 		return false;
 	}
 
@@ -103,8 +198,21 @@ public class Exercises {
 	 fix23([2, 3, 5]) → [2, 0, 5]
 	 fix23([1, 2, 1]) → [1, 2, 1]
 	 */
-	public int[] fix23(int[] nums) {
-		return new int[] {};
+	public int[] fix23(int[] nums)
+	{
+		int[] changeThreeToZero0 = {nums[0], nums[1], nums[2]};
+		
+		if(nums[0] == 2 && nums[1] == 3)
+		{
+			changeThreeToZero0[1] = 0;
+		}
+		
+		if(nums[1] == 2 && nums[2] == 3)
+		{
+			changeThreeToZero0[2] = 0;
+		}
+				
+		return changeThreeToZero0;
 	}
 
 	/*
@@ -113,8 +221,20 @@ public class Exercises {
 	 start1([7, 2, 3], [1]) → 1
 	 start1([1, 2], []) → 1
 	 */
-	public int start1(int[] a, int[] b) {
-		return 0;
+	public int start1(int[] a, int[] b)
+	{
+		int count = 0;
+		
+		if (a.length > 0 && a[0] == 1)
+		{
+			count++;
+		}
+		if (b.length > 0 && b[0] == 1)
+		{
+			count++;
+		}
+		
+		return count;
 	}
 
 	/*
@@ -124,8 +244,14 @@ public class Exercises {
 	 biggerTwo([3, 4], [1, 2]) → [3, 4]
 	 biggerTwo([1, 1], [1, 2]) → [1, 2]
 	 */
-	public int[] biggerTwo(int[] a, int[] b) {
-		return new int[] {};
+	public int[] biggerTwo(int[] a, int[] b)
+	{
+		if (a[0] + a[1] < b[0] + b[1])
+		{
+			return b;
+		}
+		
+		return a;
 	}
 
 	/*
@@ -135,8 +261,16 @@ public class Exercises {
 	 makeMiddle([7, 1, 2, 3, 4, 9]) → [2, 3]
 	 makeMiddle([1, 2]) → [1, 2]
 	 */
-	public int[] makeMiddle(int[] nums) {
-		return new int[] {};
+	public int[] makeMiddle(int[] nums)
+	{
+		int[] middleNumbers = new int[2];
+		
+		int halfway = nums.length/2;
+		
+		middleNumbers[0] = nums[halfway - 1];
+		middleNumbers[1] = nums[halfway];
+		
+		return middleNumbers;
 	}
 
 	/*
@@ -145,8 +279,15 @@ public class Exercises {
 	 plusTwo([4, 4], [2, 2]) → [4, 4, 2, 2]
 	 plusTwo([9, 2], [3, 4]) → [9, 2, 3, 4]
 	 */
-	public int[] plusTwo(int[] a, int[] b) {
-		return new int[] {};
+	public int[] plusTwo(int[] a, int[] b)
+	{
+		int [] fourArray = new int[4];
+		fourArray[0] = a[0];
+		fourArray[1] = a[1];
+		fourArray[2] = b[0];
+		fourArray[3] = b[1];
+		
+		return fourArray;
 	}
 
 	/*
@@ -156,8 +297,13 @@ public class Exercises {
 	 swapEnds([1, 2, 3]) → [3, 2, 1]
 	 swapEnds([8, 6, 7, 9, 5]) → [5, 6, 7, 9, 8]
 	 */
-	public int[] swapEnds(int[] nums) {
-		return new int[] {};
+	public int[] swapEnds(int[] nums)
+	{
+		int numbers = nums[0];
+		nums[0] = nums[nums.length - 1];
+		nums[nums.length - 1] = numbers;
+			
+		return nums;
 	}
 
 	/*
@@ -166,8 +312,22 @@ public class Exercises {
 	 more14([1, 4, 1, 4]) → false
 	 more14([1, 1]) → true
 	 */
-	public boolean more14(int[] nums) {
-		return false;
+	public boolean more14(int[] nums)
+	{
+		int count = 0;
+		
+		for(int i = 0; i < nums.length; i++)
+		{
+			if(nums[i] == 1)
+			{
+				count++;
+			}
+			else if(nums[i] == 4)
+			{
+				count--;
+			}
+		}
+		return (count > 0);
 	}
 
 	/*
@@ -179,8 +339,16 @@ public class Exercises {
 	 fizzArray(1) → [0]
 	 fizzArray(10) → [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 	 */
-	public int[] fizzArray(int n) {
-		return new int[] {};
+	public int[] fizzArray(int n)
+	{
+		int[] fizzList = new int[n];
+		
+		for (int i = 0; i < n; i++)
+		{
+			fizzList[i] = i;
+		}
+		
+		return fizzList;
 	}
 
 	/*
@@ -189,8 +357,17 @@ public class Exercises {
 	 only14([1, 4, 2, 4]) → false
 	 only14([1, 1]) → true
 	 */
-	public boolean only14(int[] nums) {
-		return false;
+	public boolean only14(int[] nums)
+	{
+		for (int i = 0; i < nums.length; i++)
+		{
+			if (nums[i] != 1 && nums[i] != 4)
+			{
+				return false;
+			}
+		}
+		
+		return true;
 	}
 
 	/*
@@ -199,8 +376,24 @@ public class Exercises {
 	 no14([1, 2, 3, 4]) → false
 	 no14([2, 3, 4]) → true
 	 */
-	public boolean no14(int[] nums) {
-		return false;
+	public boolean no14(int[] nums)
+	{
+		boolean noOne = true;
+		boolean noFour = true;
+		
+		for (int i = 0; i < nums.length && (noOne || noFour); i++)
+		{
+			if(nums[i] == 1)
+			{
+				noOne = false;
+			}
+			else if(nums[i] == 4)
+			{
+				noFour = false;
+			}
+				
+		}	
+		return (noOne || noFour);
 	}
 
 	/*
@@ -209,7 +402,22 @@ public class Exercises {
 	 has12([3, 1, 2]) → true
 	 has12([3, 1, 4, 5, 2]) → true
 	 */
-	public boolean has12(int[] nums) {
+	public boolean has12(int[] nums)
+	{
+		boolean isThereOne = false;
+		
+		for (int i = 0; i < nums.length; i++)
+		{
+			if (nums[i] == 1)
+			{
+				isThereOne = true;
+			}
+			if (isThereOne && nums[i] == 2)
+			{
+				return true;
+			}
+		}
+		
 		return false;
 	}
 
@@ -221,8 +429,16 @@ public class Exercises {
 	 fizzArray3(11, 18) → [11, 12, 13, 14, 15, 16, 17]
 	 fizzArray3(1, 3) → [1, 2]
 	 */
-	public int[] fizzArray3(int start, int end) {
-		return new int[] {};
+	public int[] fizzArray3(int start, int end)
+	{
+		int[] fizzList = new int[end - start];
+		
+		for (int i = start; i < end; i++)
+		{
+			fizzList[i - start] = i;
+		}
+		
+		return fizzList;
 	}
 
 	/*
@@ -231,7 +447,16 @@ public class Exercises {
 	 lessBy10(1, 7, 10) → false
 	 lessBy10(11, 1, 7) → true
 	 */
-	public boolean lessBy10(int a, int b, int c) {
+	public boolean lessBy10(int a, int b, int c)
+	{
+		int high = Math.max(a, b);
+		high = Math.max(high, c);
+		
+		if (high - a >= 10 || high - b >= 10 || high - c >= 10)
+		{
+			return true;
+		}
+		
 		return false;
 	}
 
@@ -243,7 +468,28 @@ public class Exercises {
 	 greenTicket(2, 2, 2) → 20
 	 greenTicket(1, 1, 2) → 10
 	 */
-	public int greenTicket(int a, int b, int c) {
+	public int greenTicket(int a, int b, int c)
+	{
+		boolean allThreeMatch = (a == b && b == c && a == c);
+		boolean noMatch = (a != b && b != c && a != c);
+		boolean twoMatch = (a == b ^ b == c ^ a == c);
+		int noWinner = 0;
+		int winSome = 10;
+		int bigWinner = 20;
+		
+		if (noMatch)
+		{
+			return noWinner;
+		}
+		if (allThreeMatch)
+		{
+			return bigWinner;
+		}
+		if (twoMatch)
+		{
+			return winSome;
+		}
+		
 		return 0;
 	}
 
@@ -254,8 +500,17 @@ public class Exercises {
 	 blackjack(21, 19) → 21
 	 blackjack(19, 22) → 19
 	 */
-	public int blackjack(int a, int b) {
-		return 0;
+	public int blackjack(int a, int b)
+	{
+		if(a > 21 && b > 21)
+		{
+			return 0;
+		}
+        else if (a <= 21 && a > b || b > 21)
+        {
+        	return a;
+        }
+        return b;
 	}
 
 	/*
@@ -265,8 +520,33 @@ public class Exercises {
 	 evenlySpaced(4, 6, 2) → true
 	 evenlySpaced(4, 6, 3) → false
 	 */
-	public boolean evenlySpaced(int a, int b, int c) {
+	public boolean evenlySpaced(int a, int b, int c)
+	{
+		int diff1 = 0;
+		int diff2 = 0;
+		int diff3 = 0;
+
+		if (a==b && a ==c)
+		{
+			return true;
+		}
+		
+		if (a == b || b == c || a == c)
+		{
+			return false;
+		}
+		 
+		diff1 = Math.abs(a - b);
+		diff2 = Math.abs(a - c);
+		diff3 = Math.abs(b - c);
+		 
+		if ((diff1 == diff2) || (diff1 == diff3) || (diff2 == diff3))
+		{
+			return true;
+		}
+	 
 		return false;
+
 	}
 
 }
