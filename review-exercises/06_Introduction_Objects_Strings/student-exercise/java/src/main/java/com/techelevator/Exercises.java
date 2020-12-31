@@ -8,8 +8,9 @@ public class Exercises {
 	 helloName("Alice") → "Hello Alice!"
 	 helloName("X") → "Hello X!"
 	 */
-	public String helloName(String name) {
-		return null;
+	public String helloName(String name)
+	{
+		return "Hello " + name + "!";
 	}
 
 	/*
@@ -19,8 +20,9 @@ public class Exercises {
 	 makeAbba("Yo", "Alice") → "YoAliceAliceYo"
 	 makeAbba("What", "Up") → "WhatUpUpWhat"
 	 */
-	public String makeAbba(String a, String b) {
-		return null;
+	public String makeAbba(String a, String b)
+	{
+		return a + b + b + a;
 	}
 
 	/*
@@ -31,8 +33,9 @@ public class Exercises {
 	 makeTags("i", "Hello") → "<i>Hello</i>"
 	 makeTags("cite", "Yay") → "<cite>Yay</cite>"
 	 */
-	public String makeTags(String tag, String word) {
-		return null;
+	public String makeTags(String tag, String word)
+	{
+		return "<" + tag + ">" + word + "</" + tag + ">";
 	}
 
 	/*
@@ -43,8 +46,9 @@ public class Exercises {
 	 makeOutWord("<<>>", "WooHoo") → "<<WooHoo>>"
 	 makeOutWord("[[]]", "word") → "[[word]]"
 	 */
-	public String makeOutWord(String out, String word) {
-		return null;
+	public String makeOutWord(String out, String word)
+	{
+		return out.substring(0,2) + word + out.substring(2,4);
 	}
 
 	/*
@@ -54,8 +58,9 @@ public class Exercises {
 	 extraEnd("ab") → "ababab"
 	 extraEnd("Hi") → "HiHiHi"
 	 */
-	public String extraEnd(String str) {
-		return null;
+	public String extraEnd(String str)
+	{
+		return str.substring(str.length()- 2) + str.substring(str.length()- 2) + str.substring(str.length()- 2);
 	}
 
 	/*
@@ -66,8 +71,14 @@ public class Exercises {
 	 firstTwo("abcdefg") → "ab"
 	 firstTwo("ab") → "ab"
 	 */
-	public String firstTwo(String str) {
-		return null;
+	public String firstTwo(String str)
+	{
+		if (str.length() >= 2)
+		{
+			return str.substring(0,2);	
+		}
+		return str;
+		
 	}
 
 	/*
@@ -76,8 +87,9 @@ public class Exercises {
 	 firstHalf("HelloThere") → "Hello"
 	 firstHalf("abcdef") → "abc"
 	 */
-	public String firstHalf(String str) {
-		return null;
+	public String firstHalf(String str)
+	{
+		return str.substring(0, str.length() /2);
 	}
 
 	/*
@@ -87,8 +99,9 @@ public class Exercises {
 	 withoutEnd("java") → "av"
 	 withoutEnd("coding") → "odin"
 	 */
-	public String withoutEnd(String str) {
-		return null;
+	public String withoutEnd(String str)
+	{
+		return str.substring(1, str.length() - 1);
 	}
 
 	/*
@@ -99,8 +112,14 @@ public class Exercises {
 	 comboString("hi", "Hello") → "hiHellohi"
 	 comboString("aaa", "b") → "baaab"
 	 */
-	public String comboString(String a, String b) {
-		return null;
+	public String comboString(String a, String b)
+	{
+		if (a.length() < b.length())
+		{
+			return a + b + a;
+		}
+		
+		return b + a + b;
 	}
 
 	/*
@@ -110,8 +129,9 @@ public class Exercises {
 	 nonStart("java", "code") → "avaode"
 	 nonStart("shotl", "java") → "hotlava"
 	 */
-	public String nonStart(String a, String b) {
-		return null;
+	public String nonStart(String a, String b)
+	{
+		return a.substring(1) + b.substring(1);
 	}
 
 	/*
@@ -121,8 +141,9 @@ public class Exercises {
 	 left2("java") → "vaja"
 	 left2("Hi") → "Hi"
 	 */
-	public String left2(String str) {
-		return null;
+	public String left2(String str)
+	{
+		return str.substring(2) + str.substring(0,2);
 	}
 
 	/*
@@ -132,8 +153,9 @@ public class Exercises {
 	 right2("java") → "vaja"
 	 right2("Hi") → "Hi"
 	 */
-	public String right2(String str) {
-		return null;
+	public String right2(String str)
+	{
+		return str.substring(str.length() - 2) + str.substring(0, str.length() - 2);
 	}
 
 	/*
@@ -143,8 +165,14 @@ public class Exercises {
 	 theEnd("Hello", false) → "o"
 	 theEnd("oh", true) → "o"
 	 */
-	public String theEnd(String str, boolean front) {
-		return null;
+	public String theEnd(String str, boolean front)
+	{
+		if (front)
+		{
+			return str.substring(0,1);
+		}
+		
+		return str.substring(str.length()-1);
 	}
 
 	/*
@@ -154,8 +182,13 @@ public class Exercises {
 	 withoutEnd2("abc") → "b"
 	 withoutEnd2("ab") → ""
 	 */
-	public String withoutEnd2(String str) {
-		return null;
+	public String withoutEnd2(String str)
+	{
+		if (str.length() <= 2) 
+		{
+			return "";
+		}
+		return str.substring(1, str.length() - 1);
 	}
 
 	/*
