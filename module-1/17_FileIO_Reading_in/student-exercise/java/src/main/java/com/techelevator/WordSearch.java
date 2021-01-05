@@ -7,6 +7,13 @@ public class WordSearch
 {
 	public static void main(String[] args)
 	{
+		Scanner userInput = new Scanner(System.in);
+
+        String fileName;
+        File file;
+        
+        
+		
 		wordSearch();
 		wordsSearched();
 	}

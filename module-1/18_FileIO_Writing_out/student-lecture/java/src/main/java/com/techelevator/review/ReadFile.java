@@ -2,6 +2,8 @@ package com.techelevator.review;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.PrintStream;
 import java.util.Scanner;
 
 public class ReadFile
@@ -34,23 +36,59 @@ public class ReadFile
 
     public static void getFileStatistics(File file)
     {
-        try
+    	File outFile = new File("stats.txt");
+    	// try with resource
+        try (
+        		Scanner fileStream = new Scanner(file);
+        		FileOutputStream out = new FileOutputStream(outFile);
+                PrintStream outStream = new PrintStream(out);
+        		)
         {
             // 3. open the file as a file stream
-            Scanner fileStream = new Scanner(file);
+        	// creates a lock on the file
+            //Scanner fileStream = new Scanner(file);
+            
+            int wordCount = 0;
+            int sentenceCount = 0;
 
             // 4. process each word/line in the stream
             while(fileStream.hasNext())
             {
                 String word = fileStream.next();
+                //System.out.println(word);
                 // do something with the file
+                wordCount++;
+                
+                if (word.endsWith(".") || word.endsWith("?") || word.endsWith("!"))
+                {
+                	sentenceCount++;
+                }
             }
-
-            fileStream.close();
+            
+            // close the file release the lock
+            //fileStream.close();
+            
+            // write to file called "stats.txt"
+            
+            
+            
+            outStream.println("File Name: " + file.getName());
+            outStream.println("Words: " + wordCount);
+            outStream.println("Sentences: " + sentenceCount);
+            
+            outStream.close();
         }
-        catch (FileNotFoundException ex)
+        catch (Exception ex)
         {
-            System.out.println(ex.getMessage());
+            // runs if there is an exception
+        	System.out.println(ex.getMessage());
         }
+//        finally
+//        {
+//        	// this always runs whether or not there is an exception
+//        	// clean up code
+//        	
+//		}
+        
     }
 }
