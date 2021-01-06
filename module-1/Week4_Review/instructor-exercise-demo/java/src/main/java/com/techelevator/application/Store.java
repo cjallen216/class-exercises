@@ -100,6 +100,8 @@ public class Store
     public void showCart()
     {
     	// use the UserOutput to display the products in the ShoppingCart
+    	// need to call a function in UserOutput.displayShoppingCart
+    	//UserOutput.displayShoppingCart(shoppingCart);
     }
     
     public void checkOut()

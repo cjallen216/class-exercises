@@ -4,17 +4,17 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
 
-public class FizzWriter {
-
+public class FizzWriter
+{
 	public static void main(String[] args)
 	{
 		File file = new File("FizzBuzz.txt");
 		String output;
 		
 		try (
-				FileOutputStream fileStream = new FileOutputStream(file);
-				PrintStream fileWriter = new PrintStream(fileStream);
-				)
+			FileOutputStream fileStream = new FileOutputStream(file);
+			PrintStream fileWriter = new PrintStream(fileStream);
+			)
 		{
 			for (int i = 1; i < 301; i++)
 			{
@@ -22,11 +22,11 @@ public class FizzWriter {
 				{
 					output = "FizzBuzz";
 				}
-				else if (i % 3 == 0)
+				else if (i % 3 == 0 || Integer.toString(i).contains("3"))
 				{
 					output = "Fizz";
 				}
-				else if (i % 5 == 0)
+				else if (i % 5 == 0 || Integer.toString(i).contains("5"))
 				{
 					output = "Buzz";
 				}
