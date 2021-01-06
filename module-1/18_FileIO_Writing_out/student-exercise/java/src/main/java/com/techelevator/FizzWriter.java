@@ -8,7 +8,7 @@ public class FizzWriter {
 
 	public static void main(String[] args)
 	{
-		File file = new File("300 FizzBuzz.txt");
+		File file = new File("FizzBuzz.txt");
 		String output;
 		
 		try (
@@ -41,7 +41,7 @@ public class FizzWriter {
 		{
 			// TODO: handle exception
 		}
-		System.out.println(file + " has been created");
+		System.out.println(file + " has been created.");
 	}
 
 }
