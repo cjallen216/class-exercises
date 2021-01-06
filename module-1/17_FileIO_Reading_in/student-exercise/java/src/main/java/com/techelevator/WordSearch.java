@@ -7,57 +7,82 @@ public class WordSearch
 {
 	public static void main(String[] args)
 	{
-		Scanner userInput = new Scanner(System.in);
-
-        String fileName;
-        File file;
-        
-        
-		
-		wordSearch();
-		wordsSearched();
+		File inputFile = inputFromUser();
+		String searchWord = wordToSearch();
+		searchCaseSensitive (inputFile, searchWord);	
 	}
-
-	public static void wordSearch()
+	
+	public static File inputFromUser()
 	{
-		String filePath = "alices_adventures_in_wonderland.txt";
-		File theFile = new File(filePath);
+		System.out.println("What is the file that should be searched? ");
+		Scanner fileInput = new Scanner(System.in);
+		String fileName = fileInput.nextLine();
+
+		File inputFile = new File(fileName);
 		
-//		System.out.println(theFile.toString());
-//		System.out.println(theFile.getAbsolutePath());
-//		System.out.println(theFile.exists());
-//		System.out.println("Directory: " + theFile.isDirectory());
-//		System.out.println("File: " + theFile.isFile());
-		
-		Scanner scanner;
-		
-		try
+		if (inputFile.exists())
 		{
-			scanner = new Scanner(theFile);
-			
-			while (scanner.hasNextLine())
-			{
-				String eachLine = scanner.nextLine();
-				
-			}
-			
-		} catch (Exception e)
-		{
-			// TODO: handle exception
+			return inputFile;
 		}
-	}
-	
-	public static String wordsSearched()
-	{
-		Scanner wordInput = new Scanner(System.in);
-		System.out.println("What is the search word you are looking for? ");
-		String wordSearch = wordInput.nextLine();
+		else
+		{
+			System.out.println("Your file, " + fileName + ", does not exist");
+		}
 		
-		return wordSearch;
+		return inputFile;
 	}
 	
-	public static String search()
-	{		
-		return "";
+	public static String wordToSearch()
+	{
+		System.out.println("What is the search word you are looking for? ");			
+		Scanner userInput = new Scanner(System.in);			
+		String searchWord = userInput.nextLine();
+
+		return searchWord;
+	}
+	
+	public static void searchCaseSensitive(File inputFile, String searchWord)
+	{
+		System.out.println("Should the search be case sensitive? (Y\\N)");
+		Scanner caseSensitive = new Scanner(System.in);
+		String caseAnswer = caseSensitive.nextLine().toLowerCase();
+
+		try (Scanner input = new Scanner(inputFile))
+		{
+			int x = 0;
+			
+			while (input.hasNextLine())
+			{
+				if (caseAnswer.equals("n"))
+				{
+					x++;
+					String line = input.nextLine();
+					
+					if (line.toLowerCase().contains(searchWord.toLowerCase()))
+					{
+						System.out.println(x + ") " + line);
+					}
+				}
+				else if (caseAnswer.equals("y"))
+				{
+					x++;
+					String line = input.nextLine();
+					
+					if (line.contains(searchWord))
+					{
+						System.out.println(x + ") " + line);
+					}
+				}
+				else
+				{
+					System.out.println("Not a valid option.");
+					input.close();
+				}
+			}
+		}
+		catch (Exception e)
+		{
+			System.out.println(e.getMessage());
+		}
 	}
 }
