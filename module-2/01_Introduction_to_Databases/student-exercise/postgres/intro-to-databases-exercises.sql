@@ -8,6 +8,7 @@
 
 SELECT name
         , population
+--        , district
 FROM city
 WHERE district = 'Ontario';
 
@@ -23,6 +24,7 @@ WHERE district = 'Montana';
 SELECT name
         , governmentform AS form_of_government
         , headofstate AS head_of_state
+--        , continent
 FROM country
 WHERE continent = 'Europe';
 
@@ -32,6 +34,7 @@ SELECT name
         , population
         , surfacearea AS surface_area
         , lifeexpectancy AS life_expectancy
+--        , continent
 FROM country
 WHERE continent = 'Asia';
 
@@ -74,6 +77,7 @@ WHERE lifeexpectancy > 80;
 
 SELECT name
         , population
+--        , countrycode
 FROM city
 WHERE countrycode = 'USA'
         AND population > 1000000;
@@ -82,6 +86,7 @@ WHERE countrycode = 'USA'
 
 SELECT name
         , population
+--        , countrycode
 FROM city
 WHERE countrycode = 'CHN'
         AND population > 1000000;
@@ -90,6 +95,7 @@ WHERE countrycode = 'CHN'
 
 SELECT name
         , region
+--        , continent
 FROM country
 WHERE continent ILIKE '%America';
 
@@ -106,6 +112,7 @@ WHERE governmentform ILIKE '%monarchy%';
 
 SELECT name
         , population
+--        , countrycode
 FROM city
 WHERE countrycode = 'USA'
         AND population > 1000000
@@ -115,6 +122,7 @@ WHERE countrycode = 'USA'
 
 SELECT name
         , region
+--        , continent
 FROM country
 WHERE continent ILIKE '%America'
         AND NOT (region = 'Caribbean');
@@ -133,6 +141,7 @@ WHERE gnp > 1000000
 
 SELECT name
         , population
+--        , district
 FROM city
 WHERE district = 'Texas'
         AND population > 1000000;
@@ -141,6 +150,7 @@ WHERE district = 'Texas'
 
 SELECT name
         , lifeexpectancy AS life_expectancy
+--        , continent
 FROM country
 WHERE continent = 'Oceania';
 
@@ -149,6 +159,7 @@ WHERE continent = 'Oceania';
 
 SELECT name
         , lifeexpectancy AS life_expectancy
+--        , continent
 FROM country
 WHERE continent = 'Oceania'
         AND lifeexpectancy IS NOT NULL;
