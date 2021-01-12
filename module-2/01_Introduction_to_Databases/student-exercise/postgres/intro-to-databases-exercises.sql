@@ -21,8 +21,8 @@ WHERE district = 'Montana';
 -- 3. The name, form of government, and head of state of all countries in Europe (46 rows)
 
 SELECT name
-        , governmentform
-        , headofstate
+        , governmentform AS form_of_government
+        , headofstate AS head_of_state
 FROM country
 WHERE continent = 'Europe';
 
@@ -38,7 +38,7 @@ WHERE continent = 'Asia';
 -- 5. The name, country code, and population of all cities with a population greater than 8 million people (10 rows)
 
 SELECT name
-        , countrycode
+        , countrycode AS country_code
         , population
 FROM city
 WHERE population > 8000000;
@@ -46,7 +46,7 @@ WHERE population > 8000000;
 -- 6. The name, country code, and population of all cities with a population less than one thousand people (11 rows)
 
 SELECT name
-        , countrycode
+        , countrycode AS country_code
         , population
 FROM city
 WHERE population < 1000;
@@ -177,7 +177,11 @@ WHERE lifeexpectancy > 70
 -- 21. The per capita GNP (i.e. GNP divided by population) in US Dollars of all countries in Europe (46 rows)
 
 SELECT name
-        , gnp / population AS per_capita_gnp
+        , gnp
+        , population
+        , cast (
+                ((gnp * 1000000) / population) as money --numeric(10,2)
+                ) AS per_capita_gnp
 FROM country
 WHERE continent = 'Europe';
 
@@ -185,6 +189,6 @@ WHERE continent = 'Europe';
 
 SELECT name
         , indepyear AS year_of_independence
-        , 2021 - indepyear AS years_since_independence
+        , 2021 - indepyear AS years_since_gaining_independence
 FROM country
 WHERE indepyear IS NOT NULL;
