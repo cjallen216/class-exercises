@@ -1,4 +1,4 @@
-﻿-- The following queries utilize the "world" database.
+--﻿-- The following queries utilize the "world" database.
 -- Write queries for the following problems. 
 -- Notes:
 --   GNP is expressed in units of one million US Dollars
