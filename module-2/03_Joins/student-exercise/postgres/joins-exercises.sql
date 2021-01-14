@@ -195,24 +195,25 @@ GROUP BY customer_name
 ORDER BY dollars DESC
 LIMIT 10;
 
--- 15. The store ID, street address, total number of rentals, total amount of sales (i.e. payments), and average sale of each store.
+-- 15. The store ID, street address, total number of rentals, total amount of sales (i.e. payments),
+-- and average sale of each store.
 -- (NOTE: Keep in mind that an employee may work at multiple stores.)
 -- (Store 1 has 7928 total rentals and Store 2 has 8121 total rentals)
 
 SELECT s.store_id
         , address
-        , COUNT (r.rental_date) AS total_rentals
-        , SUM (p.amount) as total_payment
-        , AVG (amount) as avg_sales
+        , COUNT (r.rental_id) AS total_rentals
+        , SUM (amount) as total_sales
+        , AVG (amount) as average_sales
 FROM store AS s
 INNER JOIN address AS a
-        ON a.address_id = s.address_id
+        ON s.address_id = a.address_id
 INNER JOIN inventory AS i
-        ON i.store_id = s.store_id
+        ON s.store_id = i.store_id
 INNER JOIN rental AS r
-        ON r.inventory_id = i.inventory_id
+        ON i.inventory_id = r.inventory_id
 INNER JOIN payment AS p
-        ON p.rental_id = r.rental_id
+        ON r.rental_id = p.rental_id
 GROUP BY s.store_id
         , address;
 
