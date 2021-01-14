@@ -175,24 +175,24 @@ INNER JOIN staff
 -- (#1 should be â€œELEANOR HUNTâ€? with 46 rentals, #10 should have 39 rentals)
 
 SELECT c.first_name || ' ' || c.last_name AS customer_name
-        , COUNT(c.customer_id) AS total_rentals
+        , COUNT(c.customer_id) AS rentals
 FROM customer AS c
 INNER JOIN payment AS p
         ON p.customer_id = c.customer_id
 GROUP BY customer_name
-ORDER BY total_rentals DESC
+ORDER BY rentals DESC
 LIMIT 10;
 
 -- 14. The first and last name of the top ten customers ranked by dollars spent 
 -- (#1 should be â€œKARL SEALâ€? with 221.55 spent, #10 should be â€œANA BRADLEYâ€? with 174.66 spent)
 
 SELECT c.first_name || ' ' || c.last_name AS customer_name
-        , SUM (p.amount) AS dollars_spent
+        , SUM (p.amount) AS dollars
 FROM customer AS c
 INNER JOIN payment AS p
         ON p.customer_id = c.customer_id
 GROUP BY customer_name
-ORDER BY dollars_spent DESC
+ORDER BY dollars DESC
 LIMIT 10;
 
 -- 15. The store ID, street address, total number of rentals, total amount of sales (i.e. payments), and average sale of each store.
@@ -200,34 +200,34 @@ LIMIT 10;
 -- (Store 1 has 7928 total rentals and Store 2 has 8121 total rentals)
 
 SELECT s.store_id
-        , a.address
-        , COUNT (p.amount) AS number_of_rentals
-        , SUM (p.amount) AS total_sales
-        , AVG (p.amount) AS avg_sales
+        , address
+        , COUNT (r.rental_date) AS total_rentals
+        , SUM (p.amount) as total_payment
+        , AVG (amount) as avg_sales
 FROM store AS s
 INNER JOIN address AS a
         ON a.address_id = s.address_id
-INNER JOIN customer AS c
-        ON c.store_id = s.store_id
-INNER JOIN payment AS p
-        ON p.customer_id = c.customer_id
+INNER JOIN inventory AS i
+        ON i.store_id = s.store_id
 INNER JOIN rental AS r
-        ON r.rental_id = p.rental_id
+        ON r.inventory_id = i.inventory_id
+INNER JOIN payment AS p
+        ON p.rental_id = r.rental_id
 GROUP BY s.store_id
-        , a.address;
+        , address;
 
 -- 16. The top ten film titles by number of rentals
 -- (#1 should be â€œBUCKET BROTHERHOODâ€? with 34 rentals and #10 should have 31 rentals)
 
 SELECT f.title
-        , COUNT(r.*) AS top_rentals
+        , COUNT(r.*) AS rentals
 FROM film AS f
 INNER JOIN inventory AS i
         ON i.film_id = f.film_id
 INNER JOIN rental AS r
         ON r.inventory_id = i.inventory_id
 GROUP BY f.title
-ORDER BY top_rentals DESC
+ORDER BY rentals DESC
 LIMIT 10;
 
 -- 17. The top five film categories by number of rentals 
@@ -245,7 +245,7 @@ INNER JOIN film_category AS fcat
 INNER JOIN category AS c
         ON c.category_id = fcat.category_id
 GROUP BY c.name
-ORDER BY number_of_rentals DESC
+ORDER BY rentals DESC
 LIMIT 5;
 
 -- 18. The top five Action film titles by number of rentals 
@@ -263,7 +263,7 @@ INNER JOIN film_category AS fcat
 INNER JOIN category c
         ON c.category_id = fcat.category_id
 GROUP BY f.title
-ORDER BY top_action_rentals DESC
+ORDER BY rentals DESC
 LIMIT 5;
 
 -- 19. The top 10 actors ranked by number of rentals of films starring that actor 

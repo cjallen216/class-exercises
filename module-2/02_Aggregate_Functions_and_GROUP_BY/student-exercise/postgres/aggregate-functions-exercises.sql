@@ -1,4 +1,4 @@
---﻿-- The following queries utilize the "world" database.
+﻿-- The following queries utilize the "world" database.
 -- Write queries for the following problems. 
 -- Notes:
 --   GNP is expressed in units of one million US Dollars
@@ -14,7 +14,7 @@
 -- name. 
 -- (19 rows)
 
-SELECT name || ', ' || district AS city_state
+SELECT name || ', ' || district AS name_and_state
 FROM city
 WHERE district IN ('Pennsylvania'
         , 'West Virginia'
@@ -48,22 +48,28 @@ ORDER BY per_capita_gnp DESC;
 -- (average life expectancy in South America: 70.9461)
 
 SELECT AVG (lifeexpectancy) AS average_life_expectancy
+        , continent
 FROM country
-WHERE continent = 'South America';
+WHERE continent = 'South America'
+GROUP BY continent;
 
 -- 5. The sum of the population of all cities in California.
 -- (total population of all cities in California: 16716706)
 
 SELECT SUM (population)
+        , district AS state
 FROM city
-WHERE district = 'California';
+WHERE district = 'California'
+GROUP BY district;
 
 -- 6. The sum of the population of all cities in China.
 -- (total population of all cities in China: 175953614)
 
 SELECT SUM (population)
+        , countrycode
 FROM city
-WHERE countrycode = 'CHN';
+WHERE countrycode = 'CHN'
+GROUP BY countrycode;
 
 -- 7. The maximum population of all countries in the world.
 -- (largest country population in world: 1277558000)
@@ -81,8 +87,10 @@ FROM city;
 -- (largest city population in Australia: 3276207)
 
 SELECT MAX (population)
+        , countrycode
 FROM city
-WHERE countrycode = 'AUS';
+WHERE countrycode = 'AUS'
+GROUP BY countrycode;
 
 -- 10. The minimum population of all countries in the world.
 -- (smallest_country_population in world: 50)
@@ -94,16 +102,20 @@ WHERE population > 0;
 -- 11. The average population of cities in the United States.
 -- (avgerage city population in USA: 286955.3795)
 
-SELECT AVG (population)
+SELECT AVG (population) AS avg_population
+        , countrycode
 FROM city
-WHERE countrycode = 'USA';
+WHERE countrycode = 'USA'
+GROUP BY countrycode;
 
 -- 12. The average population of cities in China.
 -- (average city population in China: 484720.6997 approx.)
 
-SELECT AVG (population)
+SELECT AVG (population) AS avg_population
+        , countrycode
 FROM city
-WHERE countrycode = 'CHN';
+WHERE countrycode = 'CHN'
+GROUP BY countrycode;
 
 -- 13. The surface area of each continent ordered from highest to lowest.
 -- (largest continental surface area: 31881000, "Asia")
