@@ -9,7 +9,7 @@ FROM actor AS a
 INNER JOIN film_actor AS fa
         ON a.actor_id = fa.actor_id
 INNER JOIN film AS f
-        ON f.film_id = fa.film_id
+        ON fa.film_id = f.film_id
 WHERE a.first_name ILIKE 'Nick'
         AND a.last_name ILIKE 'Stallone';
 
@@ -22,7 +22,7 @@ FROM actor AS a
 INNER JOIN film_actor AS fa
         ON a.actor_id = fa.actor_id
 INNER JOIN film AS f
-        ON f.film_id = fa.film_id
+        ON fa.film_id = f.film_id
 WHERE a.first_name ILIKE 'Rita'
         AND a.last_name ILIKE 'Reynolds';
 
@@ -35,7 +35,7 @@ FROM actor AS a
 INNER JOIN film_actor AS fa
         ON a.actor_id = fa.actor_id
 INNER JOIN film AS f
-        ON f.film_id = fa.film_id
+        ON fa.film_id = f.film_id
 WHERE a.last_name ILIKE 'Dean';
 
 -- 4. All of the the ‘Documentary’ films
@@ -43,12 +43,14 @@ WHERE a.last_name ILIKE 'Dean';
 
 SELECT f.title
         , c.name AS category
+        , fcat.category_id
 FROM film AS f
 INNER JOIN film_category as fcat
-        ON fcat.film_id = f.film_id
+        ON f.film_id = fcat.film_id
 INNER JOIN category AS c
         ON fcat.category_id = c.category_id
 WHERE c.name ILIKE 'Documentary';
+
 
 -- 5. All of the ‘Comedy’ films
 -- (58 rows)
@@ -57,7 +59,7 @@ SELECT f.title
         , c.name AS category
 FROM film AS f
 INNER JOIN film_category as fcat
-        ON fcat.film_id = f.film_id
+        ON f.film_id = fcat.film_id
 INNER JOIN category AS c
         ON fcat.category_id = c.category_id
 WHERE c.name ILIKE 'Comedy';
@@ -70,7 +72,7 @@ SELECT f.title
         , f.rating
 FROM film AS f
 INNER JOIN film_category as fcat
-        ON fcat.film_id = f.film_id
+        ON f.film_id = fcat.film_id
 INNER JOIN category AS c
         ON fcat.category_id = c.category_id
 WHERE c.name ILIKE 'Children'
@@ -85,7 +87,7 @@ SELECT f.title
         , f.length
 FROM film AS f
 INNER JOIN film_category as fcat
-        ON fcat.film_id = f.film_id
+        ON f.film_id = fcat.film_id
 INNER JOIN category AS c
         ON fcat.category_id = c.category_id
 WHERE c.name ILIKE 'Family'
@@ -102,7 +104,7 @@ FROM actor AS a
 INNER JOIN film_actor AS fa
         ON a.actor_id = fa.actor_id
 INNER JOIN film AS f
-        ON f.film_id = fa.film_id
+        ON fa.film_id = f.film_id
 WHERE a.first_name ILIKE 'Matthew'
         AND a.last_name ILIKE 'Leigh'
         AND f.rating = 'G';
@@ -116,7 +118,7 @@ SELECT f.title
         , f.release_year
 FROM film AS f
 INNER JOIN film_category as fcat
-        ON fcat.film_id = f.film_id
+        ON f.film_id = fcat.film_id
 INNER JOIN category AS c
         ON fcat.category_id = c.category_id
 WHERE c.name ILIKE 'Sci-Fi';
@@ -131,9 +133,9 @@ FROM actor AS a
 INNER JOIN film_actor AS fa
         ON a.actor_id = fa.actor_id
 INNER JOIN film AS f
-        ON f.film_id = fa.film_id
+        ON fa.film_id = f.film_id
 INNER JOIN film_category as fcat
-        ON fcat.film_id = f.film_id
+        ON f.film_id = fcat.film_id
 INNER JOIN category AS c
         ON fcat.category_id = c.category_id
 WHERE a.first_name ILIKE 'Nick'
@@ -178,7 +180,7 @@ SELECT c.first_name || ' ' || c.last_name AS customer_name
         , COUNT(c.customer_id) AS rentals
 FROM customer AS c
 INNER JOIN payment AS p
-        ON p.customer_id = c.customer_id
+        ON c.customer_id = p.customer_id
 GROUP BY customer_name
 ORDER BY rentals DESC
 LIMIT 10;
@@ -190,7 +192,7 @@ SELECT c.first_name || ' ' || c.last_name AS customer_name
         , SUM (p.amount) AS dollars
 FROM customer AS c
 INNER JOIN payment AS p
-        ON p.customer_id = c.customer_id
+        ON c.customer_id = p.customer_id
 GROUP BY customer_name
 ORDER BY dollars DESC
 LIMIT 10;
@@ -224,9 +226,9 @@ SELECT f.title
         , COUNT(r.*) AS rentals
 FROM film AS f
 INNER JOIN inventory AS i
-        ON i.film_id = f.film_id
+        ON f.film_id = i.film_id
 INNER JOIN rental AS r
-        ON r.inventory_id = i.inventory_id
+        ON i.inventory_id = r.inventory_id
 GROUP BY f.title
 ORDER BY rentals DESC
 LIMIT 10;
@@ -238,13 +240,13 @@ SELECT c.name AS category
         , COUNT(r.*) AS rentals
 FROM film AS f
 INNER JOIN inventory AS i
-        ON i.film_id = f.film_id
+        ON f.film_id = i.film_id
 INNER JOIN rental AS r
-        ON r.inventory_id = i.inventory_id
+        ON i.inventory_id = r.inventory_id
 INNER JOIN film_category AS fcat
-        ON fcat.film_id = f.film_id
+        ON f.film_id = fcat.film_id
 INNER JOIN category AS c
-        ON c.category_id = fcat.category_id
+        ON fcat.category_id = c.category_id
 GROUP BY c.name
 ORDER BY rentals DESC
 LIMIT 5;
@@ -256,13 +258,13 @@ SELECT f.title
         , COUNT(r.*) AS rentals
 FROM film AS f
 INNER JOIN inventory AS i
-        ON i.film_id = f.film_id
+        ON f.film_id = i.film_id
 INNER JOIN rental AS r
-        ON r.inventory_id = i.inventory_id
+        ON i.inventory_id = r.inventory_id
 INNER JOIN film_category AS fcat
-        ON fcat.film_id = f.film_id
+        ON f.film_id = fcat.film_id
 INNER JOIN category c
-        ON c.category_id = fcat.category_id
+        ON fcat.category_id = c.category_id
 GROUP BY f.title
 ORDER BY rentals DESC
 LIMIT 5;
@@ -274,13 +276,13 @@ SELECT a.first_name || ' ' || a.last_name AS actor_name
         , COUNT(r.*) AS rentals
 FROM actor AS a
 INNER JOIN film_actor AS fa
-        ON fa.actor_id= a.actor_id
+        ON a.actor_id= fa.actor_id
 INNER JOIN film AS f
-        ON f.film_id = fa.film_id
+        ON fa.film_id = f.film_id
 INNER JOIN inventory AS i
-        ON i.film_id = f.film_id
+        ON f.film_id = i.film_id
 INNER JOIN rental AS r
-        ON r.inventory_id = i.inventory_id
+        ON i.inventory_id = r.inventory_id
 GROUP BY actor_name
         , a.actor_id
 ORDER BY rentals DESC
@@ -293,17 +295,17 @@ SELECT a.first_name || ' ' || a.last_name AS actor_name
         , COUNT(r.*) AS rentals
 FROM actor AS a
 INNER JOIN film_actor AS fa
-        ON fa.actor_id= a.actor_id
+        ON a.actor_id= fa.actor_id
 INNER JOIN film AS f
-        ON f.film_id = fa.film_id
+        ON fa.film_id = f.film_id
 INNER JOIN inventory AS i
-        ON i.film_id = f.film_id
+        ON f.film_id = i.film_id
 INNER JOIN rental AS r
-        ON r.inventory_id = i.inventory_id
+        ON i.inventory_id = r.inventory_id
 INNER JOIN film_category AS fcat
-        ON fcat.film_id = f.film_id
+        ON f.film_id = fcat.film_id
 INNER JOIN category AS c
-        ON c.category_id = fcat.category_id
+        ON fcat.category_id = c.category_id
 WHERE c.name = 'Comedy'
 GROUP BY actor_name
 ORDER BY rentals DESC
