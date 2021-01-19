@@ -23,7 +23,11 @@ public class JDBCCityDAO implements CityDAO {
 	public void save(City newCity) {
 		String sqlInsertCity = "INSERT INTO city(id, name, countrycode, district, population) " +
 							   "VALUES(?, ?, ?, ?, ?)";
+
+		// call the nextval() function in postgres
 		newCity.setId(getNextCityId());
+		
+		// then insert the data
 		jdbcTemplate.update(sqlInsertCity, newCity.getId(),
 										  newCity.getName(),
 										  newCity.getCountryCode(),
@@ -46,15 +50,24 @@ public class JDBCCityDAO implements CityDAO {
 
 	@Override
 	public List<City> findCityByCountryCode(String countryCode) {
+		
+		// 1. create a container to hold the cities 
 		ArrayList<City> cities = new ArrayList<>();
+		
+		// 2. write your query
 		String sqlFindCityByCountryCode = "SELECT id, name, countrycode, district, population "+
 										   "FROM city "+
 										   "WHERE countrycode = ?";
+		// execute the query
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlFindCityByCountryCode, countryCode);
-		while(results.next()) {
+		
+		// loop through the results
+		while(results.next())
+		{
 			City theCity = mapRowToCity(results);
 			cities.add(theCity);
 		}
+		// return results
 		return cities;
 	}
 

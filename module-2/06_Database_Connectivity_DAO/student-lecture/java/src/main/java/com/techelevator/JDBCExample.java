@@ -14,23 +14,32 @@ public class JDBCExample {
 		
 		/* This datasource will be used for creating connections to the database.
 		 * Below, we provide the information required to make database connections */
+		
+		// 1. define a data source
 		BasicDataSource dataSource = new BasicDataSource();
 		dataSource.setUrl("jdbc:postgresql://localhost:5432/dvdstore");
 		dataSource.setUsername("postgres");
 		dataSource.setPassword("postgres1");
 		
+		
+		// 2. use data source to create a connection
 		Connection conn = dataSource.getConnection();
 		
-		/* Create a Statement object so that we can execute a SQL Query */
+		/* 3. Create a Statement object so that we can execute a SQL Query */
 		Statement stmt = conn.createStatement();
 		
-		/* Execute a SQL query and return the results */
-		String sqlActionFilmsReleaseIn2006 = "SELECT film.title, film.release_year " +
-											 "FROM film JOIN film_category ON film.film_id = film_category.film_id " +
-											 "JOIN category ON category.category_id = film_category.category_id " +
-											 "WHERE film.release_year = 2006 " +
-											 "AND category.name = 'Action'";
+		/* 4. write your query - Execute a SQL query and return the results */
+		String sqlActionFilmsReleaseIn2006 = "SELECT film.title "
+											 + "	, film.release_year "
+											 + "FROM film"
+											 + " JOIN film_category"
+											 + "	ON film.film_id = film_category.film_id "
+											 + "JOIN category "
+											 + " ON category.category_id = film_category.category_id "
+											 + "WHERE film.release_year = 2006 "
+											 + "AND category.name = 'Action'";
 		
+		// 5. Execute the query
 		ResultSet results = stmt.executeQuery(sqlActionFilmsReleaseIn2006);
 		
 		/* Iterate over the results and display each one */
@@ -44,7 +53,7 @@ public class JDBCExample {
 		/* The next query example takes a parameter (i.e. is dynamic) */
 		String firstName = "Nick";
 		String lastName = "Stallone";
-		//String lastName = "O'Malley";     // This is an exmample of non-malicious user input that will cause the query to break
+		//String lastName = "O'Malley";     // This is an example of non-malicious user input that will cause the query to break
 		String sqlMoviesByActor = "SELECT film.title " +
 								  "FROM film join film_actor on film.film_id = film_actor.film_id " +
 								  "JOIN actor on actor.actor_id = film_actor.actor_id " +
@@ -82,7 +91,7 @@ public class JDBCExample {
 			System.out.println(title);
 		}
 		
-		/* The statment objects can also be used to perform INSERT and UPDATE commands */
+		/* The statement objects can also be used to perform INSERT and UPDATE commands */
 		PreparedStatement insertActorStmt = conn.prepareStatement("INSERT INTO actor(first_name, last_name) "+
 																  "VALUES(?, ?)");
 		String actorFirstName = "MARC";

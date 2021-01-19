@@ -1,5 +1,8 @@
 package com.techelevator.models.dto;
 
+// DTO - data transfer object
+// java bean
+
 public class City {
 	private Long id;
 	private String name;
