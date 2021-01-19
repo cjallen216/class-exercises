@@ -154,12 +154,18 @@ WHERE name ILIKE 'Wayne%';
  STEP SIX: The Wayne Family called and asked if they could change their reservation to today. Update the from_date to today
  and the to_date to a week from today.
  */
+ 
+SELECT *
+FROM reservation
+WHERE name ILIKE 'Wayne%';
+-- reservation_id = 50
+
 BEGIN TRANSACTION;
 
 UPDATE reservation
 SET from_date = '2021-01-15'
         , to_date = '2021-01-22'
-WHERE name ILIKE 'Wayne%';
+WHERE reservation_id = 50;
 
 --ROLLBACK TRANSACTION;
 COMMIT TRANSACTION;
