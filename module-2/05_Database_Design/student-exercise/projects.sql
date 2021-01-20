@@ -64,9 +64,6 @@ VALUES
         , ( 'Water Safety' )
         , ( 'Managerial' );
         
-SELECT *
-FROM department;
-
 INSERT INTO project
 ( name, department_id, start_date )
 VALUES
