@@ -11,11 +11,12 @@ import com.techelevator.models.interfaces.CityDAO;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 
-public class JDBCCityDAO implements CityDAO {
-
+public class JDBCCityDAO implements CityDAO
+{
 	private JdbcTemplate jdbcTemplate;
 	
-	public JDBCCityDAO(DataSource dataSource) {
+	public JDBCCityDAO(DataSource dataSource)
+	{
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 
@@ -23,30 +24,48 @@ public class JDBCCityDAO implements CityDAO {
 	public void save(City newCity) 
 	{
 		
-		String sqlInsertCity = "INSERT INTO city(id, name, countrycode, district, population) " +
+		String sqlInsertCity = "INSERT INTO city"
+								+ "("
+								+ "id"
+								+ ", name"
+								+ ", countrycode"
+								+ ", district"
+								+ ", population"
+								+ ") " +
 							   "VALUES(?, ?, ?, ?, ?)";
 		
 		// call the nextval() function in postgres
 		newCity.setId(getNextCityId());
 		
 		// then insert the data
-		jdbcTemplate.update(sqlInsertCity, newCity.getId(),
-										  newCity.getName(),
-										  newCity.getCountryCode(),
-										  newCity.getDistrict(),
-										  newCity.getPopulation());
+		jdbcTemplate.update(sqlInsertCity
+								, newCity.getId()
+								, newCity.getName()
+								, newCity.getCountryCode()
+								, newCity.getDistrict()
+								, newCity.getPopulation());
 	}
 	
 	@Override
-	public City findCityById(long id) {
+	public City findCityById(long id) 
+	{
 		City theCity = null;
-		String sqlFindCityById = "SELECT id, name, countrycode, district, population "+
-							   "FROM city "+
-							   "WHERE id = ?";
-		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlFindCityById, id);
-		if(results.next()) {
-			theCity = mapRowToCity(results);
+		
+		String sqlFindCityById = "SELECT id\r\n " + 
+				"        , name\r\n " + 
+				"        , countrycode\r\n " + 
+				"        , disrict\r\n " + 
+				"        , population\r\n " + 
+				"FROM city\r\n " + 
+				"WHERE id = ?;";
+		
+		SqlRowSet rows = jdbcTemplate.queryForRowSet(sqlFindCityById, id);
+		
+		if(rows.next())
+		{
+			theCity = mapRowToCity(rows);
 		}
+		
 		return theCity;
 	}
 
@@ -130,22 +149,44 @@ public class JDBCCityDAO implements CityDAO {
 	}
 
 	@Override
-	public void update(City city) {
-		// TODO Auto-generated method stub
+	public void update(City city)
+	{
+		String sql = "UPDATE city\r\n" + 
+						"SET name = ?\r\n" + 
+						"        , countrycode = ?\r\n" + 
+						"        , district = ?\r\n" + 
+						"        , population = ?\r\n" + 
+						"WHERE id = ?;";
 		
+		jdbcTemplate.update(sql
+				, city.getName()
+				, city.getCountryCode()
+				, city.getDistrict()
+				, city.getPopulation()
+				, city.getId());
 	}
 
 	@Override
-	public void delete(long id) {
-		// TODO Auto-generated method stub
+	public void delete(long id)
+	{
+		String sql = "DELETE FROM city WHERE id = ?;";
+		
+		jdbcTemplate.update(sql, id);
 		
 	}
 
-	private long getNextCityId() {
-		SqlRowSet nextIdResult = jdbcTemplate.queryForRowSet("SELECT nextval('seq_city_id')");
-		if(nextIdResult.next()) {
-			return nextIdResult.getLong(1);
-		} else {
+	private long getNextCityId()
+	{
+		String sql = "SELECT nextval('seq_city_id') AS id;";
+		
+		SqlRowSet nextIdResult = jdbcTemplate.queryForRowSet(sql);
+		
+		if(nextIdResult.next())
+		{
+			return nextIdResult.getLong("id");
+		} 
+		else
+		{
 			throw new RuntimeException("Something went wrong while getting an id for the new city");
 		}
 	}

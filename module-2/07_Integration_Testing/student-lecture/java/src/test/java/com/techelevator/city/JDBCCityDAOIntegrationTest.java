@@ -25,7 +25,7 @@ public class JDBCCityDAOIntegrationTest
 
 	//SingleConnectionDataSource allows for transactions -- important so that we can ROLLBACK the tests
 	private static SingleConnectionDataSource dataSource;
-	private static JdbcTemplate jdbcTemplate;
+	private static JdbcTemplate jdbcTemplate; // this is for test verification
 	
 	// this is the object under test
 	private JDBCCityDAO dao;
@@ -80,13 +80,16 @@ public class JDBCCityDAOIntegrationTest
 		// act
 		dao.save(testCity); 
 		
+		// DON'T DO THIS - verify manually instead
 		// there is a temptation to test if the save function worked
 		// by just using the dao.findCityByID() function
 		// RESIST the temptation!
-		City actualCity = dao.findCityById(testCity.getId());
+		//City actualCity = dao.findCityById(testCity.getId());
 
 		//assert 
 		assertNotNull(testCity.getId());
+		City actualCity = selectCityById(testCity.getId());
+		
 		assertCitiesAreEqual(testCity, actualCity);
 	}
 

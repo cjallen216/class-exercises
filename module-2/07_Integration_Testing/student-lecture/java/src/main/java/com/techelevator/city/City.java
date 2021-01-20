@@ -57,4 +57,9 @@ public class City
 	{
 		this.population = population;
 	}
+	
+	public String getCityAndState()
+	{
+		return name + ", " + district;
+	}
 }
