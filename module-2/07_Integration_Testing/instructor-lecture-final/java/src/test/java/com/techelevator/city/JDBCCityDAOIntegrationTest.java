@@ -83,10 +83,12 @@ public class JDBCCityDAOIntegrationTest
 		// there is a temptation to test if the save function worked
 		// by just using the dao.findCityByID() function
 		// RESIST the temptation!
-		City actualCity = dao.findCityById(testCity.getId());
+		//City actualCity = dao.findCityById(testCity.getId());
 
 		//assert 
 		assertNotNull(testCity.getId());
+		City actualCity = selectCityById(testCity.getId());
+		
 		assertCitiesAreEqual(testCity, actualCity);
 	}
 

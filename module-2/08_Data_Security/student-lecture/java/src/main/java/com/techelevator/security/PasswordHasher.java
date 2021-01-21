@@ -11,7 +11,8 @@ import javax.crypto.spec.PBEKeySpec;
 
 import org.bouncycastle.util.encoders.Base64;
 
-public class PasswordHasher {
+public class PasswordHasher
+{
 
     private static final int KEY_LENGTH = 128;
     private static final int WORK_FACTOR = 100000;
@@ -30,7 +31,8 @@ public class PasswordHasher {
      * @param salt a salt to add to the password during hashing
      * @return the hashed password
      */
-    public String computeHash(String clearTextPassword, byte[] salt) {
+    public String computeHash(String clearTextPassword, byte[] salt)
+    {
         Key key = createKey(clearTextPassword, salt);
         byte[] digest = key.getEncoded();
         return new String(Base64.encode(digest));
@@ -41,7 +43,8 @@ public class PasswordHasher {
      *
      * @return a new random array of bytes to be used as a salt
      */
-    public byte[] generateRandomSalt() {
+    public byte[] generateRandomSalt()
+    {
         return random.generateSeed(128);
     }
 
@@ -55,24 +58,32 @@ public class PasswordHasher {
      * @param salt the random salt
      * @return the resulting hash as a Key object
      */
-    private Key createKey(String password, byte[] salt) {
+    private Key createKey(String password, byte[] salt)
+    {
         SecretKeyFactory factory = getSecretKeyFactory();
         KeySpec keyspec = new PBEKeySpec(password.toCharArray(), salt, WORK_FACTOR, KEY_LENGTH);
         Key key;
-        try {
+        try
+        {
             key = factory.generateSecret(keyspec);
-        } catch (InvalidKeySpecException e) {
+        }
+        catch (InvalidKeySpecException e)
+        {
             // This should never happen
             throw new RuntimeException("Something weird happened...", e);
         }
         return key;
     }
 
-    private SecretKeyFactory getSecretKeyFactory() {
+    private SecretKeyFactory getSecretKeyFactory()
+    {
         SecretKeyFactory factory;
-        try {
+        try
+        {
             factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
-        } catch (NoSuchAlgorithmException e) {
+        }
+        catch (NoSuchAlgorithmException e)
+        {
             // this should never happen
             throw new RuntimeException("Something weird happened...", e);
         }

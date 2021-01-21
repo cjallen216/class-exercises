@@ -11,8 +11,8 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 
 import com.techelevator.security.PasswordHasher;
 
-public class JdbcUserDao implements UserDao {
-
+public class JdbcUserDao implements UserDao
+{
     private JdbcTemplate jdbcTemplate;
     private PasswordHasher passwordHasher;
 
@@ -23,7 +23,8 @@ public class JdbcUserDao implements UserDao {
      * @param dataSource an SQL data source
      * @param passwordHasher an object to salt and hash passwords
      */
-    public JdbcUserDao(DataSource dataSource, PasswordHasher passwordHasher) {
+    public JdbcUserDao(DataSource dataSource, PasswordHasher passwordHasher)
+    {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
         this.passwordHasher = passwordHasher;
     }
@@ -64,15 +65,18 @@ public class JdbcUserDao implements UserDao {
      */
     @Override
     public boolean isUsernameAndPasswordValid(String userName, String password) {
-        String sqlSearchForUser = "SELECT * FROM users WHERE UPPER(username) = '" + userName.toUpperCase() + "'";
+        String sqlSearchForUser = "SELECT * FROM users WHERE UPPER(username) = ?";
 
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSearchForUser);
-        if (results.next()) {
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSearchForUser, userName.toUpperCase());
+        if (results.next())
+        {
             String storedSalt = results.getString("salt");
             String storedPassword = results.getString("password");
             String hashedPassword = passwordHasher.computeHash(password, Base64.decode(storedSalt));
             return storedPassword.equals(hashedPassword);
-        } else {
+        }
+        else
+        {
             return false;
         }
     }
@@ -82,12 +86,14 @@ public class JdbcUserDao implements UserDao {
      * @return a List of user objects
      */
     @Override
-    public List<User> getAllUsers() {
+    public List<User> getAllUsers()
+    {
         List<User> users = new ArrayList<User>();
         String sqlSelectAllUsers = "SELECT id, username FROM users";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSelectAllUsers);
 
-        while (results.next()) {
+        while (results.next())
+        {
             User user = new User();
             user.setId(results.getLong("id"));
             user.setUsername(results.getString("username"));
