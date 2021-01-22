@@ -1,6 +1,7 @@
 package com.techelevator.model;
 
-public class Campground {
+public class Campground
+{
 
     private int campgroundId;
     private int parkId;
@@ -9,56 +10,69 @@ public class Campground {
     private int openToMonth;
     private double dailyFee;
 
-    public int getCampgroundId() {
+    public int getCampgroundId()
+    {
         return campgroundId;
     }
 
-    public void setCampgroundId(int campgroundId) {
+    public void setCampgroundId(int campgroundId)
+    {
         this.campgroundId = campgroundId;
     }
 
-    public int getParkId() {
+    public int getParkId()
+    {
         return parkId;
     }
 
-    public void setParkId(int parkId) {
+    public void setParkId(int parkId)
+    {
         this.parkId = parkId;
     }
 
-    public String getName() {
+    public String getName()
+    {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(String name)
+    {
         this.name = name;
     }
 
-    public int getOpenFromMonth() {
+    public int getOpenFromMonth()
+    {
         return openFromMonth;
     }
 
-    public void setOpenFromMonth(int openFromMonth) {
+    public void setOpenFromMonth(int openFromMonth)
+    {
         this.openFromMonth = openFromMonth;
     }
 
-    public int getOpenToMonth() {
+    public int getOpenToMonth()
+    {
         return openToMonth;
     }
 
-    public void setOpenToMonth(int openToMonth) {
+    public void setOpenToMonth(int openToMonth)
+    {
         this.openToMonth = openToMonth;
     }
 
-    public double getDailyFee() {
+    public double getDailyFee()
+    {
         return dailyFee;
     }
 
-    public void setDailyFee(double dailyFee) {
+    public void setDailyFee(double dailyFee)
+    {
         this.dailyFee = dailyFee;
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "Campground{" +
                 "campgroundId=" + campgroundId +
                 ", parkId=" + parkId +

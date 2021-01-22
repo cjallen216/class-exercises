@@ -10,23 +10,37 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-public class JDBCReservationDAOTests extends BaseDAOTests {
+public class JDBCReservationDAOTests extends BaseDAOTests
+{
 
-    private ReservationDAO dao;
+	private ReservationDAO dao;
 
-    @Before
-    public void setup() {
-        dao = new JDBCReservationDAO(dataSource);
-    }
+	@Before
+	public void setup()
+	{
+		dao = new JDBCReservationDAO(dataSource);
+	}
 
-    @Test
-    public void createReservation_Should_ReturnNewReservationId() {
-        int reservationCreated = dao.createReservation(1,
-                "TEST NAME",
-                LocalDate.now().plusDays(1),
-                LocalDate.now().plusDays(3));
+	@Test
+	public void createReservation_Should_ReturnNewReservationId()
+	{
+		int reservationCreated = dao.createReservation(1, "TEST NAME", LocalDate.now().plusDays(1),
+				LocalDate.now().plusDays(3));
 
-        assertEquals(reservationCreated, 1);
-    }
+		assertEquals(reservationCreated, 1);
+	}
+	
+	@Test
+	public void getAllReservationsForNext30Days_should_returnTwoNewReservations()
+	{
+		
+		int expectedCount = 2; 
+		
+		List<Reservation> actual = dao.getAllReservationsForNext30Days();
+		
+		assertEquals(expectedCount, actual);
+		
+		
+	}
 
 }

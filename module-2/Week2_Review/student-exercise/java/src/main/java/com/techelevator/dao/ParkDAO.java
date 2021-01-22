@@ -4,7 +4,8 @@ import com.techelevator.model.Park;
 
 import java.util.List;
 
-public interface ParkDAO {
+public interface ParkDAO
+{
 
-    List<Park> getAllParks();
+	List<Park> getAllParks();
 }

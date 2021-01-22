@@ -9,20 +9,23 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-public class JDBCCampgroundDAOTests extends BaseDAOTests {
+public class JDBCCampgroundDAOTests extends BaseDAOTests
+{
 
-    private CampgroundDAO dao;
+	private CampgroundDAO dao;
 
-    @Before
-    public void setup() {
-        dao = new JDBCCampgroundDAO(dataSource);
-    }
+	@Before
+	public void setup()
+	{
+		dao = new JDBCCampgroundDAO(dataSource);
+	}
 
-    @Test
-    public void getCampgrounds_Should_ReturnAllCampgrounds() {
-        List<Campground> campgrounds = dao.getCampgroundsByParkId(1);
+	@Test
+	public void getCampgrounds_Should_ReturnAllCampgrounds()
+	{
+		List<Campground> campgrounds = dao.getCampgroundsByParkId(1);
 
-        assertEquals(3,campgrounds.size());
-    }
+		assertEquals(3, campgrounds.size());
+	}
 
 }

@@ -10,27 +10,32 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-public class JDBCSiteDAOTests extends BaseDAOTests {
+public class JDBCSiteDAOTests extends BaseDAOTests
+{
 
-    private SiteDAO dao;
+	private SiteDAO dao;
 
-    @Before
-    public void setup() {
-        dao = new JDBCSiteDAO(dataSource);
-    }
+	@Before
+	public void setup()
+	{
+		dao = new JDBCSiteDAO(dataSource);
+	}
 
-    @Test
-    public void getSitesThatAllowRVs_Should_ReturnSites() {
-        List<Site> sites = dao.getSitesThatAllowRVs(1);
+	@Test
+	public void getSitesThatAllowRVs_Should_ReturnSites()
+	{
+		List<Site> sites = dao.getSitesThatAllowRVs(1);
 
-        assertEquals(18,sites.size());
-    }
+		assertEquals(18, sites.size());
+	}
 
-    public void getAvailableSites_Should_ReturnSites() {
+	public void getAvailableSites_Should_ReturnSites()
+	{
 
-    }
+	}
 
-    public void getAvailableSitesDateRange_Should_ReturnSites() {
+	public void getAvailableSitesDateRange_Should_ReturnSites()
+	{
 
-    }
+	}
 }
