@@ -7,12 +7,14 @@ import org.springframework.jdbc.datasource.SingleConnectionDataSource;
 
 import java.sql.SQLException;
 
-public class BaseDAOTests {
+public class BaseDAOTests
+{
 
     static SingleConnectionDataSource dataSource;
 
     @BeforeClass
-    public static void setupDataSource() {
+    public static void setupDataSource()
+    {
         dataSource = new SingleConnectionDataSource();
         dataSource.setUrl("jdbc:postgresql://localhost:5432/gills_art");
         dataSource.setUsername("postgres");
@@ -25,14 +27,16 @@ public class BaseDAOTests {
 
     /* After all tests have finished running, this method will close the DataSource */
     @AfterClass
-    public static void closeDataSource() throws SQLException {
+    public static void closeDataSource() throws SQLException
+    {
         dataSource.destroy();
     }
 
     /* After each test, we rollback any changes that were made to the database so that
      * everything is clean for the next test */
     @After
-    public void rollback() throws SQLException {
+    public void rollback() throws SQLException
+    {
         dataSource.getConnection().rollback();
     }
 }

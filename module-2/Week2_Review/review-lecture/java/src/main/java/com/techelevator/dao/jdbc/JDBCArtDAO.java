@@ -60,6 +60,31 @@ public class JDBCArtDAO extends BaseJdbcDao implements ArtDAO
         
         return artList;
     }
+    
+
+
+    @Override
+    public List<Art> searchByTitle(String title)
+    {
+        List<Art> artList = new ArrayList<Art>();
+
+        String sql = "SELECT art_id "
+                    + " , artist_id "
+                    + " , title "
+                    + "FROM art "
+                    + "WHERE title ILIKE ?; ";
+
+        SqlRowSet rows = jdbcTemplate.queryForRowSet(sql, "%" + title + "%");
+
+        while(rows.next())
+        {
+            Art art = mapRowToArt(rows);
+
+            artList.add(art);
+        }
+        
+        return artList;
+    }
 
     @Override
     public Art getById(long id)

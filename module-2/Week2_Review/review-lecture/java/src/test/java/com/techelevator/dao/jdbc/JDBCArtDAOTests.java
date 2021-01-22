@@ -12,12 +12,14 @@ import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
-public class JDBCArtDAOTests extends BaseDAOTests {
+public class JDBCArtDAOTests extends BaseDAOTests
+{
 
     private ArtDAO dao;
 
     @Before
-    public void setup() {
+    public void setup()
+    {
         dao = new JDBCArtDAO(dataSource);
     }
 
@@ -32,6 +34,23 @@ public class JDBCArtDAOTests extends BaseDAOTests {
 
         //assert
         assertEquals("Because the default script only inserts 3 pieces of art",expectedCount, actualList.size());
+    }
+    
+
+    
+
+    @Test
+    public void searcyByTitle_should_return_1_record_for_laugh() 
+    {
+        //arrange
+        String searchWord = "laugh";
+        int expectedCount = 1;
+
+        //act
+        List<Art> actualList = dao.searchByTitle(searchWord);
+
+        //assert
+        assertEquals("Because I have 1 work of art with 'laugh' in the title.",expectedCount, actualList.size());
     }
     
 
@@ -72,7 +91,7 @@ public class JDBCArtDAOTests extends BaseDAOTests {
     
 
     @Test
-    public void update_should_insert_new_art_into_the_database_and_return_new_id() 
+    public void update_should_modify_art_in_the_database() 
     {
         //arrange
     	String expectedTitle = "Swimming with Fish";

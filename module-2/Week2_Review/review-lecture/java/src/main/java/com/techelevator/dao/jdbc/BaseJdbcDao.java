@@ -8,7 +8,8 @@ public class BaseJdbcDao
 {
     protected JdbcTemplate jdbcTemplate;
 
-    public BaseJdbcDao(DataSource dataSource) {
+    public BaseJdbcDao(DataSource dataSource)
+    {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 }
