@@ -26,7 +26,7 @@ public class JDBCSiteDAOTests extends BaseDAOTests
 	{
 		List<Site> sites = dao.getSitesThatAllowRVs(1);
 
-		assertEquals(18, sites.size());
+		assertEquals(20, sites.size());
 	}
 
 	public void getAvailableSites_Should_ReturnSites()

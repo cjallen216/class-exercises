@@ -10,6 +10,6 @@ public interface ReservationDAO
 
 	int createReservation(int siteId, String name, LocalDate fromDate, LocalDate toDate);
 	
-	List<Reservation> getAllReservationsForNext30Days();
+	List<Reservation> getAllReservationsForNext30Days(int parkId);
 
 }

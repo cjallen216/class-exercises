@@ -27,20 +27,17 @@ public class JDBCReservationDAOTests extends BaseDAOTests
 		int reservationCreated = dao.createReservation(1, "TEST NAME", LocalDate.now().plusDays(1),
 				LocalDate.now().plusDays(3));
 
-		assertEquals(reservationCreated, 1);
+		assertEquals(1, reservationCreated);
 	}
 	
 	@Test
-	public void getAllReservationsForNext30Days_should_returnTwoNewReservations()
+	public void getAllReservationsForNext30Days_should_returnTwentyOneNewReservations()
 	{
+		int expectedCount = 21; 
 		
-		int expectedCount = 2; 
+		int actual = dao.getAllReservationsForNext30Days(1).size();
 		
-		List<Reservation> actual = dao.getAllReservationsForNext30Days();
-		
-		assertEquals(expectedCount, actual);
-		
-		
+		assertEquals("because there are 21 reservations on site 1 in the next 30 days", expectedCount, actual);		
 	}
 
 }

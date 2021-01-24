@@ -45,29 +45,43 @@ public class JDBCReservationDAO implements ReservationDAO
 		
 		//reservation.setReservationId((int) getNextReservationId());
 		
-		reservation.setReservationId(0);
+		//reservation.setReservationId(1);
 		
 		jdbcTemplate.update(sql, siteId, name, fromDate, toDate);
+		
+//		String sqlReturn = "SELECT reservation_id\r\n" + 
+//				"        , site_id\r\n" + 
+//				"        , name\r\n" + 
+//				"        , from_date\r\n" + 
+//				"        , to_date\r\n" + 
+//				"        , create_date\r\n" + 
+//				"FROM reservation;";
 		
 		reservationId = reservation.getReservationId();
 		
 		return (int)reservationId;
 	}
 	
-	public List<Reservation> getAllReservationsForNext30Days()
+	@Override
+	public List<Reservation> getAllReservationsForNext30Days(int parkId)
 	{
 		List<Reservation> reservations = new ArrayList<Reservation>();
 		
 		String sql = "SELECT reservation_id\r\n" + 
-				"        , site_id\r\n" + 
-				"        , name\r\n" + 
+				"        , r.site_id\r\n" + 
+				"        , r.name\r\n" + 
 				"        , from_date\r\n" + 
 				"        , to_date\r\n" + 
 				"        , create_date\r\n" + 
-				"FROM reservation\r\n" + 
-				"WHERE from_date BETWEEN NOW() AND NOW() + INTERVAL '30 days';";
+				"FROM reservation AS r\r\n" + 
+				"INNER JOIN site AS s\r\n" + 
+				"        ON r.site_id = s.site_id\r\n" + 
+				"INNER JOIN campground AS c\r\n" + 
+				"        ON s.campground_id = c.campground_id\r\n" + 
+				"WHERE from_date BETWEEN NOW() AND NOW() + INTERVAL '30 days'\r\n" + 
+				"        AND c.park_id = ?;";
 		
-		SqlRowSet rows = jdbcTemplate.queryForRowSet(sql);
+		SqlRowSet rows = jdbcTemplate.queryForRowSet(sql, parkId);
 		
 		while (rows.next())
 		{
