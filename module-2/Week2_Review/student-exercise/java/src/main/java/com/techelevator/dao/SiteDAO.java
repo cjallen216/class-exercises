@@ -9,4 +9,6 @@ public interface SiteDAO
 {
 
 	List<Site> getSitesThatAllowRVs(int parkId);
+	
+	List<Site> getCurrentAvailableSites();
 }
