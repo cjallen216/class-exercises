@@ -4,13 +4,40 @@ import java.util.Scanner;
 
 import org.springframework.web.client.RestTemplate;
 
-public class App {
-
-  public static void main(String[] args) {
+public class App
+{
+	
+	private static final String API_URL = "http://localhost:3000/locations";
+		
+  public static void main(String[] args)
+  {
     run();
   }
 
-  private static void run() {
+  private static void run()
+  {
+	  Scanner scanner = new Scanner(System.in);
+	  printGreeting();
+	  
+	  int menuSelection = 0;
+	  try {
+	    menuSelection = Integer.parseInt(scanner.nextLine());
+	  } catch (NumberFormatException exception) {
+	    System.out.println("Error parsing the input for menu selection.");
+	  }
+	  System.out.println("");
+	  
+	  if (menuSelection == 1) {
+		  // list locations
+		  RestTemplate restTemplate = new RestTemplate();
+		  Location[] locations = restTemplate.getForObject(API_URL, Location[].class);
+		  printLocations(locations);
+		} else if (menuSelection == 2) {
+		  scanner.close();
+		  System.exit(0);
+		} else {
+		  System.out.println("Invalid Selection");
+		}
   }
 
   private static void printGreeting() {
@@ -30,7 +57,24 @@ public class App {
       System.out.println(location.getId() + ": " + location.getName());
     }
     System.out.println("");
-    System.out.print("Please enter a locsation id to get the details: ");
+    System.out.print("Please enter a location id to get the details: ");
+    
+    Scanner scanner = new Scanner(System.in);
+    RestTemplate restTemplate = new RestTemplate();
+    
+    int id = 0;
+    try {
+      id = Integer.parseInt(scanner.nextLine());
+    } catch (NumberFormatException exception) {
+      System.out.println("Error parsing the input for location id.");
+    }
+    
+    if (id > 0 && id <= locations.length) {
+    	  Location location = restTemplate.getForObject(API_URL + "/" + id, Location.class);
+    	  printLocation(location);
+    	} else {
+    	  System.out.println("Invalid Location Id.");
+    	}
   }
 
   private static void printLocation(Location location) {
