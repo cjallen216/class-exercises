@@ -24,13 +24,17 @@ public class JDBCReservationDAO implements ReservationDAO
 	@Override
 	public int createReservation(int siteId, String name, LocalDate fromDate, LocalDate toDate)
 	{
-		Reservation reservation = new Reservation();
+		int nextId = getNextReservationId();
 		
-		long reservationId = 0;
+		//Reservation reservation = new Reservation();
 		
+		//long reservationId = 0;
+		
+		//insert the reservation
 		String sql = "INSERT INTO reservation\r\n" + 
 				"(\r\n" + 
-				"        site_id\r\n" + 
+				"    reservation_id    "
+				+ ", site_id\r\n" + 
 				"        , name\r\n" + 
 				"        , from_date\r\n" + 
 				"        , to_date\r\n" + 
@@ -39,6 +43,7 @@ public class JDBCReservationDAO implements ReservationDAO
 				"(\r\n" + 
 				"        ?\r\n" + 
 				"        , ?\r\n" + 
+				"        , ?\r\n" +
 				"        , ?\r\n" + 
 				"        , ?\r\n" + 
 				");";
@@ -47,7 +52,7 @@ public class JDBCReservationDAO implements ReservationDAO
 		
 		//reservation.setReservationId(1);
 		
-		jdbcTemplate.update(sql, siteId, name, fromDate, toDate);
+		jdbcTemplate.update(sql, nextId, siteId, name, fromDate, toDate);
 		
 //		String sqlReturn = "SELECT reservation_id\r\n" + 
 //				"        , site_id\r\n" + 
@@ -57,9 +62,10 @@ public class JDBCReservationDAO implements ReservationDAO
 //				"        , create_date\r\n" + 
 //				"FROM reservation;";
 		
-		reservationId = reservation.getReservationId();
+		//reservationId = reservation.getReservationId();
 		
-		return (int)reservationId;
+		//return the new reservation_id 
+		return nextId;
 	}
 	
 	@Override
@@ -104,13 +110,13 @@ public class JDBCReservationDAO implements ReservationDAO
 		return r;
 	}
 	
-	private long getNextReservationId()
+	private int getNextReservationId()
 	{
-		SqlRowSet nextIdResult = jdbcTemplate.queryForRowSet("SELECT nextval('reservation_reservation_id_seq')");
+		SqlRowSet nextIdResult = jdbcTemplate.queryForRowSet("SELECT nextval('reservation_reservation_id_seq') AS id;");
 		
 		if(nextIdResult.next())
 		{
-			return nextIdResult.getLong(1);
+			return nextIdResult.getInt("id");
 		}
 		else
 		{

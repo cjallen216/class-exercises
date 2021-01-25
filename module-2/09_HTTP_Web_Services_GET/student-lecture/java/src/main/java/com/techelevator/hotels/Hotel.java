@@ -20,7 +20,7 @@ public class Hotel {
                 "\n Name:'" + name + '\'' +
                 "\n Stars: " + stars +
                 "\n RoomsAvailable: " + roomsAvailable +
-                "\n overImage" + coverImage;
+                "\n CoverImage" + coverImage;
     }
 
     public int getId() {

@@ -4,9 +4,13 @@ import java.util.Scanner;
 
 import org.springframework.web.client.RestTemplate;
 
-public class App {
-
-    public static void main(String[] args) {
+public class App
+{
+	private static final String BASE_URL = "http://localhost:3000/";
+	private static RestTemplate restTemplate = new RestTemplate();
+	
+    public static void main(String[] args)
+    {
         run();
     }
 
@@ -24,17 +28,39 @@ public class App {
                 System.out.println("Error parsing the input for menu selection.");
             }
             System.out.println("");
-            if (menuSelection == 1) {
-                System.out.println("Not implemented");
-            } else if (menuSelection == 2) {
-                System.out.println("Not implemented");
-            } else if (menuSelection == 3) {
-                System.out.println("Not implemented");
-            } else if (menuSelection == 4) {
-                System.out.println("Not implemented");
-            } else if (menuSelection == 5) {
-                System.out.println("Not implemented");
-            } else if (menuSelection == 6) {
+            
+            if (menuSelection == 1)
+            {
+            	getHotels();
+            }
+            
+            else if (menuSelection == 2)
+            {
+                getReviews();
+            }
+            
+            else if (menuSelection == 3)
+            {
+            	System.out.println("Enter a hotel id: ");
+            	int hotelId = Integer.parseInt(scanner.nextLine());
+            	getHotelsById(hotelId);
+            }
+            
+            else if (menuSelection == 4)
+            {
+            	System.out.println("Enter a hotel id: ");
+            	int hotelId = Integer.parseInt(scanner.nextLine());
+            	getReviewsByHotelId(hotelId);
+            }
+            
+            else if (menuSelection == 5)
+            {
+            	System.out.println("Enter a rating: ");
+            	int rating = Integer.parseInt(scanner.nextLine());
+            	getHotelsByRating(rating);
+            }
+            
+            else if (menuSelection == 6) {
                 System.out.println("Not implemented - Create a custom Web API query here");
             } else if (menuSelection == 0) {
                 continue;
@@ -83,4 +109,54 @@ public class App {
         }
     }
 
+    // API calls
+    private static void getHotels()
+    {
+    	// 1. specify the URL (endpoint) of the API
+    	String url = BASE_URL + "hotels";
+    	
+    	// 2. call the API
+    	// 3. convert the data - RestTemplate converts it for you
+    	Hotel[] hotels = restTemplate.getForObject(url, Hotel[].class);
+    	 	
+    	// 4. use the data
+    	printHotels(hotels);
+    }
+    
+    private static void getHotelsByRating(int rating)
+    {
+    	String url = BASE_URL + "hotels?stars=" + rating;
+    	
+    	Hotel[] hotels = restTemplate.getForObject(url, Hotel[].class);
+    	 	
+    	// 4. use the data
+    	printHotels(hotels);
+    }
+    
+    private static void getReviews()
+    {
+    	String url = BASE_URL + "reviews";
+    	
+    	Review[] reviews = restTemplate.getForObject(url, Review[].class);
+    	
+    	printReviews(reviews);
+    }
+    
+    private static void getHotelsById(int id)
+    {
+    	String url = BASE_URL + "hotels/" + id;
+    	
+    	Hotel hotel = restTemplate.getForObject(url, Hotel.class);
+    	 	
+    	printHotel(hotel);
+    }
+    
+    private static void getReviewsByHotelId(int id)
+    {
+    	String url = BASE_URL + "reviews?hotelID=" + id;
+    	
+    	Review[] reviews = restTemplate.getForObject(url, Review[].class);
+    	
+    	printReviews(reviews);
+    }
 }
