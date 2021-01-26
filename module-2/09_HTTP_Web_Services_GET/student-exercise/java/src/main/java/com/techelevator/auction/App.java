@@ -23,38 +23,79 @@ public class App
 
 	public Auction[] listAllAuctions()
 	{
+		// 1. specify the URL (endpoint) of the API
 		String url = API_URL;
     	
-    	Auction[] auctions = restTemplate.getForObject(url, Auction[].class);
+		// 2. call the API
+		// 3. convert the data - RestTemplate converts it for you
+		try
+		{
+			Auction[] auctions = restTemplate.getForObject(url, Auction[].class);
 
-    	return auctions;
+	    	// 4. use the data
+	    	return auctions;
+		}
+		catch (Exception e)
+		{
+			// TODO: handle exception
+			return null;
+		}
+
 	}
 
 	public Auction listDetailsForAuction(int id)
 	{
 		String url = API_URL + "/" + id;
+		
+		try
+		{
+			Auction auction = restTemplate.getForObject(url, Auction.class);
+			return auction;
+		}
+		catch (Exception e)
+		{
+			// TODO: handle exception
+			return null;
+		}
     	
-    	Auction auction = restTemplate.getForObject(url, Auction.class);
-    	    	
-    	return auction;
 	}
 
 	public Auction[] findAuctionsSearchTitle(String title)
 	{
 		String url = API_URL + "?title_like=" + title;
+		
+		try
+		{
+			Auction[] reviews = restTemplate.getForObject(url, Auction[].class);
 
-		Auction[] reviews = restTemplate.getForObject(url, Auction[].class);
+			return reviews;
+		}
+		catch (Exception e)
+		{
+			// TODO: handle exception
+			return null;
+		}
 
-		return reviews;
+		
 	}
 
 	public Auction[] findAuctionsSearchPrice(double price)
 	{
 		String url = API_URL + "?currentBid_lte=" + price;
+		
+		try
+		{
+			Auction[] reviews = restTemplate.getForObject(url, Auction[].class);
 
-		Auction[] reviews = restTemplate.getForObject(url, Auction[].class);
+			return reviews;
+		}
+		catch (Exception e)
+		{
+			// TODO: handle exception
+			return null;
+		}
 
-		return reviews;
+		
 	}
 
 	private void run()
