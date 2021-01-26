@@ -111,6 +111,13 @@
       "roomsAvailable": 75,
       "costPerNight": 185,
       "coverImage": "greektown-detroit.webp"
+    },
+    {
+      "name": "Rockstar Bed and Breakfast",
+      "stars": 4,
+      "roomsAvailable": 5,
+      "costPerNight": 249,
+      "id": 8
     }
   ],
   "reservations": [
