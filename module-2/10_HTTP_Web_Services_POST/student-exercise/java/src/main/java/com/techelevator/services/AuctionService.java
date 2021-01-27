@@ -88,10 +88,7 @@ public class AuctionService
 		
 		String url = API_URL;
 		
-		HttpHeaders headers = new HttpHeaders();
-		headers.setContentType(MediaType.APPLICATION_JSON);
-		
-		HttpEntity<Auction> entity = new HttpEntity<Auction>(auction, headers);
+		HttpEntity<Auction> entity = makeEntity(auction);
 		
 		try
 		{
@@ -114,11 +111,8 @@ public class AuctionService
 		Auction auction = makeAuction(auctionString);
 		
 		String url = API_URL + "/" + auction.getId();
-		
-		HttpHeaders headers = new HttpHeaders();
-		headers.setContentType(MediaType.APPLICATION_JSON);
-		
-		HttpEntity<Auction> entity = new HttpEntity<Auction>(auction, headers);
+			
+		HttpEntity<Auction> entity = makeEntity(auction);
 		
 		try
 		{
