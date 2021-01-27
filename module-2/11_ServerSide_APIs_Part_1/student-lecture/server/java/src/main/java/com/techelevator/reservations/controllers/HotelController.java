@@ -32,12 +32,13 @@ public class HotelController
 	
 	@RequestMapping(path = "/hotels", method = RequestMethod.GET)
 	public List<Hotel> list(
-			@RequestParam(value = "name_like", defaultValue = "") String name
-			, @RequestParam(value = "cost_gte", defaultValue = "0") double costPerNight
+			//@RequestParam(value = "name_like", defaultValue = "") String name
+			//,
+			@RequestParam(value = "cost_gte", defaultValue = "0") double costPerNight
 			)
 	{
 		List<Hotel> hotels = hotelDAO.list();
-		hotels = HotelFilters.filterByName(hotels, name);
+		//hotels = HotelFilters.filterByName(hotels, name);
 		hotels = HotelFilters.filterByCost(hotels, costPerNight);
 		
 		return hotels;
