@@ -24,10 +24,12 @@ public class AuctionService
 		try
 		{
 			auctions = restTemplate.getForObject(API_URL, Auction[].class);
-		} catch (RestClientResponseException ex)
+		}
+		catch (RestClientResponseException ex)
 		{
 			console.printError("Could not retrieve the auctions. Is the server running?");
-		} catch (ResourceAccessException ex)
+		}
+		catch (ResourceAccessException ex)
 		{
 			console.printError("A network error occurred.");
 		}
@@ -40,10 +42,12 @@ public class AuctionService
 		try
 		{
 			auction = restTemplate.getForObject(API_URL + "/" + id, Auction.class);
-		} catch (RestClientResponseException ex)
+		}
+		catch (RestClientResponseException ex)
 		{
 			console.printError("Could not retrieve the auction.");
-		} catch (ResourceAccessException ex)
+		}
+		catch (ResourceAccessException ex)
 		{
 			console.printError("A network error occurred.");
 		}
@@ -56,10 +60,12 @@ public class AuctionService
 		try
 		{
 			auctions = restTemplate.getForObject(API_URL + "?title_like=" + title, Auction[].class);
-		} catch (RestClientResponseException ex)
+		}
+		catch (RestClientResponseException ex)
 		{
 			console.printError("The title was not found. Please try again.");
-		} catch (ResourceAccessException ex)
+		}
+		catch (ResourceAccessException ex)
 		{
 			console.printError("A network error occurred.");
 		}
@@ -72,10 +78,12 @@ public class AuctionService
 		try
 		{
 			auctions = restTemplate.getForObject(API_URL + "?currentBid_lte=" + price, Auction[].class);
-		} catch (RestClientResponseException ex)
+		}
+		catch (RestClientResponseException ex)
 		{
 			console.printError("No auctions found. Please try again.");
-		} catch (ResourceAccessException ex)
+		}
+		catch (ResourceAccessException ex)
 		{
 			console.printError("A network error occurred.");
 		}
@@ -127,7 +135,6 @@ public class AuctionService
 		{
 			return null;
 		}
-		
 		
 	}
 
