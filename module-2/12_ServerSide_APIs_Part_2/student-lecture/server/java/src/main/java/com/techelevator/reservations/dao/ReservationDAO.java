@@ -6,18 +6,19 @@ import com.techelevator.reservations.exception.HotelNotFoundException;
 import com.techelevator.reservations.exception.ReservationNotFoundException;
 import com.techelevator.reservations.models.Reservation;
 
-public interface ReservationDAO {
+public interface ReservationDAO
+{
 
-    List<Reservation> findAll();
+	List<Reservation> findAll();
 
-    List<Reservation> findByHotel(int hotelID) throws HotelNotFoundException;
+	List<Reservation> findByHotel(int hotelID) throws HotelNotFoundException;
 
-    Reservation get(int reservationID) throws ReservationNotFoundException;
+	Reservation get(int reservationID) throws ReservationNotFoundException;
 
-    Reservation create(Reservation reservation, int hotelID) throws HotelNotFoundException;
+	Reservation create(Reservation reservation, int hotelID) throws HotelNotFoundException;
 
-    Reservation update(Reservation reservation, int id) throws ReservationNotFoundException;
+	Reservation update(Reservation reservation, int id) throws ReservationNotFoundException;
 
-    void delete(int id) throws ReservationNotFoundException;
+	void delete(int id) throws ReservationNotFoundException;
 
 }

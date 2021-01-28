@@ -4,12 +4,13 @@ import com.techelevator.reservations.models.Hotel;
 
 import java.util.List;
 
-public interface HotelDAO {
+public interface HotelDAO
+{
 
-    List<Hotel> list();
+	List<Hotel> list();
 
-    void create(Hotel hotel);
+	void create(Hotel hotel);
 
-    Hotel get(int id);
+	Hotel get(int id);
 
 }
