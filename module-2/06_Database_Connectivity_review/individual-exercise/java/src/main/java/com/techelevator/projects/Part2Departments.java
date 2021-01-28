@@ -29,7 +29,11 @@ public class Part2Departments
     	// 2.1 - add all departments to the database
     	System.out.println("*** 2.1 Adding departments ***\n");
         addDepartment(1, "Department of Redundancey Department"); // misspelled on purpose
-        addDepartment(2, "Network Administration");        
+        addDepartment(2, "Network Administration");
+        addDepartment(3, "Research and Development");
+        addDepartment(4, "Store Support");
+        addDepartment(5, "The Best Department Ever");
+        addDepartment(42, "The Answer Department");
         // TODO: add the remaining departments to the database        
         // TODO: add some of your own departments - any name will do :)
         addDepartment(82, "Team Party Planners");
@@ -45,12 +49,16 @@ public class Part2Departments
         getDepartmentById(1);
         getDepartmentById(18);
         getDepartmentById(82);
+        getDepartmentById(42);
         // try searching for some of your own
         
         // 2.4 - search for department by name
         System.out.println("\n*** 2.4 Search for department by name ***\n");
         searchForDepartmentByName("red");
         searchForDepartmentByName("Redundant");
+        searchForDepartmentByName("answer");
+        searchForDepartmentByName("best");
+        searchForDepartmentByName("never");
         // try some other name searches
         
         
