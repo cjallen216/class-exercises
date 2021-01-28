@@ -31,7 +31,7 @@ public class Part2Departments
         addDepartment(1, "Department of Redundancey Department"); // misspelled on purpose
         addDepartment(2, "Network Administration");        
         // TODO: add the remaining departments to the database        
-        // TODO: add some of your own deparments - any name will do :)
+        // TODO: add some of your own departments - any name will do :)
         addDepartment(82, "Team Party Planners");
         
         

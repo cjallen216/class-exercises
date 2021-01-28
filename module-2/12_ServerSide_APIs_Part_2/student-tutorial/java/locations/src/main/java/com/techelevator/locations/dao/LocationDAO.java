@@ -5,16 +5,20 @@ import com.techelevator.locations.models.Location;
 
 import java.util.List;
 
-public interface LocationDAO {
+import org.springframework.stereotype.Component;
 
-    List<Location> list();
+@Component
+public interface LocationDAO
+{
 
-    Location get(int id) throws LocationNotFoundException;
+	List<Location> list();
 
-    Location create(Location location);
+	Location get(int id) throws LocationNotFoundException;
 
-    Location update(Location location, int id) throws LocationNotFoundException;
+	Location create(Location location);
 
-    void delete(int id) throws LocationNotFoundException;
+	Location update(Location location, int id) throws LocationNotFoundException;
+
+	void delete(int id) throws LocationNotFoundException;
 
 }
