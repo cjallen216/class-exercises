@@ -5,10 +5,12 @@ import org.springframework.stereotype.Component;
 import com.techelevator.model.CatFact;
 
 @Component
-public class RestCatFactService implements CatFactService {
+public class RestCatFactService implements CatFactService
+{
 
 	@Override
-	public CatFact getFact() {
+	public CatFact getFact()
+	{
 		// TODO Auto-generated method stub
 		return null;
 	}
