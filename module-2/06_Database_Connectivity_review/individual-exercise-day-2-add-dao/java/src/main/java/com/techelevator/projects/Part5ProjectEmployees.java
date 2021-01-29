@@ -2,11 +2,14 @@ package com.techelevator.projects;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.List;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 
+import com.techelevator.projects.models.Employee;
+import com.techelevator.projects.models.Project;
 import com.techelevator.projects.models.dao.ProjectEmployeeDAO;
 import com.techelevator.projects.models.jdbc.JDBCProjectEmployeeDAO;
 
@@ -40,7 +43,7 @@ public class Part5ProjectEmployees
     	
     	// 5.2 - Get Employees by Project
     	System.out.println("\n*** 5.2 Get Employees by Project ***\n");        
-        // TODO: display all employess for a project
+        // TODO: display all employees for a project
     	getEmployeesByProject(1);    
     	getEmployeesByProject(6);     
     	getEmployeesByProject(7);   
@@ -94,6 +97,8 @@ public class Part5ProjectEmployees
     	try
 		{
     		//TODO: call the DAO to add the employee
+    		dao.assignEmployeeToProject(projectId, employeeId);
+    		//System.out.println("Everything added correctly");
 		} 
     	catch (Exception e)
 		{
@@ -108,6 +113,8 @@ public class Part5ProjectEmployees
     	try
 		{
 			// TODO: call the DAO to remove the employee
+    		dao.removeEmployeeFromProject(projectId, employeeId);
+    		//System.out.println("Everything ran correctly");
 		} 
     	catch (Exception e)
 		{
@@ -122,8 +129,12 @@ public class Part5ProjectEmployees
     	try
 		{
     		//TODO: get the list of employees by project from the DAO
-    		
+    		List<Employee> employees = dao.getEmployeesByProject(projectId);
     		//TODO: print the details of each employee
+    		for (Employee employee : employees)
+			{
+				System.out.println(employee.getDepartmentId()+ ": "  + employee.getFirstName() + " " + employee.getLastName());
+			}
     		
 		} 
     	catch (Exception e)
@@ -137,8 +148,12 @@ public class Part5ProjectEmployees
     	try
 		{
     		//TODO: get the list of projects from the DAO
-    		
+    		List<Project> projects = dao.getProjectsByEmployee(employeeId);
     		//TODO: print the details of each project
+    		for (Project project : projects)
+			{
+				System.out.println(project.getId() + ": " + project.getName() + ", EmployeeID = " + employeeId);
+			}
 		} 
     	catch (Exception e)
 		{
@@ -159,8 +174,13 @@ public class Part5ProjectEmployees
     	try
 		{
     		//TODO: get the list of projects from the DAO
+    		List<Project> projects = dao.getProjectsWithoutEmployees();
     		
     		//TODO: print the details of each project
+    		for (Project project : projects)
+			{
+				System.out.println(project.getId() + ": " + project.getName());
+			}
 		} 
     	catch (Exception e)
 		{
@@ -177,8 +197,13 @@ public class Part5ProjectEmployees
     	try
 		{
     		//TODO: get the list of employees by project from the DAO
+    		List<Employee> employees = dao.getEmployeesWithoutProjects();
+    		//TODO: print the details of each employee
+    		for (Employee employee : employees)
+			{
+				System.out.println(employee.getDepartmentId() + ": " + employee.getFirstName() + " " + employee.getLastName());
+			}
     		
-    		//TODO: print the details of each employee    		
 		} 
     	catch (Exception e)
 		{

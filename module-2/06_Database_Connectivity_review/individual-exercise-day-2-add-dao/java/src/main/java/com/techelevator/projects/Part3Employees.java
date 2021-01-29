@@ -26,7 +26,7 @@ public class Part3Employees
     	// 3.1 - add all departments to the database
     	System.out.println("*** 3.1 Adding employees ***\n");        
         // TODO: add all employees
-        addEmployee(1, null, "Fredrick", "Keppard", LocalDate.parse("1953-07-15"), "M", LocalDate.parse("2001-04-01"));
+        addEmployee(1, 1, "Fredrick", "Keppard", LocalDate.parse("1953-07-15"), "M", LocalDate.parse("2001-04-01"));
         // add the rest
         addEmployee(2, 1, "Flo", "Henderson",LocalDate.parse("1990-12-28"), "F",LocalDate.parse("2011-08-01"));
         addEmployee(3, 2, "Franklin", "Trumbauer", LocalDate.parse("1980-07-14"), "M", LocalDate.parse("1998-09-01"));
@@ -41,7 +41,7 @@ public class Part3Employees
         addEmployee(12, 4, "Gabriela", "Christie", LocalDate.parse("1980-03-17"), "F", LocalDate.parse("1999-08-01"));
         // add some of your own
         addEmployee(13, 5, "Johnny", "Lingo", LocalDate.parse("1974-05-22"), "M", LocalDate.parse("2006-03-15"));
-        addEmployee(99, null, "Test", "Employee", LocalDate.parse("2001-12-01"), "M", LocalDate.parse("2020-12-01"));
+        addEmployee(99, 3, "Test", "Employee", LocalDate.parse("2001-12-01"), "M", LocalDate.parse("2020-12-01"));
         
                 
         // 3.2 - select all employees from the database
@@ -87,11 +87,13 @@ public class Part3Employees
     
     private void addEmployee(int id, Integer departmentId, String firstName, String lastName, LocalDate birthDate, String gender, LocalDate hireDate)
     {
+    	Employee employee = new Employee(id, departmentId, firstName, lastName, gender, birthDate, hireDate);
+    	
     	try
 		{
-			Employee employee = new Employee(id, departmentId, firstName, lastName, gender, birthDate, hireDate);
-			
 			//TODO: call the dao addEmployee Method
+			dao.addEmployee(employee);
+			//System.out.println("Everything ran correctly");
 		} 
     	catch (Exception e)
 		{
@@ -103,10 +105,10 @@ public class Part3Employees
     
     private void getAllEmployees()
     {
-    	List<Employee> employees = new ArrayList<Employee>();
     	try
 		{
 			//TODO: use the DAO to get all employees
+    		List<Employee> employees = dao.getAllEmployees();
 			
 			for (Employee employee : employees)
 			{
@@ -128,10 +130,10 @@ public class Part3Employees
 
     private void getEmployeeById(int id)
     {
-    	Employee employee = null;
     	try
 		{
 			//TODO:// use the DAO to get the employee by ID
+    		Employee employee = dao.getEmployee(id);
     		
     		if(employee != null)
     		{
@@ -157,16 +159,17 @@ public class Part3Employees
 
     private void searchForEmployeeByName(String firstName, String lastName)
     {
-    	List<Employee> employees = new ArrayList<Employee>();
     	try
 		{
 			//TODO: use the DAO to search for employees
+    		List<Employee> employees = dao.searchByName(firstName, lastName);
 			
 			for (Employee employee : employees)
 			{
 				System.out.println(employee.getId() + ":  "
 						+ employee.getDepartmentId() + "     "
-						+ employee.getFirstName() + " " + employee.getLastName() + "     "
+						+ employee.getFirstName() + " "
+						+ employee.getLastName() + "     "
 						+ employee.getGender() + "     "
 						+ employee.getBirthDate() + "     "
 						+ employee.getHireDate()
@@ -182,11 +185,12 @@ public class Part3Employees
 
     private void updateEmployee(int id, Integer departmentId, String firstName, String lastName, LocalDate birthDate, String gender, LocalDate hireDate)
     {
+    	Employee employee = new Employee(id, departmentId, firstName, lastName, gender, birthDate, hireDate);
+    	
     	try
 		{
-    		Employee employee = new Employee(id, departmentId, firstName, lastName, gender, birthDate, hireDate);
-    		
     		//TODO: use the DAO to update the employee information in the database
+    		dao.updateEmployee(id, employee);
 		} 
     	catch (Exception e)
 		{
@@ -199,6 +203,7 @@ public class Part3Employees
     	try
 		{
     		//TODO: use the DAO to delete the employee from the database
+    		dao.deleteEmployee(id);
     		    		
 		} 
     	catch (Exception e)

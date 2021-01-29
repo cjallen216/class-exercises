@@ -1,5 +1,6 @@
 package com.techelevator.projects;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 import org.apache.commons.dbcp2.BasicDataSource;
@@ -130,10 +131,17 @@ public class Part4Projects
 			
 			while (rows.next())
 			{
+				Date dbStartDate = rows.getDate("from_date");
+				Date dbEndDate = rows.getDate("to_date");
+				
 				int projectId = rows.getInt("project_id");
 				String name = rows.getString("name");
-				LocalDate fromDate = rows.getDate("from_date").toLocalDate();
-				LocalDate toDate = rows.getDate("to_date").toLocalDate();
+				LocalDate fromDate = (dbStartDate == null) 
+										? null 
+										: dbStartDate.toLocalDate();
+				LocalDate toDate = (dbEndDate == null) 
+										? null 
+										: dbEndDate.toLocalDate();
 				
 				System.out.println("Project ID:" + projectId + ", Project Name: " + name + " from Date: " + fromDate + " To Date: " + toDate);
 			}
@@ -147,7 +155,28 @@ public class Part4Projects
 
     private void getProjectById(int projectId)
     {
-    	// -----------START HERE---------------
+    	try
+		{
+			String sql = "SELECT project_id\r\n" + 
+					"        , name\r\n" + 
+					"        , from_date\r\n" + 
+					"        , to_date\r\n" + 
+					"FROM project;\r\n" + 
+					"WHERE project_id = ?;";
+			
+			SqlRowSet rows = jdbcTemplate.queryForRowSet(sql, projectId);
+			
+			if (rows.next())
+			{
+				String projectName = rows.getString("name");
+				
+				System.out.println(projectId + ": " + projectName);
+			}
+			
+		} catch (Exception e)
+		{
+			System.out.println("There is no project with id: " + projectId);
+		}
     }
 
     private void getAllActiveProjects()
@@ -156,15 +185,66 @@ public class Part4Projects
     	// 1 - the projects end date is after today
     	// 2 - the project has no end date
     	// DON'T worry about the start date
+    	
+    	try
+		{
+			String sql = "SELECT project_id "
+					+ "		, name "
+					+ "		, from_date "
+					+ "		, to_date "
+					+ "FROM project "
+					+ "WHERE to_date > ? "
+					+ "		OR to_date IS NULL; ";
+			
+			SqlRowSet rows = jdbcTemplate.queryForRowSet(sql, LocalDate.now());
+			
+			while(rows.next())
+			{
+				int projectId = rows.getInt("project_id");
+				String name = rows.getString("name");
+				LocalDate startDate = (rows.getDate("from_date").toLocalDate());
+				LocalDate endDate = (rows.getDate("to_date").toLocalDate());
+				
+				System.out.println(projectId + ": " + name + "  " + startDate + "  -  " + endDate);
+			}
+		} 
+    	catch (Exception e)
+		{
+			System.err.println("There was an error getting all projects");
+		}
     }
 
     private void updateProject(int projectId, String projectName, LocalDate startDate, LocalDate endDate)
     {
-    	
+    	try
+		{
+			String sql = "UPDATE project\r\n" + 
+					"SET name = ?\r\n" + 
+					"        , to_date = ?\r\n" + 
+					"        , from_date = ?\r\n" + 
+					"WHERE project_id = ?;";
+			
+			SqlRowSet rows = jdbcTemplate.queryForRowSet(sql, projectName, startDate, endDate, projectId);
+			
+		} catch (Exception e)
+		{
+			// TODO: handle exception
+		}
     }
 
     private void deleteProject(int projectId)
     {
+    	try
+		{
+			String sql = "DELETE FROM project WHERE project_id = ?";
+			
+			jdbcTemplate.update(sql, projectId);
+			
+		}
+    	catch (Exception e)
+		{
+    		System.err.println("There was an error deleting project --> " + projectId);
+		}
     }
 
 

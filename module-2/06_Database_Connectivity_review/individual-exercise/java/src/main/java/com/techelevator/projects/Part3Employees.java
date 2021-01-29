@@ -249,8 +249,7 @@ public class Part3Employees
 		{
 			// build the SQL INSERT statement (hint: do it in DBVisualizer first)
     		String sql = "UPDATE employee\r\n" + 
-    				"SET employee_id = ?\r\n" + 
-    				"        , department_id = ?\r\n" + 
+    				"SET department_id = ?\r\n" + 
     				"        , first_name = ?\r\n" + 
     				"        , last_name = ?\r\n" + 
     				"        , birth_date = ?\r\n" + 
@@ -260,13 +259,13 @@ public class Part3Employees
     		
     		// use jdbcTemplate to execute the statement
     		jdbcTemplate.update(sql
-    				, employeeId
-    				, departmentId
-    				, firstName
-    				, lastName
-    				, birthDate
-    				, gender
-    				, hireDate); // make sure that you add the remaining employee variables as parameters
+			    				, departmentId
+			    				, firstName
+			    				, lastName
+			    				, birthDate
+			    				, gender
+			    				, hireDate
+			    				, employeeId); // make sure that you add the remaining employee variables as parameters
 		} 
     	catch (Exception e)
 		{

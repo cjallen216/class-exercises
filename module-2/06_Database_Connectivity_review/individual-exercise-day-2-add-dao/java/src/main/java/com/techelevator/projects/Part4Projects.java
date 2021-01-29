@@ -2,11 +2,14 @@ package com.techelevator.projects;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 
+import com.techelevator.projects.models.Project;
 import com.techelevator.projects.models.dao.ProjectDAO;
 import com.techelevator.projects.models.jdbc.JDBCProjectDAO;
 
@@ -74,11 +77,15 @@ public class Part4Projects
     
     private void addProject(int id, String name, LocalDate startDate, LocalDate endDate)
     {
+    	
     	try
 		{
     		//TODO create a Project from the input parameters
-    		
+    		Project project = new Project(id, name,startDate,endDate);
     		//TODO: use the dao to insert the project
+    		dao.addProject(project);
+    		//System.out.println("Everything added correctly");
+    		
 		} 
     	catch (Exception e)
 		{
@@ -94,8 +101,13 @@ public class Part4Projects
     	try
 		{
 			//TODO: use the DAO to get all projects
-    		
+    		List<Project> projects = dao.getAllProjects();
     		//TODO: loop through the list of projects and display the details of each
+    		for (Project project : projects)
+			{
+				System.out.println(project.getId() + ": " + project.getName());
+			}
+    		
 		} 
     	catch (Exception e)
 		{
@@ -109,10 +121,14 @@ public class Part4Projects
     {
     	try
 		{
-
 			//TODO: use the DAO to get project by id
-    		
+    		Project project = dao.getProject(id);
     		//TODO: display the details of the selected project
+    		if (project != null)
+    		{
+    			System.out.println(project.getId() + ": " + project.getName());
+    		}
+    		
 		} 
     	catch (Exception e)
 		{
@@ -127,8 +143,13 @@ public class Part4Projects
     	try
 		{
 			//TODO: use the DAO to get all projects
+    		List<Project> projects = dao.getActiveProjects();
     		
     		//TODO: loop through the list of projects and display the details of each
+    		for (Project project : projects)
+			{
+				System.out.println(project.getId() + ": " + project.getName());
+			}
 		} 
     	catch (Exception e)
 		{
@@ -143,8 +164,9 @@ public class Part4Projects
     	try
 		{
     		//TODO: create a project from the input parameters
-    		
+    		Project project = new Project(id, name, startDate, endDate);
     		//TODO: use the DAO to update the project
+    		dao.updateProject(id, project);
 			
 		} 
     	catch (Exception e)
@@ -160,6 +182,8 @@ public class Part4Projects
     	try
 		{
     		//TODO: use the DAO to delete the project
+    		dao.deleteProject(id);
+    		//System.out.println("Everything ran correctly");
 			
 		} 
     	catch (Exception e)

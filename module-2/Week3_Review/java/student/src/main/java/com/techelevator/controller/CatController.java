@@ -34,7 +34,7 @@ public class CatController
 		return catCardDao.get(id);
 	}
 	
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(value = "", method = RequestMethod.GET)
 	public List<CatCard> getAllCatCards()
 	{
 		List<CatCard> catCardList = catCardDao.list();
@@ -43,7 +43,7 @@ public class CatController
 	}
 	
 	@ResponseStatus(HttpStatus.CREATED)
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(value = "", method = RequestMethod.POST)
 	public void addNewCatCard(@Valid @RequestBody CatCard newCatCard)
 	{
 		catCardDao.save(newCatCard);
@@ -61,6 +61,19 @@ public class CatController
 	public void deleteCatCard(@PathVariable long id)
 	{
 		catCardDao.delete(id);
+	}
+	
+	@RequestMapping(value = "/random", method = RequestMethod.GET)
+	public CatCard getRandomCatCard()
+	{
+		CatFact catFact = catFactService.getFact();
+		CatPic catPic = catPicService.getPic();
+		CatCard catCard = new CatCard();
+		
+		catCard.setCatFact(catFact.getText());
+		catCard.setImgUrl(catPic.getFile());
+				
+		return catCard;
 	}
 
 }

@@ -28,7 +28,7 @@ public class Part2Departments
         addDepartment(3, "Research and Development");      
         addDepartment(4, "Store Support");        
         // TODO: add the remaining departments to the database        
-        // TODO: add some of your own deparments - any name will do :)
+        // TODO: add some of your own departments - any name will do :)
         addDepartment(5, "Software Engineering");
         addDepartment(82, "Team Party Planners");
         
@@ -80,9 +80,11 @@ public class Part2Departments
     private void addDepartment(int id, String name)
     {
     	Department department = new Department(id, name);
+    	
     	try
 		{				
 	        dao.addDepartment(department);
+	        //System.out.println("Everything ran correctly");
 		} 
     	catch (Exception e)
 		{

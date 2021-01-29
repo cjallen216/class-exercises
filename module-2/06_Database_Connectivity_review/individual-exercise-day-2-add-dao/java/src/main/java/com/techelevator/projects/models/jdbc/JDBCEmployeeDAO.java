@@ -175,10 +175,20 @@ public class JDBCEmployeeDAO implements EmployeeDAO
 	@Override
 	public void deleteEmployee(int id)
 	{
-		String sql = "DELETE FROM employee WHERE employee_id = ?; ";
+		try
+		{
+			String sql = "DELETE FROM employee WHERE employee_id = ?; ";
+			
+			// use jdbcTemplate to execute the query - it returns a SqlRowSet
+			jdbcTemplate.update(sql, id);
+			
+		} 
+		catch (Exception e)
+		{
+			System.err.println("There was an error deleting employee --> " + id);
+		}
 		
-		// use jdbcTemplate to execute the query - it returns a SqlRowSet
-		jdbcTemplate.update(sql, id);
+
 		
 	}
 	

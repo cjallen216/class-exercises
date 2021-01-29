@@ -83,7 +83,7 @@ public class JDBCProjectDAO implements ProjectDAO
 				+ "WHERE to_date > ? "
 				+ "		OR to_date IS NULL; ";
 		
-		SqlRowSet rows = jdbcTemplate.queryForRowSet(sql);
+		SqlRowSet rows = jdbcTemplate.queryForRowSet(sql, LocalDate.now());
 		
 		while(rows.next())
 		{
