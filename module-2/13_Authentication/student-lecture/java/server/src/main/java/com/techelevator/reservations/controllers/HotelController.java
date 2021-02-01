@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@PreAuthorize("isAuthenticated()")
 public class HotelController {
 
     private HotelDAO hotelDAO;
@@ -33,6 +34,7 @@ public class HotelController {
      *
      * @return a list of all hotels in the system
      */
+    @PreAuthorize("permitAll")
     @RequestMapping(path = "/hotels", method = RequestMethod.GET)
     public List<Hotel> list() {
         return hotelDAO.list();
