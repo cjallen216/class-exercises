@@ -23,12 +23,27 @@ public class ProductSqlDAO implements ProductDAO
 	{
 		List<Product> products = new ArrayList<Product>();
 		
+		String sql = "";
+		
+		SqlRowSet rows = jdbcTemplate.queryForRowSet(sql);
+		
+		while (rows.next())
+		{
+			Product product = mapRowToProduct(rows);
+			
+			products.add(product);
+		}
+		
 		return products;
 	}
 	
 	public Product get(int id)
 	{
 		Product product = null;
+		
+		String sql = "";
+		
+		SqlRowSet row = jdbcTemplate.queryForRowSet(sql);
 
 		return product;
 	}
