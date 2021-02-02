@@ -76,29 +76,11 @@ public class AuctionController
 		dao.delete(id);
 	}
 
-	@PreAuthorize("permitAll")
-//	@PreAuthorize("hasAnyRole('ADMIN', 'CREATOR')")
-//	@PreAuthorize("hasAnyRole('ADMIN', 'CREATOR', 'USER')")
-//	@ResponseStatus(HttpStatus.OK)
-	@RequestMapping(path = "/whoami", method = RequestMethod.GET)
-	public String whoAmI(
-//			@Valid @RequestBody User user
-//			@Valid @RequestBody Authority authority
-			)
+	@RequestMapping(path = "/whoami")
+	public String whoAmI(Principal principal)
 	{
-//		String userName = user.getUsername();
-//		return userName;
-		
-//		String firstName = user.getFirstname();
-//		String lastName = user.getLastname();
-//		return firstName + " " + lastName;
-		
-//		String name = authority.getName();
-//		return name;
-		
-		return "user";
-		
-
+		String userName = principal.getName();
+		return userName;
 	}
 
 }
