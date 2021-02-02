@@ -23,7 +23,17 @@ public class ProductSqlDAO implements ProductDAO
 	{
 		List<Product> products = new ArrayList<Product>();
 		
-		String sql = "";
+		String sql = "SELECT p.product_id AS id\r\n" + 
+				"        , p.name\r\n" + 
+				"        , p.price\r\n" + 
+				"        , pt.name AS type\r\n" + 
+				"        , i.slot_id as slot \r\n" + 
+				"        , i.quantity\r\n" + 
+				"FROM product AS p\r\n" + 
+				"INNER JOIN product_type AS pt\r\n" + 
+				"        ON p.product_type_id = pt.product_type_id\r\n" + 
+				"INNER JOIN inventory AS i\r\n" + 
+				"        ON p.product_id = i.product_id; ";
 		
 		SqlRowSet rows = jdbcTemplate.queryForRowSet(sql);
 		
@@ -41,9 +51,25 @@ public class ProductSqlDAO implements ProductDAO
 	{
 		Product product = null;
 		
-		String sql = "";
+		String sql = "SELECT p.product_id AS id\r\n" + 
+				"        , p.name\r\n" + 
+				"        , p.price\r\n" + 
+				"        , pt.name AS type\r\n" + 
+				"        , i.slot_id as slot \r\n" + 
+				"        , i.quantity\r\n" + 
+				"FROM product AS p\r\n" + 
+				"INNER JOIN product_type AS pt\r\n" + 
+				"        ON p.product_type_id = pt.product_type_id\r\n" + 
+				"INNER JOIN inventory AS i\r\n" + 
+				"        ON p.product_id = i.product_id\r\n" + 
+				"WHERE p.product_id = ?; ";
 		
 		SqlRowSet row = jdbcTemplate.queryForRowSet(sql);
+		
+		if (row.next())
+		{
+			product = mapRowToProduct(row);
+		}
 
 		return product;
 	}

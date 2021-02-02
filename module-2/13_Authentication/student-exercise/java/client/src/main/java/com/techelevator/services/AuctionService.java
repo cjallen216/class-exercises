@@ -28,7 +28,6 @@ public class AuctionService
 		
 		try
 		{
-			// send request here
 			auctions = restTemplate.exchange(BASE_URL + "auctions", HttpMethod.GET, makeAuthEntity(), Auction[].class).getBody();
 			
 		} catch (RestClientResponseException ex)
@@ -74,7 +73,8 @@ public class AuctionService
 			auctions = restTemplate.exchange(BASE_URL + "auctions?currentBid_lte=" + price, HttpMethod.GET,
 					makeAuthEntity(), Auction[].class).getBody();
 
-		} catch (RestClientResponseException ex)
+		}
+		catch (RestClientResponseException ex)
 		{
 			throw new AuctionServiceException(ex.getRawStatusCode() + " : " + ex.getResponseBodyAsString());
 		}
@@ -87,7 +87,8 @@ public class AuctionService
 		try
 		{
 			auction = restTemplate.postForObject(BASE_URL + "auctions", makeAuctionEntity(auction), Auction.class);
-		} catch (RestClientResponseException ex)
+		} 
+		catch (RestClientResponseException ex)
 		{
 			throw new AuctionServiceException(ex.getRawStatusCode() + " : " + ex.getResponseBodyAsString());
 		}
@@ -100,7 +101,8 @@ public class AuctionService
 		try
 		{
 			restTemplate.put(BASE_URL + "auctions/" + auction.getId(), makeAuctionEntity(auction));
-		} catch (RestClientResponseException ex)
+		} 
+		catch (RestClientResponseException ex)
 		{
 			throw new AuctionServiceException(ex.getRawStatusCode() + " : " + ex.getResponseBodyAsString());
 		}
@@ -120,7 +122,8 @@ public class AuctionService
 		try
 		{
 			restTemplate.exchange(BASE_URL + "auctions/" + id, HttpMethod.DELETE, makeAuthEntity(), String.class);
-		} catch (RestClientResponseException ex)
+		}
+		catch (RestClientResponseException ex)
 		{
 			throw new AuctionServiceException(ex.getRawStatusCode() + " : " + ex.getResponseBodyAsString());
 		}

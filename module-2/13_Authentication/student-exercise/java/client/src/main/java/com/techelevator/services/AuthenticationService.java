@@ -25,19 +25,22 @@ public class AuthenticationService
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
 		HttpEntity<LoginDTO> entity = new HttpEntity<>(loginDTO, headers);
+		
 		ResponseEntity<Map> response = null;
+		
 		try
 		{
-			// send login request here
 			response = restTemplate.exchange(BASE_URL + "/login", HttpMethod.POST, entity, Map.class);
-		} catch (RestClientResponseException ex)
+		} 
+		catch (RestClientResponseException ex)
 		{
 			if (ex.getRawStatusCode() == 401 && ex.getResponseBodyAsString().length() == 0)
 			{
 				String message = ex.getRawStatusCode() + " : {\"timestamp\":\"" + LocalDateTime.now()
 						+ "+00:00\",\"status\":401,\"error\":\"Invalid credentials\",\"message\":\"Login failed: Invalid username or password\",\"path\":\"/login\"}";
 				throw new AuthenticationServiceException(message);
-			} else
+			} 
+			else
 			{
 				String message = ex.getRawStatusCode() + " : " + ex.getResponseBodyAsString();
 				throw new AuthenticationServiceException(message);
