@@ -4,6 +4,7 @@ import com.techelevator.auctions.DAO.AuctionDAO;
 import com.techelevator.auctions.DAO.MemoryAuctionDAO;
 import com.techelevator.auctions.exception.AuctionNotFoundException;
 import com.techelevator.auctions.model.Auction;
+import com.techelevator.auctions.security.model.Authority;
 import com.techelevator.auctions.security.model.User;
 
 import org.springframework.http.HttpStatus;
@@ -75,15 +76,29 @@ public class AuctionController
 		dao.delete(id);
 	}
 
-	@PreAuthorize("hasAnyRole('ADMIN', 'CREATOR', 'USER')")
-	@ResponseStatus(HttpStatus.OK)
-	@RequestMapping(path = "/whoami")
+	@PreAuthorize("permitAll")
+//	@PreAuthorize("hasAnyRole('ADMIN', 'CREATOR')")
+//	@PreAuthorize("hasAnyRole('ADMIN', 'CREATOR', 'USER')")
+//	@ResponseStatus(HttpStatus.OK)
+	@RequestMapping(path = "/whoami", method = RequestMethod.GET)
 	public String whoAmI(
-//				@Valid @RequestBody User user
+//			@Valid @RequestBody User user
+//			@Valid @RequestBody Authority authority
 			)
 	{
+//		String userName = user.getUsername();
+//		return userName;
+		
+//		String firstName = user.getFirstname();
+//		String lastName = user.getLastname();
+//		return firstName + " " + lastName;
+		
+//		String name = authority.getName();
+//		return name;
+		
 		return "user";
-//		return user.getUsername().toString();
+		
+
 	}
 
 }
