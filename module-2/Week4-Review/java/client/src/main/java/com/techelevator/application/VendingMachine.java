@@ -23,7 +23,6 @@ public class VendingMachine
     public void run()
     {
     	 UserOutput.displayWelcome();
-    	 
 
          while (true) 
          {             
@@ -35,10 +34,10 @@ public class VendingMachine
         		//System.out.println("printing products");
         		displayProducts();
 			}
-        	else if (menuSelection == 1)
+        	else if (menuSelection == 2)
 			{
 				// display all products
-        		//System.out.println("printing products");
+        		//System.out.println("printing one product");
         		selectProduct();
 			}
         	else if (menuSelection == 0)
@@ -47,8 +46,9 @@ public class VendingMachine
         	}
         	else
         	{
-				// invalid
+				// invalid selection
         		 System.out.println("Please select a valid options");
+        		 System.out.println();
 			}
          }
          
@@ -58,6 +58,12 @@ public class VendingMachine
     
     private void displayProducts()
     {
+    	// First round of test:
+    	 /* List<Product> products = new ArrayList<Product>();
+    	 * 
+    	 * UserOutput.displayProducts(products);
+    	*/
+    	
     	// TODO: get a list of products from the API
     	List<Product> products = productService.getAllProducts();
     	

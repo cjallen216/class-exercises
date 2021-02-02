@@ -22,12 +22,13 @@ public class UserOutput
 		{
 			System.out.println(product.getSlot() + " " + product.getName() + " $" + product.getPrice());
 		}
+		System.out.println();
 	}
 	
 	public static void displayProductDetails(Product product)
 	{
 		System.out.println();
-		System.out.println("---------------SELECT PRODUCT--------------");
+		System.out.println("---------------SELECT PRODUCT---------------");
 		System.out.println();
 		
 		System.out.println(product.getSlot());
