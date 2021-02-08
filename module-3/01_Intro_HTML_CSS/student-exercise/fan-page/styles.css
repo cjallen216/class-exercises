@@ -1,0 +1,36 @@
+header
+{
+    text-align: center;
+}
+
+h1
+{
+    color: darkred;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h2
+{
+    color: darkblue;
+    text-decoration: underline;
+}
+
+body
+{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: darkgrey;
+}
+
+section
+{
+    font-size: 15px;
+    font-style: italic;
+    padding-inline-start: 50px;
+    line-height: 20px;
+}
+
+table, th, tr, td
+{
+    border: 1px solid black;
+    padding: 10px;
+}
