@@ -5,20 +5,26 @@ header
 
 h1
 {
-    color: darkred;
+    color: crimson;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 h2
 {
-    color: darkblue;
+    color: crimson;
     text-decoration: underline;
+}
+
+h4
+{
+    color: beige;
 }
 
 body
 {
+    color: beige;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    background-color: darkgrey;
+    background-color: #000000;
 }
 
 section
@@ -32,5 +38,30 @@ section
 table, th, tr, td
 {
     border: 1px solid black;
-    padding: 10px;
+    color: black;
+    background-color: beige;
+    padding: 8px;
+}
+
+th
+{
+    background-color: crimson;
+    color: beige;
+}
+
+a
+{
+    color:beige;
+}
+
+a:hover
+{
+    color: crimson;
+}
+
+img
+{
+    border-radius: 5px;
+    max-width: 100%;    
+    height: auto;
 }
