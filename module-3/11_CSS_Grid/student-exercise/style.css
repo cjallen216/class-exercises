@@ -68,12 +68,13 @@ header img {
 #headline
 {
     grid-area: name;
+    
 }
 
 #student-picture
 {
     grid-area: picture;
-    align-items: center;
+    text-align: center;
 }
 
 #student-quote

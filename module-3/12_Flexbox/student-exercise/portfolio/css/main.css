@@ -9,6 +9,8 @@ body {
 
 #left-panel {
   background-color: #F7F7F7;
+  display: flex;
+  flex-direction: column;
   flex-basis: 35%;
 }
 
@@ -21,11 +23,14 @@ ul.social-icons {
 }
 
 nav {
-  
+  display: flex;
+  flex-direction: column;
+  align-content: stretch;
 }
 
 #right-panel {
   display: flex;
+  flex-basis: 65%;
   align-items: center;
   justify-content: space-around;
 }
