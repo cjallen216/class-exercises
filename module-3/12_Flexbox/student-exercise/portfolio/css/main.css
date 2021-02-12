@@ -25,7 +25,7 @@ ul.social-icons {
 nav {
   display: flex;
   flex-direction: column;
-  align-content: stretch;
+  flex-basis: auto;
 }
 
 #right-panel {
