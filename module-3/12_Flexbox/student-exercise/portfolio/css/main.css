@@ -23,9 +23,7 @@ ul.social-icons {
 }
 
 nav {
-  display: flex;
-  flex-direction: column;
-  flex-basis: auto;
+  flex-grow: 1;
 }
 
 #right-panel {
