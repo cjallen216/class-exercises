@@ -1,9 +1,73 @@
 header
 {
     display: flex;
+    grid-area: header;
 }
 
 nav ul {
     display: flex;
     justify-content: flex-end;
+}
+
+#main-grid
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    grid-template-areas: 
+        "header header"
+        "feature feature"
+        "race refreshed"
+        "footer footer"
+    ;
+}
+
+#feature
+{
+    grid-area: feature;
+    display: flex;
+}
+
+#facts
+{
+
+}
+
+#popsicle-cartoon
+{
+    height: 75%;
+}
+
+#race
+{
+    grid-area: race;
+    display: flex;
+    
+}
+
+section h3
+{
+    text-align: center;
+}
+
+#refreshed
+{
+    grid-area: refreshed;
+}
+
+#footer
+{
+    grid-area: footer;
+}
+
+#contact-main
+{
+    display: flex;
+    flex-direction: column;
+}
+
+form div
+{
+    display: flex;
+    flex-direction: column;
 }
