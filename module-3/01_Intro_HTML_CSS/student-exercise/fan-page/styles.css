@@ -5,63 +5,32 @@ header
 
 h1
 {
-    color: crimson;
+    color: darkred;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 h2
 {
-    color: crimson;
+    color: darkblue;
     text-decoration: underline;
-}
-
-h4
-{
-    color: beige;
 }
 
 body
 {
-    color: beige;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    background-color: #000000;
+    background-color: darkgrey;
 }
 
 section
 {
     font-size: 15px;
     font-style: italic;
-    margin-left: 50px;
+    padding-inline-start: 50px;
     line-height: 20px;
 }
 
 table, th, tr, td
 {
     border: 1px solid black;
-    color: black;
-    background-color: beige;
-    padding: 8px;
-}
-
-th
-{
-    background-color: crimson;
-    color: beige;
-}
-
-a
-{
-    color:beige;
-}
-
-a:hover
-{
-    color: crimson;
-}
-
-img
-{
-    border-radius: 5px;
-    max-width: 100%;    
-    height: auto;
+    padding: 10px;
 }
