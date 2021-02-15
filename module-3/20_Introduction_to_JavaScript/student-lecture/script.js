@@ -8,10 +8,42 @@
  * Functions start with the word function.
  * They don't have a return type and the naming convention is camel-case.
  */
-function variables() {
+function variables()
+{
+  //var name = "Chris"; // old way of declaring variables - don't use this 
+  //let age = 40; // variable that can be changed
+  //const lastName = "Allen"; // can't change this variable - start with this
+
   // Declares a variable where the value cannot be changed
+  const daysOfTheWeek = 7;
+  console.log('There are ' + daysOfTheWeek + ' days in the week.');
+
+  const message = `There are ${daysOfTheWeek} days in the week.`; // string interpalation
+  console.log(message);
+
+
   // Declares a variable those value can be changed
+  let daysOfMonth = 30;
+  console.log(typeof daysOfMonth);
+  console.log(`There are ${daysOfMonth} days in the month.`);
+
+  daysOfMonth = 29;
+  console.log(`There are ${daysOfMonth} days in the month.`);
+
   // Declares a variable that will always be an array
+  const weekdays = [
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+  "Sunday"
+  ];
+
+  console.log(weekdays);
+  console.table(weekdays);
+
 }
 
 /**
@@ -36,6 +68,10 @@ function equality(x, y) {
   console.log(`x is ${typeof x}`);
   console.log(`y is ${typeof y}`);
 
+// x = y - assignment
+// x == y - loose equality
+// x === y - strict equality
+
   console.log(`x == y : ${x == y}`); // true
   console.log(`x === y : ${x === y}`); // false
 }
@@ -46,10 +82,14 @@ function equality(x, y) {
  * everything else is always truthy
  * @param {Object} x The object to check for truthy or falsy,
  */
-function falsy(x) {
-  if (x) {
+function falsy(x)
+{
+  if (x) // is the value set or x !=null; x != undefined; x != false; x != 0;
+  {
     console.log(`${x} is truthy`);
-  } else {
+  }
+  else
+  {
     console.log(`${x} is falsy`);
   }
 }
@@ -60,8 +100,10 @@ function falsy(x) {
     - values can be arrays
     - or they can be functions
 */
-function objects() {
-  const person = {
+function objects()
+ {
+  const person =
+  {
     firstName: "Bill",
     lastName: "Lumbergh",
     age: 42,
@@ -74,10 +116,16 @@ function objects() {
   };
 
   // Log the object
+  console.log(person);
 
   // Log the first and last name
+  console.log(`Person name: ${person.firstName} ${person.lastName}`);
 
   // Log each employee
+  for (let i = 0; person.employees.length; i++)
+  {
+    console.log(person.employees[i]);
+  }
 }
 
 /*
@@ -94,8 +142,14 @@ function Add(num1, num2) {
   return num1 + num2;
 }
 
-function Add(num1, num2, num3) {
-  return num1 + num2 + num3;
+// will override previous function
+function Add(num1, num2, num3)
+{
+  let answer = num1;
+  if (num2) answer += num2;
+  if (num3) answer += num3;
+
+  return answer;
 }
 
 /*
@@ -113,6 +167,11 @@ function mathFunctions() {
   console.log("Math.floor(1.99) : " + Math.floor(1.99));
   console.log("Math.ceil(1.01) : " + Math.ceil(1.01));
   console.log("Math.random() : " + Math.random());
+
+  console.log('Random number between 1 and 10');
+  let number = 10 * Math.random();
+  number = Math.round(number);
+  console.log(number);
 }
 
 /*
@@ -123,7 +182,8 @@ String Methods
 The string data type has a lot of properties and methods similar to strings in Java/C#
 */
 
-function stringFunctions(value) {
+function stringFunctions(value)
+{
   console.log(`.length -  ${value.length}`);
   console.log(`.endsWith('World') - ${value.endsWith("World")}`);
   console.log(`.startsWith('Hello') - ${value.startsWith("Hello")}`);
