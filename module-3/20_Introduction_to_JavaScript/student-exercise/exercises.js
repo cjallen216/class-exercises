@@ -25,9 +25,16 @@
 		hasTeen(20, 10, 13) → true
 */
 
-		function hasTeen(a,b,c)
+		function hasTeen(a, b, c)
 		{
-			if (a >= 13)
+			if((a >= 13 && a <= 19) || (b >= 13 && b <= 19) || (c >= 13 && c <= 19))
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 
 /* 
@@ -39,6 +46,18 @@
 		lastDigit(3, 113) → true
 */
 
+		function lastDigit(a, b)
+		{
+			if (a % 10 === b % 10)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+
 /*
 4. **seeColor** Given a string, if the string begins with "red" or "blue" return that color 
     string, otherwise return the empty string.
@@ -48,6 +67,22 @@
         seeColor("blueTimes") → "blue"
 */
 
+		function seeColor(color)
+		{
+			if (color.startsWith("red"))
+			{
+				return "red";
+			}
+			if (color.startsWith("blue"))
+			{
+				return "blue";
+			}
+			else
+			{
+				return "";
+			}
+		}
+
 /*
 5. **oddOnly** Write a function that given an array of integer of any length, filters out 
     the even number, and returns a new array of just the the odd numbers.
@@ -55,6 +90,18 @@
 		oddOnly([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]) → [1, 3, 5, 7, 9, 11];
 		oddOnly([2, 4, 8, 32, 256]); → []
 */
+		function oddOnly(odds)
+		{
+			let odd = [];
+			for (let i = 0; i < odds.length; i++)
+			{
+				if (odds[i] % 2 == 1)
+				{
+					odd.push(odds[i]);
+				}
+			}
+			return odd;
+		}
 
 /*
 6. **frontAgain** Given a string, return true if the first 2 chars in the string also appear 
@@ -64,6 +111,18 @@
 		frontAgain("edit") → false
 		frontAgain("ed") → true
 */
+
+		function frontAgain(front)
+		{
+			if (front.startsWith("ed") == front.endsWith("ed"))
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
 
 /*
 7. **cigarParty** When squirrels get together for a party, they like to have cigars. 
@@ -76,6 +135,21 @@ or false otherwise.
 		cigarParty(50, false) → true
 		cigarParty(70, true) → true
 */
+		function cigarParty(cigars, isWeekend)
+		{
+			if (isWeekend == true && cigars >= 40 )
+			{
+				return true;
+			}			
+			if (cigars >= 40 && cigars <= 60)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
 
 /*
 8. **fizzBuzz** Because you know you can't live without it, FizzBuzz.
@@ -86,6 +160,25 @@ or false otherwise.
 		fizzBuzz(15) → "FizzBuzz"
 		fizzBuzz(8) → 8
 */
+		function fizzBuzz(number)
+		{
+			if (number % 15 == 0)
+			{
+				return "FizzBuzz";
+			}
+			if (number % 5 == 0)
+			{
+				return "Buzz";
+			}
+			if (number % 3 == 0)
+			{
+				return "Fizz";
+			}
+			else
+			{
+				return number;
+			}
+		}
 
 /*
 9. **filterEvens** Write a function that filters an array to only include even numbers.
@@ -95,6 +188,19 @@ or false otherwise.
 	filterEvens([2, 4, 6]) → [2, 4, 6]
 	filterEvens([100, 8, 21, 24, 62, 9, 7]) → [100, 8, 24, 62]
 */
+		function filterEvens(evens)
+		{
+			let even = [];
+			for (let i = 0; i < evens.length; i++)
+			{
+				if (evens[i] % 2 == 0)
+				{
+					even.push(evens[i]);
+				}
+			}
+			return even;
+		}
+		
 
 /*
 10. **filterBigNumbers** Write a function that filters numbers greater than or equal to 100.
@@ -103,6 +209,18 @@ or false otherwise.
 	filterBigNumbers([3, 2, 7, 1, -100, -120]) → []
 	filterBigNumbers([]) → []
 */
+		function filterBigNumbers(bigNumbers)
+		{
+			let bigNumber = [];
+			for (let i = 0; i < bigNumbers.length; i++)
+			{
+				if (bigNumbers[i] >= 100)
+				{
+					bigNumber.push(bigNumbers[i]);
+				}
+			}
+			return bigNumber;
+		}
 
 /*
 11. **filterMultiplesOfX** Write a function to filter numbers that are a multiple of a 
@@ -111,6 +229,19 @@ parameter, `x` passed in.
 	filterMultiplesOfX([3, 5, 1, 9, 18, 21, 42, 67], 3) → [3, 9, 18, 21, 42]
 	filterMultiplesOfX([3, 5, 10, 20, 18, 21, 42, 67], 5) → [5, 10, 20]
 */
+		function filterMultiplesOfX(numbers, a)
+		{
+			let multiple = [];
+
+			for (let i = 0; i < numbers.length; i++)
+			{
+				if (numbers[i] % a === 0)
+				{
+					multiple.push(numbers[i])
+				}
+			}
+			return multiple;
+		}
 
 /*
 12. **createObject** Write a function that creates an object with a property called 
@@ -124,3 +255,15 @@ firstName, lastName, and age. Populate the properties with your values.
 		age
 	}
 */
+
+	function createObject(firstName, lastName, age)
+	{
+		const person =
+		{
+			firstName: "First",
+			lastName: "Last",
+			age: 42
+		};
+
+		return person;
+	}
