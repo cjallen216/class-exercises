@@ -114,14 +114,12 @@
 
 		function frontAgain(front)
 		{
-			if (front.startsWith("ed") == front.endsWith("ed"))
-			{
-				return true;
-			}
-			else
-			{
-				return false;
-			}
+			const firstTwo = front.substring(0,2);
+			const lastTwo = front.substring(front.length - 2)
+			
+			return firstTwo === lastTwo;
+			
+			// could use: return front.endsWith(firstTwo); and comment out lastTwo
 		}
 
 /*

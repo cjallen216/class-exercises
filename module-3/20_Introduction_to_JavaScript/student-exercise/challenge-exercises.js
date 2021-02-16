@@ -11,6 +11,60 @@
 		iqTest("") → 0 // there are no numbers in the given set
         iqTest("2 2 4 6") → 0 // all numbers are even, therefore there is no position of an odd number
 */
+    const iqTest = (numberString) =>
+    {
+        const scores = numberString.split(' '); // array of strings
+        let position = 0;
+
+        let evenCount = 0;
+        let oddCount = 0;
+        
+        const opposites = [];
+
+        for (let i = 0; i < scores.length; i++)
+        {
+            const isEven = scores[i] % 2 == 0; 
+            opposites.push(isEven);
+
+            if (isEven)
+            {
+                evenCount++;
+            }
+            else
+            {
+                oddCount++;
+            }
+        }
+
+        // if all numbers are the same, return 0
+        if (evenCount === 0 || oddCount === 0)
+        {
+            return 0;
+        }
+        else if (evenCount > oddCount)
+        {
+            //position of the odd
+            for (let i = 0; i < opposites.length; i++)
+            {
+                position = i + 1;
+                if (!opposites[i])
+                {
+                    return position;
+                }
+            }
+        }
+        else
+        {
+            for (let i = 0; i < opposites.length; i++)
+            {
+                position = i + 1;
+                if (!opposites[i])
+                {
+                    return position;
+                }
+            }
+        }
+    }
 
 /*
 2. **titleCase** Write a function that will convert a string into title case, given an optional 

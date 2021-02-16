@@ -1,10 +1,22 @@
+/*
+function definition - fat arrow
+parameters
+array functions - fat arrow function
+  - foreach - how to process each row
+  - map - map each object to a new form (returns a new array)
+  - filter - where clause - return on the items that match your criteria (returns a new array)
+  - reduce - aggregation function that returns a single value based on all items in the array (count, sum, min, max)
+
+*/
+
 /**
  * All named functions will have the function keyword and
  * a name followed by parentheses.
  * 
  * @returns {number} 1
  */
-function returnOne() {
+function returnOne()
+{
   return 1;
 }
 
@@ -16,7 +28,8 @@ function returnOne() {
  *
  * @param {any} value the value to print to the console
  */
-function printToConsole(value) {
+function printToConsole(value)
+{
   console.log(value);
 }
 
@@ -27,6 +40,10 @@ function printToConsole(value) {
  * @param {number} firstParameter the first parameter to multiply
  * @param {number} secondParameter the second parameter to multiply
  */
+const multiplyTogether = (firstParameter, secondParameter) =>
+{
+  return firstParameter * secondParameter;
+}
 
 /**
  * This version makes sure that no parameters are ever missing. If
@@ -38,7 +55,10 @@ function printToConsole(value) {
  * @param {number} [firstParameter=0] the first parameter to multiply
  * @param {number} [secondParameter=0] the second parameter to multiply
  */
-
+const multiplyNoUndefined = (firstParameter = 0, secondParameter = 0) =>
+{
+  return firstParameter * secondParameter;
+}
 
  
 /**
@@ -51,7 +71,8 @@ function printToConsole(value) {
  * @param {number} firstParameter the first parameter
  * @param {number} secondParameter the second parameter
  */
-function returnBeforeEnd(firstParameter, secondParameter) {
+function returnBeforeEnd(firstParameter, secondParameter)
+{
   console.log("This will always fire.");
 
   if (firstParameter == 0) {
@@ -82,12 +103,14 @@ function scopeTest() {
   }
 
   // scopedToBlock doesn't exist here so an error will be thrown
-  if (inScopeInScopeTest && scopedToBlock) {
+  if (inScopeInScopeTest && scopedToBlock)
+  {
     console.log("This won't print!");
   }
 }
 
-function createSentenceFromUser(name, age, listOfQuirks = [], separator = ', ') {
+function createSentenceFromUser(name, age, listOfQuirks = [], separator = ', ')
+{
   let description = `${name} is currently ${age} years old. Their quirks are: `;
   return description + listOfQuirks.join(separator);
 }
@@ -99,8 +122,72 @@ function createSentenceFromUser(name, age, listOfQuirks = [], separator = ', ') 
  * @param {number[]} numbersToSum numbers to add up
  * @returns {number} sum of all the numbers
  */
-function sumAllNumbers(numbersToSum) {
-  return numbersToSum.reduce();
+// function sumAllNumbers1(numbersToSum)
+// {
+//   let sum = 0;
+
+//   numbersToSum.forEach( (number) =>
+//     {
+//       sum += numbersToSum;
+//     }
+//   );
+
+//   // for (let i = 0; i < numbersToSum.length; i++)
+//   // {
+//   //   sum += numbersToSum[i];
+//   // }
+//   return sum;
+
+  function sumAllNumbers(numbersToSum)
+{
+  const answer = numbersToSum.reduce( (aggregate, currentNumber) =>
+    {
+      return aggregate += currentNumber;
+    }
+  );
+
+  return answer;
+}
+
+const sum = function (...numbers)
+{
+  const answer = numbers.reduce( (aggregate, currentNumber) =>
+    {
+      return aggregate += currentNumber;
+    }
+  );
+
+  return answer;
+}
+
+const getTotalSales = () =>
+{
+  const orders = [
+    {
+      id: 1,
+      name: "John",
+      product: "shoes",
+      price: 49.99,
+      quantity: 1
+    },
+    {
+      id: 2,
+      name: "John",
+      product: "shoes",
+      price: 2.99,
+      quantity: 10
+    }
+  ];
+
+  const totalSales = orders.reduce((sales, order) =>
+  {
+    const lineTotal = order.price * order.quantity;
+    return sales + lineTotal;
+  } ,
+    0 // initial value of the aggregate - can be any type
+  );
+
+  return totalSales;
 }
 
 /**
@@ -111,4 +198,92 @@ function sumAllNumbers(numbersToSum) {
  * @returns {number[]} a new array with only those numbers that are
  *   multiples of 3
  */
-function allDivisibleByThree(numbersToFilter) {}
+function allDivisibleByThree1(numbersToFilter)
+{
+  const newArray = [];
+
+  numbersToFilter.forEach((currentNumber) => 
+  {
+    if (currentNumber % 3 === 0)
+    {
+      newArray.push(currentNumber);
+    }
+  }
+  );
+  return newArray;
+}
+
+function allDivisibleByThree2(numbersToFilter)
+{
+  const newArray = [];
+
+  numbersToFilter.forEach((currentNumber) => 
+  {
+    if (isDividibleByThree(currentNumber))
+    {
+      newArray.push(currentNumber);
+    }
+  }
+  );
+  return newArray;
+}
+
+function allDivisibleByThree3(numbersToFilter)
+{
+  const newArray = numbersToFilter.filter(isDivisibleByThree);
+
+  return newArray;
+}
+
+const isDivisibleByThree = (value) =>
+{
+  return value % 3 === 0;
+}
+
+function allDivisibleByThree(numbersToFilter)
+{
+  const newArray = numbersToFilter.filter((number) => {return number % 3 === 0;});
+
+  return newArray;
+}
+
+const mapDemo = () => 
+{
+  const orders = [
+    {
+      id: 123,
+      name: "John",
+      product: "shoes",
+      price: 49.99,
+      quantity: 1
+    },
+    {
+      id: 287,
+      name: "John",
+      product: "shoes",
+      price: 2.99,
+      quantity: 10
+    }
+  ];
+
+  // for each item in the array
+  // -> order
+  // process that item and convert it ot a different object (order v2) // sql row to java object
+  // <- the result of the conversion
+  // a new array of converted objects
+
+  const newOrders = orders.map((order) =>
+  {
+    const newOrder = {
+      ...order, // this is shorthand for copying all variables in the current order -- SELECT *
+      lineTotal: order.price * order.quantity
+    };
+    return newOrder;
+  })
+
+  console.table(orders);
+  console.table(newOrders);
+
+  return newOrders;
+
+}
