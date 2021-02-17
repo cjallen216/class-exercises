@@ -36,17 +36,12 @@
  * @param {function} filterFunction the function to filter with
  * @returns {number[]} the filtered array
  */
-let unfilteredArray = [1, 2, 3, 4, 5, 6];
+       let unfilteredArray = [1, 2, 3, 4, 5, 6];
 
-   function useParameterToFilterArray()
+   function useParameterToFilterArray(filterFunction)
    {
-      return unfilteredArray.filter(
-         (element) => 
-         {
-            return element //% 2 === 0;
-         }
-      );
-}
+      return unfilteredArray.filter(filterFunction);
+   }
 
 /**
  * Write a function called makeNumber that takes two strings
@@ -61,29 +56,36 @@ let unfilteredArray = [1, 2, 3, 4, 5, 6];
  * @returns {number} the resultant number
  */
 
- function makeNumber(first, second)
+ function makeNumber(first, second ='')
  {
-    let a = parseInt(first);
-    let b = parseInt(second);
-
-    return a + b;
+    return parseInt(first + second);
  }
 
 /**
  * Write a function called addAll that takes an unknown number of parameters
  * and adds all of them together. Return the sum.
  *
- * @param {...number} num a series of numbers to add together
+ * @param {...number} nums a series of numbers to add together
  * @returns {number} the sum of all the parameters (or arguments)
  */
 
- function addAll()
+ function addAll(...nums)
  {
-    let num = 0;
-    for (let i = 0; i < arguments.length; i++) {
-       num += arguments[i];
-    }
-    return num;
+   const answer = nums.reduce( (sum, number) => 
+   {
+      return sum + number;
+   }
+   ,0 
+   );
+
+   return answer;
+
+   //  let num = 0;
+   //  for (let i = 0; i < arguments.length; i++)
+   //  {
+   //     num += arguments[i];
+   //  }
+   //  return num;
  }
 
 /*
@@ -115,9 +117,12 @@ let unfilteredArray = [1, 2, 3, 4, 5, 6];
  * Use `map` and an anonymous function.
  */
 
- function getFullAddressesOfProperties(address)
+ function getFullAddressesOfProperties(addressList)
  {
-    
+    return addressList.map ( (element) =>
+    {
+       return `${element.streetNumber} ${element.streetName} ${element.streetType} ${element.city} ${element.state} ${element.zip}`
+    });
  }
 
 /*
@@ -127,9 +132,19 @@ let unfilteredArray = [1, 2, 3, 4, 5, 6];
  * It must work for strings and numbers.
  */
 
-function findLargest(largest)
+function findLargest(numbers)
 {
-   
+   let largest = 0;
+
+   return numbers.forEach ( (number) =>
+   {
+      if(largest < number)
+      {
+         largest = number;
+      }
+      return largest;
+         
+   });
 }
 
 /*
