@@ -4,8 +4,22 @@ window.onload = () =>
     const div = document.getElementById('names');
 
     const names = getNames();
+    const customers = convertListToCustomers(names);
 
-    div.innerHTML =names;
+    const jsonNames = JSON.stringify(names);
+
+    const ul = document.createElement('ul');
+
+    let li = document.createElement('li');
+    li.innerHTML = "Donte Beltran";
+    ul.appendChild(li);
+
+    
+    let li = document.createElement('li');
+    li.innerHTML = "Kennedy Myers";
+    ul.appendChild(li);
+
+    div.innerText = jsonNames;
 
 }
 
@@ -65,3 +79,31 @@ and return an array of Customer objects
     }
 ]
 */
+
+/**
+ * 
+ * @param {string[]} names
+ * @returns {objects[]} list of customers
+ */
+
+
+const convertListToCustomers = (names) =>
+{
+
+
+    const customers = names.map(convertToCustomer);
+
+    return customers;
+}
+
+const convertToCustomer = (name) =>
+{
+    const values = name.split(',');
+
+        const Customer = {
+            id: values[0],
+            firstName: values[1],
+            lastName: values[2]
+        };
+        return customer;
+}
