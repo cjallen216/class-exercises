@@ -66,7 +66,10 @@ function takeOptionalParameter(thing = 0)
 function filterArrayToOnlySingleDigitNumbers(arrayToFilter)
 {
   return arrayToFilter.filter(
-    // WRITE CODE HERE
+    (element) => 
+    {
+      return element < 10 && element > -10;
+    }
   );
 }
 
@@ -80,9 +83,13 @@ function filterArrayToOnlySingleDigitNumbers(arrayToFilter)
  * @param {number[]} arrayToDouble the array that the user wants doubled
  * @returns {number[]} a array that has each number doubled
  */
-function mapArrayToDoubleAllNumbers(arrayToDouble) {
+function mapArrayToDoubleAllNumbers(arrayToDouble)
+{
   return arrayToDouble.map(
-    // WRITE CODE HERE
+    (element) => 
+    {
+      return element * 2;
+    }
   );
 }
 
@@ -99,7 +106,10 @@ function mapArrayToDoubleAllNumbers(arrayToDouble) {
  */
 function reduceArrayToFindProduct(arrayToMultiply) {
   return arrayToMultiply.reduce(
-    // WRITE CODE HERE
+    (currentResult, element) => 
+    {
+      return currentResult * element;
+    }
   );
 }
 
@@ -112,7 +122,10 @@ function reduceArrayToFindProduct(arrayToMultiply) {
  */
 function filterStringArrayForSon(arrayToFilter) {
   return arrayToFilter.filter(
-    // WRITE CODE HERE
+    (element) =>
+    {
+      return element.includes('son');
+    }
   );
 }
 
@@ -125,7 +138,10 @@ function filterStringArrayForSon(arrayToFilter) {
  */
 function makeNamesAllCaps(arrayToCapitalize) {
   return arrayToCapitalize.map(
-    // WRITE CODE HERE
+    (element) => 
+    {
+      return element.toUpperCase();
+    }
   );
 }
 

@@ -118,8 +118,6 @@
 			const lastTwo = front.substring(front.length - 2)
 			
 			return firstTwo === lastTwo;
-			
-			// could use: return front.endsWith(firstTwo); and comment out lastTwo
 		}
 
 /*
