@@ -1,5 +1,3 @@
-// const shoppingList = document.querySelector('.shopping-list');
-
 // add pageTitle
 const pageTitle = 'My Shopping List';
 // add groceries

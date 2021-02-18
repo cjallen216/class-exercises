@@ -72,10 +72,11 @@ function clear() {
 }
 
 // add event listener for when the DOM is loaded
-document.addEventListener('LOADED_EVENT_GOES_HERE', () => {
+document.addEventListener('DOMContentLoaded', () => {
 
   // set the variable called display equal to the display element
   // HINT: use its id #display to get a reference to it
+  const display = document.getElementById('display')
 
   // get a reference to all of the numbers
   // loop over each of the numbers
