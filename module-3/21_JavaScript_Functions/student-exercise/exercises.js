@@ -134,17 +134,16 @@
 
 function findLargest(numbers)
 {
-   let largest = 0;
+   let largest = '';
 
-   return numbers.forEach ( (number) =>
+   numbers.forEach ( (currentNumber) =>
    {
-      if(largest < number)
+      if (currentNumber > largest)
       {
-         largest = number;
+         largest = currentNumber;
       }
-      return largest;
-         
    });
+   return largest;
 }
 
 /*

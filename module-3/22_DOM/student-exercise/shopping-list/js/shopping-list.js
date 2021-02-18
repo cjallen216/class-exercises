@@ -24,10 +24,6 @@ function setPageTitle()
 {
   const title = document.getElementById('title');
   title.innerText = pageTitle;
-  
-  // const title = document.createElement('title');
-  // title.innerText = pageTitle;
-  // shoppingList.appendChild(title);
 }
 
 /**
@@ -35,16 +31,13 @@ function setPageTitle()
  */
 function displayGroceries()
 {
-  const groceryList = document.getElementById('groceries');
-  groceryList.innerHTML = groceries;
-
-  const ul = document.createElement('ul');
-
-  groceries.forEach(groceryItem => 
+  const ul = document.getElementById('groceries');
+  
+  groceries.forEach( (groceryItem) => 
     {
-      const li = document.createElement('li')
-      li.innerText = groceryItem.item
-      ul.appendChild(li)
+      const li = document.createElement('li');
+      li.innerText = groceryItem.item;
+      ul.appendChild(li);
     });
 }
 
@@ -54,10 +47,12 @@ function displayGroceries()
  */
 function markCompleted()
 {
-  groceries.forEach(groceryItem =>
+  const groceryItems = document.querySelectorAll('li');
+  
+  groceryItems.forEach( (groceryItem) =>
     {
-      
-    })
+      groceryItem.setAttribute('class', 'completed');
+    });
 }
 
 setPageTitle();
