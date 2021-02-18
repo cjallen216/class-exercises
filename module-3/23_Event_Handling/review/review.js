@@ -17,7 +17,7 @@ function changeFont()
 
 /* change class options */
 
-function addClass(className)
+function addClass_Replace(className)
 {
     const div = document.getElementById('content');
     div.setAttribute('class', className);
@@ -75,4 +75,14 @@ function addClassOption3(className)
     {
         div.classList.add(className);
     }
+}
+
+function addClass(className)
+{
+    const div = document.getElementById('content');
+
+    if (div.classList.contains(className))
+        div.classList.remove(className);
+    else
+        div.classList.add(className);
 }

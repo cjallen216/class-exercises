@@ -13,6 +13,15 @@
         iqTest("2 3 5 7")
 */
 
+const iqTest = (numberString) => 
+{
+    const values = numberString ? numberString.split(' ') : []; 
+    const evens = values.map(score => score % 2 === 0);
+    const evenCount = evens.reduce( (count, value) => count + (value ? 1 : 0) , 0);
+    const searchForEven = evenCount <= 1;
+    return evens.indexOf(searchForEven) + 1;
+}
+
 function iqTest2(numbers)
 {
     const nums = numbers.split(" ").map(x => x % 2);
@@ -21,7 +30,7 @@ function iqTest2(numbers)
     return nums.indexOf(target) + 1;
 }
 
-const iqTest = (numberString) => 
+const iqTest3 = (numberString) => 
 {
     const values = numberString ? numberString.split(' ') : []; 
 
@@ -37,19 +46,20 @@ const iqTest = (numberString) =>
 
     const searchForEven = evenCount <= 1;
 
-    // this is ugly - it's basically a hack re-write of evens.indexOf()
-    let position = 0
-    for (let i = 0; i < evens.length; i++) 
-    {
-        const value = evens[i];
-        if (value === searchForEven)
-        {
-            position = i + 1;
-            break;
-        }
-    }
-    return position;
+    // // this is ugly - it's basically a hack re-write of evens.indexOf()
+    // let position = 0
+    // for (let i = 0; i < evens.length; i++) 
+    // {
+    //     const value = evens[i];
+    //     if (value === searchForEven)
+    //     {
+    //         position = i + 1;
+    //         break;
+    //     }
+    // }
+    // return position;
 
-    // // using indexof is much cleaner
-    //return evens.indexOf(searchForEven) + 1;   
+    // using indexof is much cleaner
+    return evens.indexOf(searchForEven) + 1;   
 }
+

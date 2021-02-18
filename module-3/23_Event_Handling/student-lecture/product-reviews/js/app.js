@@ -60,19 +60,56 @@ function displayReview(review) {
 
 // LECTURE STARTS HERE ---------------------------------------------------------------
 
-// set the product reviews page title
-setPageTitle();
-// set the product reviews page description
-setPageDescription();
-// display all of the product reviews on our page
-displayReviews();
+document.addEventListener('DOMContentLoaded', () => 
+{
+  // set the product reviews page title
+  setPageTitle();
+  // set the product reviews page description
+  setPageDescription();
+  // display all of the product reviews on our page
+  displayReviews();
 
+  // setup the paragraph to enable toggling
+  const descriptionParagraph = document.getElementById('description');
+  descriptionParagraph.addEventListener('click', (event) => 
+  {
+    toggleDescriptionEdit (event.target); // event.target is the element that was clicked
+  });
+
+  const inputDescrption = document.getElementById('inputDesc');
+  inputDescrption.addEventListener('keyup' , (event) =>
+  {
+    if(event.key === 'Enter')
+    {
+      exitDescriptionEdit(event.target, true);
+    }
+    else if (event.key === 'Escape')
+    {
+      exitDescriptionEdit(event.target, false);
+    }
+  });
+
+  // end descrption toggling
+
+  // show/hide form
+  const formButton = document.getElementById('btnToggleForm');
+  formButton.addEventListener('click', () => 
+  {
+    showHideForm()
+  });
+
+  const submitButton = document.getElementById('btnSaveReview');
+  submitButton.addEventListener('click', saveReview);
+
+
+  
+});
 /**
  * Take an event on the description and swap out the description for a text box.
  *
  * @param {Event} event the event object
  */
-function toggleDescriptionEdit(desc) {
+function toggleDescriptionEdit(desc) { // desc is the desc paragraph
   const textBox = desc.nextElementSibling;
   textBox.value = description;
   textBox.classList.remove('d-none');
@@ -130,4 +167,33 @@ function resetFormValues() {
 /**
  * I will save the review that was added using the add review from
  */
-function saveReview() {}
+function saveReview(event)
+{
+  // disable the forms default action of submitting the form
+  event.preventDefault();
+
+  // get the values and save them and add a new review
+  const nameBox = document.getElementById('name');
+  const titleBox = document.getElementById('title');
+  const ratingDropdown = document.getElementById('rating');
+  const reviewBox = document.getElementById('review');
+  
+  const review =
+  {
+      reviewer: nameBox.value,
+      title: titleBox.value,
+      review: reviewBox.value,
+      rating: ratingDropdown.value
+  }
+
+  // TYPICAL: make a call to an API
+
+  reviews.push(review); // add it to the global list
+  displayReview(review); // display it on the page
+
+  resetFormValues(); // clear the form after submitting
+
+  showHideForm();
+
+
+}
