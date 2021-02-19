@@ -17,7 +17,8 @@ const groceries = [
  * This function will get a reference to the title and set its text to the value
  * of the pageTitle variable that was set above.
  */
-function setPageTitle() {
+function setPageTitle()
+{
   const title = document.getElementById('title');
   title.innerText = pageTitle;
 }
@@ -25,9 +26,11 @@ function setPageTitle() {
 /**
  * This function will loop over the array of groceries that was set above and add them to the DOM.
  */
-function displayGroceries() {
+function displayGroceries()
+{
   const ul = document.querySelector('ul');
-  groceries.forEach((item) => {
+  groceries.forEach((item) =>
+  {
     const li = document.createElement('li');
     li.innerText = item.name;
     const checkCircle = document.createElement('i');
@@ -46,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () =>
 
   const items = document.querySelectorAll('li')
 
-  items.forEach( (item) =>
+  items.forEach((item) =>
   {
     item.addEventListener('click', () =>
     {
@@ -66,22 +69,29 @@ document.addEventListener('DOMContentLoaded', () =>
     })
   })
 
-  // function toggleAll(allItemsIncomplete)
-  // {
-  //   const button = allItemsIncomplete;
-    
-  // }
-
   const toggleAll = document.getElementById('toggleAll')
 
   toggleAll.addEventListener('click', () =>
   {
-    items.forEach( (item) => 
+    if (!allItemsIncomplete)
     {
-      item.classList.add('completed')
-      item.querySelector('i').classList.add('completed')
-    })
-    toggleAll.innerText = 'Mark All Incomplete';
+      items.forEach((item) =>
+      {
+        item.classList.remove('completed')
+        item.querySelector('i').classList.remove('completed')
+      })
+      toggleAll.innerText = 'Mark All Complete';
+      allItemsIncomplete = true;
+    }
+    else if (allItemsIncomplete)
+    {
+      items.forEach((item) =>
+      {
+        item.classList.add('completed')
+        item.querySelector('i').classList.add('completed')
+      }) 
+      toggleAll.innerText = 'Mark All Incomplete';
+      allItemsIncomplete = false;
+    }
   })
-  
 })
