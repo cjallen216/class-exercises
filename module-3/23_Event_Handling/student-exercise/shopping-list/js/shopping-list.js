@@ -17,6 +17,7 @@ const groceries = [
  * This function will get a reference to the title and set its text to the value
  * of the pageTitle variable that was set above.
  */
+
 function setPageTitle()
 {
   const title = document.getElementById('title');
@@ -26,6 +27,7 @@ function setPageTitle()
 /**
  * This function will loop over the array of groceries that was set above and add them to the DOM.
  */
+
 function displayGroceries()
 {
   const ul = document.querySelector('ul');
@@ -39,8 +41,6 @@ function displayGroceries()
     ul.appendChild(li);
   });
 }
-
-
 
 document.addEventListener('DOMContentLoaded', () =>
 {
