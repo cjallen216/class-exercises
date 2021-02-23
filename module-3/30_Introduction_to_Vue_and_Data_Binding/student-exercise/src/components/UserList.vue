@@ -98,6 +98,8 @@ export default {
   },
   computed: {
     filteredList() {
+
+      
       return this.users.filter((user) => 
       {
         return  user.firstName.toLowerCase().includes(this.filter.firstName) &&
