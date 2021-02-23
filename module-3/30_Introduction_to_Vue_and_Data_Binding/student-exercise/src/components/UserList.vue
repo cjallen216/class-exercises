@@ -99,15 +99,13 @@ export default {
   computed: {
     filteredList() {
 
-      
-      return this.users.filter((user) => 
-      {
-        return  user.firstName.toLowerCase().includes(this.filter.firstName) &&
-                user.lastName.toLowerCase().includes(this.filter.lastName) &&
-                user.username.includes(this.filter.username) && 
-                user.emailAddress.includes(this.filter.emailAddress) &&
-                user.status.includes(this.filter.status);
-      });
+      let userList = this.users.filter(user => user.firstName.toLowerCase().includes(this.filter.firstName));
+      userList = userList.filter(user => user.lastName.toLowerCase().includes(this.filter.lastName));
+      userList = userList.filter(user => user.username.includes(this.filter.username));
+      userList = userList.filter(user => user.emailAddress.includes(this.filter.emailAddress));
+      userList = userList.filter(user => user.status.includes(this.filter.status));
+
+      return userList;
     }
   }
 };
