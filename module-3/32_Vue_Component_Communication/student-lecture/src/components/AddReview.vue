@@ -49,6 +49,8 @@ export default {
   },
   methods: {
     addNewReview() {
+      // add a review to the store
+      this.$store.commit('ADD_REVIEW', this.newReview)
       this.resetForm();
     },
     resetForm() {

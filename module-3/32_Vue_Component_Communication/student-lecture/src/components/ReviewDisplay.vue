@@ -16,6 +16,7 @@
       Favorite?
       <input
         type="checkbox"
+        v-on:change="onFavoritedChange(review)"
         v-bind:checked="review.favorited"
       />
     </p>
@@ -27,8 +28,8 @@ export default {
   name: "review-display",
   props: ["review"],
   methods: {
-    onFavoritedChange() {
-
+    onFavoritedChange(review) {
+      this.$store.commit('FLIP_FAVORITED', review);
     }
   }
 };

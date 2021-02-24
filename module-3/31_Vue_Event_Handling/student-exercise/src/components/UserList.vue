@@ -15,7 +15,7 @@
       <tbody>
         <tr>
           <td>
-            <input type="checkbox" id="selectAll" />
+            <input type="checkbox" id="selectAll" v-on:change="selectAll($event)"/>
           </td>
           <td>
             <input type="text" id="firstNameFilter" v-model="filter.firstName" />
@@ -44,7 +44,8 @@
           v-bind:class="{ disabled: user.status === 'Disabled' }"
         >
           <td>
-            <input type="checkbox" v-bind:id="user.id" v-bind:value="user.id" />
+            <input type="checkbox" v-bind:id="user.id" v-bind:value="user.id" v-bind:checked="selectedUserIDs.includes(user.id)"
+                     v-on:change="selectUser($event)" />
           </td>
           <td>{{ user.firstName }}</td>
           <td>{{ user.lastName }}</td>
@@ -52,16 +53,18 @@
           <td>{{ user.emailAddress }}</td>
           <td>{{ user.status }}</td>
           <td>
-            <button class="btnEnableDisable">Enable or Disable</button>
+            <button class="btnEnableDisable"
+                    v-on:click="flipStatus(user.id)">{{user.status === 'Active' ? 'Disable' : 'Enable'}}</button>
           </td>
         </tr>
       </tbody>
     </table>
 
     <div class="all-actions">
-      <button>Enable Users</button>
-      <button>Disable Users</button>
-      <button v-on:click="deleteSelectedUsers">Delete Users</button>
+      <button v-bind:disabled="actionButtonDisabled" v-on:click="enableSelectedUsers">Enable Users</button>
+      <button v-bind:disabled="actionButtonDisabled" v-on:click="disableSelectedUsers">Disable Users</button>
+      <button v-bind:disabled="actionButtonDisabled"
+              v-on:click="deleteSelectedUsers">Delete Users</button>
     </div>
 
     <button v-on:click.prevent="showForm = !showForm">Add New User</button>
@@ -111,7 +114,7 @@ export default {
         status: "Active"
       },
       showForm: false,
-      selectedUserIDs: {},
+      selectedUserIDs: [],
       users: [
         {
           id: 1,
@@ -169,25 +172,63 @@ export default {
       this.users.push(this.newUser);
     },
 
-    flipStatus() {
+    flipStatus(id) {
+      const user = this.users.find(u => u.id == id)
+      user.status = user.status === 'Active' ? 'Disabled' : 'Active';
       
     },
-    // enableSelectedUsers(selectedUserIDs) {
-    //   this.users = this.users.filter((user) => {
-    //     if (this.filter.status === "Disabled") {
-    //       return this.filter.status === "Active"          
-    //     }
-    //   })      
-    // },
-    // disableSelectedUsers(selectedUserIDs) {
-    //   this.users = this.users.filter((user) => {
-    //     if (this.filter.status === "Active") {
-    //       return this.filter.status === "Disabled";
-    //     }
-    //   })
-    // },
+    enableSelectedUsers() {
+      this.users.forEach((user) => {
+         if(this.selectedUserIDs.includes(user.id))
+         {
+           user.status = 'Active';
+         }
+        
+      })      
+    },
+    disableSelectedUsers() {
+      this.users.forEach((user) => {
+         if(this.selectedUserIDs.includes(user.id))
+         {
+           user.status = 'Disabled';
+         }
+        
+      })
+    },
     deleteSelectedUsers() {
-      this.users.pop(this.filter.users);
+      this.selectedUserIDs.forEach(id => 
+      {
+        this.users = this.users.filter(user =>
+        {
+          return user.id != id;
+        });
+      })
+    },
+
+    selectAll(event) {
+      const checkbox = event.target;
+      this.selectedUserIDs = [];
+      if(checkbox.checked)
+      {
+        this.users.forEach(user => 
+        {
+          this.selectedUserIDs.push(user.id);
+        })
+      }
+    },
+    selectUser(event) {
+      const checkbox = event.target;
+      const id = parseInt(checkbox.value);
+      if (checkbox.checked)
+      {
+        this.selectedUserIDs.push(id);
+      }
+      else {
+        this.selectedUserIDs = this.selectedUserIDs.filter(userId => 
+        {
+          return userId != id;
+        });
+      }
     }
 
   },
@@ -228,6 +269,10 @@ export default {
         );
       }
       return filteredUsers;
+    },
+    actionButtonDisabled() {
+      let actionButton = this.selectedUserIDs.length === 0;
+      return actionButton;
     }
   }
 };
