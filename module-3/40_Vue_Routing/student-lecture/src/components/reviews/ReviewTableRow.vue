@@ -5,7 +5,7 @@
     <td>{{ review.review }}</td>
     <td class="stars">
       <img
-        src="../assets/star.png"
+        src="@/assets/star.png"
         v-bind:title="review.rating + ' Star Review'"
         class="star"
         v-for="n in review.rating"

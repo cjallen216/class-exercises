@@ -18,9 +18,9 @@
 </template>
 
 <script>
-import AverageSummary from '@/components/AverageSummary.vue';
-import ReviewList from '@/components/ReviewList.vue';
-import StarSummary from '@/components/StarSummary.vue';
+import AverageSummary from '@/components/reviews/summary/AverageSummary.vue';
+import ReviewList from '@/components/reviews/ReviewList.vue';
+import StarSummary from '@/components/reviews/summary/StarSummary.vue';
 
 export default {
   name: "app",
