@@ -1,18 +1,12 @@
 <template>
-  <form v-on:submit.prevent="saveBook">
-      <div class="form-element">
-          <label for="title">Title: </label>
-          <input type="text" id="title-input" />
-      </div>
-      <div class="form-element">
-          <label for="author">Author: </label>
-          <input type="text" id="author-input" />
-      </div>
-      <div class="form-element">
-          <label for="isbn">ISBN: </label>
-          <input type="text" id="isbn-input" />
-      </div>
-      <input type="submit" value="Save" />
+  <form class="new-book-form" v-on:submit.prevent="saveBook">
+    <label for="title">Title: </label>
+    <input class="title-input" type="text" v-model="book.title" />
+    <label for="author">Author: </label>
+    <input class="author-input" type="text" v-model="book.author" />
+    <label for="isbn">ISBN: </label>
+    <input class="isbn-input" type="text" v-model="book.isbn" />
+    <button>Save</button>
   </form>
 </template>
 
@@ -20,7 +14,7 @@
 export default {
     data() {
         return {
-            newBook: {
+            book: {
                 title: '',
                 author: '',
                 read: false,
@@ -31,9 +25,8 @@ export default {
     name: 'new-book-form',
     methods: {
         saveBook() {
-            this.newBook.read = false;
-            this.$store.commit('ADD_BOOK', this.newBook);
-            this.newBook = {
+            this.$store.commit('ADD_BOOK', this.book);
+            this.book = {
                 title: '',
                 author: '',
                 read: false,
@@ -45,27 +38,14 @@ export default {
 </script>
 
 <style>
-div.form-element {
-  margin-top: 10px;
+.new-book-form
+{
+    padding: 10px;
 }
-div.form-element > label {
-  display: block;
-}
-div.form-element > input,
-div.form-element > select {
-  height: 30px;
-  width: 300px;
-}
-div.form-element > textarea {
-  height: 60px;
-  width: 300px;
-}
-form > input[type="button"] {
-  width: 100px;
-}
-form > input[type="submit"] {
-  width: 100px;
-  margin-right: 10px;
+
+input, label
+{
+    margin: 10px;
 }
 
 </style>

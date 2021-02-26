@@ -33,8 +33,12 @@ export default new Vuex.Store({
     ]
   },
   mutations: {
+    READ_STATUS(state, books) {
+      books.book.read = books.value;
+    },
+
     ADD_BOOK(state, book) {
-      state.books.unshift(book);
+      state.books.push(book);
     }
   },
   actions: {},

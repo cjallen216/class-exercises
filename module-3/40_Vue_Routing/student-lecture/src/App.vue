@@ -1,5 +1,9 @@
 <template>
-  <div></div>
+  <div>
+
+<!-- this is the placeholder -->
+    <router-view />
+  </div>
 </template>
 
 <script>
