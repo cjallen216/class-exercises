@@ -5,6 +5,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    currentBook: 1,
     books: [
       {
         title: "Kafka by the Shore",

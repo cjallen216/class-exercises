@@ -20,6 +20,16 @@ export default {
             }
         }
     },
+    computed: {
+        bookURL() {
+            return {
+                name: 'my-books',
+                params: {
+                    isbn: this.$route.params.isbn
+                }
+            }
+        }
+    },
     methods: {
         saveBook() {
             this.$store.commit('SAVE_BOOK', this.book);
@@ -29,6 +39,7 @@ export default {
                 read: false,
                 isbn: ''
             };
+            this.$router.push(this.bookURL);
         }
     }
 }
