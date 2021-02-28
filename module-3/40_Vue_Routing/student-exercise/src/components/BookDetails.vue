@@ -3,12 +3,16 @@
       <h2 class="book-title">{{book.title}}</h2>
       <img v-if="book.isbn" v-bind:src="'http://covers.openlibrary.org/b/isbn/' + book.isbn + '-M.jpg'" />
     <h3 class="book-author">{{ book.author }}</h3>
+  <book-card />
   </div>
+  
 </template>
 
 <script>
+import BookCard from './BookCard.vue'
 
 export default {
+  components: { BookCard },
 
   name: 'book-details',
   data() {
