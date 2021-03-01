@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import MyBooks from '../views/MyBooks.vue'
 import NewBook from '../views/NewBook.vue'
 import BookDetails from '../components/BookDetails.vue'
+import Book from '../views/Book.vue'
 
 Vue.use(VueRouter);
 
@@ -28,6 +29,11 @@ const routes = [
     name: 'book-details',
     component: BookDetails
   },
+  {
+    path: '/book',
+    name: 'book',
+    component: Book
+  }
 
 ];
 
