@@ -1,8 +1,5 @@
 <template>
 <div>
-    
-    <h1>This is a test</h1>
-    <!-- <reading-list /> -->
     <book-details />
 </div>
   
@@ -10,12 +7,9 @@
 
 <script>
 import BookDetails from '../components/BookDetails.vue'
-// import ReadingList from '../components/ReadingList.vue'
-export default {
-  components: { BookDetails, 
-//   ReadingList
-   },
 
+export default {
+  components: { BookDetails },
 }
 </script>
 
