@@ -67,7 +67,25 @@ export default {
         });
     },
     deleteBoard() {
-      
+      boardsService.deleteBoard(this.boardId)
+                    .then( () => {
+                      this.$store.commit('DELETE_BOARD', this.boardId);
+                      this.$router.push("/");
+                    })
+                    .catch(error => {
+                      if(error.response) // we know we got data from the server
+                      {
+                        this.errorMsg = "there was an error deleting the board. " + error.response.statusText
+                      }
+                      else if (error.request) // server was not reached
+                      {
+                        this.errorMsg = "Error deleting the board. Server could not be reached";
+                      }
+                      else 
+                      {
+                        this.errorMsg = "Error deleting board. Could not create the request.";
+                      }
+                    });
     }
   },
   created() {

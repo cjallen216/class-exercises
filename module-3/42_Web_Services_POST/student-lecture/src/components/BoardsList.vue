@@ -17,12 +17,12 @@
         {{ board.title }}
       </router-link>
       <button class="btn addBoard" v-if="!isLoading && !showAddBoard" v-on:click="showAddBoard = !showAddBoard">Add Board</button>
-      <form v-if="showAddBoard">
+      <form v-if="showAddBoard" v-on:submit.prevent="saveNewBoard">
         Board Title:
         <input type="text" class="form-control" v-model="newBoard.title" />
         Background Color:
         <input type="text" class="form-control" v-model="newBoard.backgroundColor" />
-        <button class="btn btn-submit" v-on:click="saveNewBoard">Save</button>
+        <button class="btn btn-submit">Save</button>
         <button class="btn btn-cancel" v-on:click="showAddBoard = !showAddBoard">Cancel</button>
       </form>
     </div>
@@ -59,7 +59,20 @@ export default {
       });
     },
     saveNewBoard() {
-
+      boardsService.addBoard(this.newBoard)
+                    .then( () => 
+                    {
+                      //notify the user that is completed
+                      this.retrieveBoards();
+                      this.newBoard = {
+                        title: '',
+                        backgroundColor: this.randomBackgroundColor()
+                      };
+                      this.showAddBoard = false;
+                    })
+                    .catch ( () => {
+                      this.errorMsg = "The board could not be created."
+                    });
     },
     randomBackgroundColor() {
       return "#" + this.generateHexCode();
