@@ -14,6 +14,11 @@
       "id": 33749,
       "title": "My Kanban Board #3",
       "backgroundColor": "#35284f"
+    },
+    {
+      "title": "That Board",
+      "backgroundColor": "#140eb4",
+      "id": 33751
     }
   ],
   "cards": [
